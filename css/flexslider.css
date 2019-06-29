@@ -46,12 +46,18 @@
 }
 .flexslider .slides > li {
   display: none;
-  -webkit-backface-visibility: hidden;
+  -webkit-backface-visibility: visible;
+  max-height: auto;
 }
 .flexslider .slides img {
-  width: 100%;
-  display: block;
+   /*maximum height for all slides*/
+  width: 150px; /*proper aspect ratio of images*/
+  max-width: 100%; /*maximum width for all slides*/
+  margin-left: auto;
+  margin-right: auto;
+ height: auto;
 }
+
 .flexslider .slides:after {
   /*content: "\0020";*/
   display: block;
