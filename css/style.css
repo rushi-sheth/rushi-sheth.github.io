@@ -293,6 +293,7 @@ figure {
         @media screen and (max-width: 768px) {
           #colorlib-hero .flexslider .slider-text > .slider-text-inner {
             text-align: right ;
+            vertical-align: middle;
             padding:0  } }
         #colorlib-hero .flexslider .slider-text > .slider-text-inner h1, #colorlib-hero .flexslider .slider-text > .slider-text-inner h2 {
           margin: 0;
@@ -304,10 +305,15 @@ figure {
           margin-top: 20px;
           font-size: 60px;
           line-height: 1.3;
+          text-align: center;
           font-weight: 700; }
           @media screen and (max-width: 768px) {
             #colorlib-hero .flexslider .slider-text > .slider-text-inner h1 {
-                font-size: 28px; } }
+                text-align: center;
+                vertical-align:text-top; 
+                font-size: 28px; 
+                color:rgb(247, 199, 127);} }
+
         #colorlib-hero .flexslider .slider-text > .slider-text-inner h2 {
           font-size: 18px;
           line-height: 1.5;
