@@ -237,7 +237,7 @@ figure {
   background: #fff no-repeat center center;
   width: 100%;
   float: left;
-  margin-bottom: 10em;
+  margin-bottom: 3em;
   clear: both; }
   #colorlib-hero .flexslider {
     border: none;
@@ -285,15 +285,15 @@ figure {
       z-index: 9; }
       #colorlib-hero .flexslider .slider-text > .slider-text-inner {
         display: table-cell;
-        vertical-align: top;
-        text-align: left;        
+        vertical-align: bottom;
+        text-align: center;        
         min-height: 700px;
         padding: 2em;
         position: relative; }
         @media screen and (max-width: 768px) {
           #colorlib-hero .flexslider .slider-text > .slider-text-inner {
-            text-align: right ;
-            vertical-align: middle;
+            text-align: center ;
+            vertical-align: bottom;
             padding:0  } }
         #colorlib-hero .flexslider .slider-text > .slider-text-inner h1, #colorlib-hero .flexslider .slider-text > .slider-text-inner h2 {
           margin: 0;
@@ -309,10 +309,9 @@ figure {
           font-weight: 700; }
           @media screen and (max-width: 768px) {
             #colorlib-hero .flexslider .slider-text > .slider-text-inner h1 {
-                text-align: center;
-                vertical-align:text-top; 
-                font-size: 28px; 
-                color:rgb(247, 199, 127);} }
+                text-align: right;    
+                font-size: 35px; 
+                color:rgb(230, 240, 238);} }
 
         #colorlib-hero .flexslider .slider-text > .slider-text-inner h2 {
           font-size: 18px;
@@ -429,7 +428,7 @@ body.offcanvas {
     .colorlib-services,
     .colorlib-contact {
       padding-top: 5em;
-      padding-bottom: 8em; } }
+      padding-bottom: 0em; } }
 
 .author-img {
   background-size: cover;
