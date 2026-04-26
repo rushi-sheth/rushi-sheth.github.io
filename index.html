@@ -1,639 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Rushi Sheth — Revenue, Operations & AI</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<script>
-tailwind.config = {
-  theme: { extend: { fontFamily: {
-    serif: ['Playfair Display','Georgia','serif'],
-    sans:  ['DM Sans','sans-serif'],
-    mono:  ['DM Mono','monospace'],
-  }}}
-}
-</script>
 <style>
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
-
-/* ── NAV ACTIVE STATES ── */
-.ni.ah > a  { background:#eff6ff; }
-.ni.ah .nd  { background:#1e3a5f; border-color:#1e3a5f; box-shadow:0 0 0 3px rgba(30,58,95,.15); }
-.ni.ah .nt  { color:#1e3a5f; font-weight:500; }
-.ni.ad > a  { background:#f8fafc; }
-.ni.ad .nd  { background:#334155; border-color:#334155; box-shadow:0 0 0 3px rgba(51,65,85,.15); }
-.ni.ad .nt  { color:#334155; font-weight:500; }
-.ni.at > a  { background:#eff6ff; }
-.ni.at .nd  { background:#1e3a5f; border-color:#1e3a5f; box-shadow:0 0 0 3px rgba(30,58,95,.15); }
-.ni.at .nt  { color:#1e3a5f; font-weight:500; }
-.ni.aw > a  { background:#fffbeb; }
-.ni.aw .nd  { background:#92400e; border-color:#92400e; box-shadow:0 0 0 3px rgba(146,64,14,.15); }
-.ni.aw .nt  { color:#92400e; font-weight:500; }
-.ni.af > a  { background:#fafafa; }
-.ni.af .nd  { background:#3f3f46; border-color:#3f3f46; box-shadow:0 0 0 3px rgba(63,63,70,.15); }
-.ni.af .nt  { color:#3f3f46; font-weight:500; }
-
-/* ── FADE UP ── */
-.fu { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
-.fu.in { opacity:1; transform:translateY(0); }
-
-/* ── PROJECT CARD HOVER BAR ── */
-.pc { position:relative; overflow:hidden; transition:transform .15s, box-shadow .15s; cursor:default; }
-.pc::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; transform:scaleX(0); transform-origin:left; transition:transform .22s; }
-.pc:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.08); }
-.pc:hover::after { transform:scaleX(1); }
-.pca::after { background:linear-gradient(90deg,#b45309,#fbbf24); }
-.pcb::after { background:linear-gradient(90deg,#1e3a5f,#60a5fa); }
-.pcc::after { background:linear-gradient(90deg,#065f46,#34d399); }
-
-/* ── CONCEPT LAB GRID-PAPER ── */
-.concept-card {
-  background-color:#fafafa;
-  background-image:
-    linear-gradient(rgba(99,102,241,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99,102,241,.07) 1px, transparent 1px);
-  background-size: 20px 20px;
-  border:1px solid #c7d2fe;
-  border-radius:0;
-  transition:border-color .2s, box-shadow .2s;
-  cursor:default;
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f8f8f5;--bg2:#ffffff;--bg3:#f2f1ed;--bg4:#eae9e4;
+  --dark:#1a1a2e;--dark2:#22223a;--dark3:#2a2a45;
+  --border:#e2e1dc;--border2:#ccccc4;
+  --text:#111118;--text2:#5a5a6e;--text3:#9898a8;
+  --accent:#5b4fff;--accent2:#7c6fff;--accent-lt:#eeebff;
+  --teal:#0bb68a;--teal-lt:#e6faf4;
+  --amber:#d97706;--amber-lt:#fef3e2;
 }
-.concept-card:hover { border-color:#6366f1; box-shadow:0 0 0 3px rgba(99,102,241,.1), 4px 4px 0 #6366f1; }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
 
-/* ── FLOW SCROLL ── */
-.flow-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-.flow-scroll::-webkit-scrollbar { height:3px; }
-.flow-scroll::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:2px; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 1.25rem;height:54px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,248,245,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:-0.4px;color:var(--text)}
+.nav-logo span{color:var(--accent)}
+.nav-links-desktop{display:flex;gap:1.5rem;align-items:center}
+.nav-links-desktop a{font-size:13px;color:var(--text2);transition:color 0.2s;white-space:nowrap}
+.nav-links-desktop a:hover{color:var(--text)}
+.nav-cta{background:var(--dark);color:#fff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;transition:opacity 0.2s;white-space:nowrap}
+.nav-cta:hover{opacity:0.8}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-/* ── WIP DOT PULSE ── */
-@keyframes wpulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-.wpulse { animation:wpulse 2s ease-in-out infinite; }
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.25s;display:block}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:54px;left:0;right:0;background:rgba(248,248,245,0.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:99;padding:1rem 1.25rem;flex-direction:column;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:15px;color:var(--text2);padding:12px 0;border-bottom:1px solid var(--border);transition:color 0.2s}
+.mobile-menu a:last-child{border-bottom:none;margin-top:8px;color:var(--accent);font-weight:600}
 
-/* ── PHOTO SLOT ── */
+/* HERO */
+.hero-wrap{background:#fff;border-bottom:1px solid var(--border)}
+.hero{padding:5rem 1.25rem 2.5rem;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:start}
+.hero-open{display:inline-flex;align-items:center;gap:8px;background:var(--teal-lt);border:1px solid #b2f0dd;border-radius:20px;padding:5px 14px;font-size:12px;color:var(--teal);font-weight:600;margin-bottom:1.2rem}
+h1{font-size:clamp(32px,5vw,54px);font-weight:800;line-height:1.08;letter-spacing:-2px;margin-bottom:1.1rem}
+h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:15px;color:var(--text2);line-height:1.75;max-width:500px;margin-bottom:1.8rem}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-dark{background:var(--dark);color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:500;transition:all 0.2s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.btn-dark:hover{opacity:0.85;transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--text2);padding:11px 20px;border-radius:10px;font-size:14px;font-weight:500;border:1px solid var(--border2);transition:all 0.2s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.hero-right{display:flex;flex-direction:column;gap:10px;padding-top:0.5rem;min-width:0}
+.profile-img{width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg3);flex-shrink:0}
+.profile-img img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+.initials-box{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:800;color:var(--border2);letter-spacing:-3px}
+.quick-fact{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:11px 13px;display:flex;align-items:flex-start;gap:10px;min-width:0}
+.qf-icon{font-size:13px;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--accent-lt)}
+.qf-label{font-size:11px;color:var(--text3)}
+.qf-val{font-size:13px;font-weight:600;color:var(--text);word-break:break-word}
+.qf-row{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap}
+.qf-pill{font-size:11px;color:var(--text2);background:#fff;border:1px solid var(--border);border-radius:12px;padding:2px 9px;white-space:nowrap}
 
+/* INDUSTRY STRIP */
+.ind-strip{border-bottom:1px solid var(--border);background:#fff;padding:0.85rem 1.25rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ind-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;flex-wrap:nowrap;min-width:max-content}
+.ind-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;flex-shrink:0}
+.ind-tags{display:flex;gap:7px}
+.ind-tag{font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:3px 11px;white-space:nowrap}
 
-/* ── PILLAR SUB-HEADER ── */
-.pillar-sub { font-size:9px; text-transform:uppercase; letter-spacing:.14em; font-weight:600; margin-bottom:.4rem; margin-top:.9rem; color:#94a3b8; }
-.pillar-sub:first-of-type { margin-top:0; }
+/* IMPACT BAND */
+.impact-band{background:var(--dark);padding:3rem 1.25rem}
+.impact-inner{max-width:1120px;margin:0 auto}
+.imp-section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7878a8;margin-bottom:1.4rem}
+.impact-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.imp-group{background:var(--dark2);border:1px solid #ffffff12;border-radius:14px;overflow:hidden}
+.imp-group-header{padding:10px 13px 8px;border-bottom:1px solid #ffffff0d;display:flex;align-items:center;gap:8px}
+.imp-group-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.imp-group-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8888b0}
+.imp-cells{display:flex;flex-direction:column}
+.imp-cell{padding:11px 13px;border-bottom:1px solid #ffffff07;transition:background 0.18s}
+.imp-cell:last-child{border-bottom:none}
+.imp-cell:hover{background:var(--dark3)}
+.imp-num{font-size:20px;font-weight:800;color:#e8e8f8;letter-spacing:-0.5px;line-height:1.1;margin-bottom:3px}
+.imp-desc{font-size:12px;color:#8080a8;line-height:1.45}
+
+/* SECTIONS */
+.section{padding:4rem 1.25rem;max-width:1120px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem}
+h2{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-1px;margin-bottom:0.4rem;color:var(--text)}
+.section-sub{font-size:15px;color:var(--text2);max-width:600px}
+
+/* VALUE LOOP */
+.loop-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:2.5rem}
+.loop-step{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.1rem;transition:all 0.22s}
+.loop-step:hover{border-color:var(--accent);transform:translateY(-2px)}
+.loop-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.loop-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
+.loop-desc{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* PHARMA */
+.pharma-wrap{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pharma-section{padding:4rem 1.25rem;max-width:1120px;margin:0 auto}
+.infographic{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:1.5rem;overflow:hidden}
+.infographic-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:1.4rem;text-align:center}
+.dual-customer{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin-bottom:1.2rem}
+.cust-block{border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;gap:8px}
+.cust-block.hcp{background:#eeebff;border:1px solid #c4b8ff}
+.cust-block.patient{background:#e6faf4;border:1px solid #b2f0dd}
+.cust-block-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px}
+.cust-block.hcp .cust-block-label{color:var(--accent)}
+.cust-block.patient .cust-block-label{color:var(--teal)}
+.cust-block-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.cust-method{background:#fff;border-radius:8px;padding:7px 9px;font-size:11px;color:var(--text2);line-height:1.4;border:1px solid #ffffff80}
+.cust-method strong{display:block;font-size:10px;font-weight:700;margin-bottom:1px}
+.cust-method.hcp-m strong{color:var(--accent)}
+.cust-method.pat-m strong{color:var(--teal)}
+.dual-mid{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 0.7rem;gap:6px}
+.mid-connector{width:2px;flex:1;background:linear-gradient(to bottom,#c4b8ff,#b2f0dd)}
+.mid-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg)}
+.flow-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.flow-node{padding:9px 10px;background:#fff;border-right:1px solid var(--border);position:relative}
+.flow-node:last-child{border-right:none}
+.flow-node-num{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1px;margin-bottom:2px}
+.flow-node-title{font-size:11px;font-weight:700;color:var(--text)}
+.flow-node-desc{font-size:10px;color:var(--text2);margin-top:2px;line-height:1.4}
+.flow-arrow{position:absolute;right:-7px;top:50%;transform:translateY(-50%);width:13px;height:13px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--text3);z-index:1}
+.transfer-box{background:var(--accent-lt);border:1px solid #c4b8ff;border-radius:14px;padding:1.3rem;margin-top:1.5rem}
+.transfer-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.transfer-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px}
+.transfer-items{display:flex;flex-direction:column;gap:7px}
+.transfer-item{font-size:13px;color:var(--text2);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.transfer-item::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+.pharma-text{margin-bottom:1.5rem}
+.pharma-text p{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:0.85rem}
+.pharma-text p:last-child{margin-bottom:0}
+
+/* DATA PRODUCTS */
+.dp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2rem}
+.dp-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem}
+.dp-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.dp-desc{font-size:12px;color:var(--text2);line-height:1.45}
+
+/* AI SECTION */
+.ai-wrap{background:var(--dark)}
+.ai-section{padding:4rem 1.25rem;max-width:1120px;margin:0 auto}
+.ai-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7878a8;margin-bottom:0.7rem}
+.ai-h2{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-1px;color:#e8e8f8;margin-bottom:0.4rem}
+.ai-sub{font-size:15px;color:#7878a0;max-width:540px;margin-bottom:2rem}
+.ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.ai-card{background:var(--dark2);border:1px solid #ffffff0e;border-radius:16px;padding:1.4rem;transition:all 0.22s}
+.ai-card:hover{border-color:#ffffff1e;background:var(--dark3);transform:translateY(-2px)}
+.ai-card.featured{border-color:#5b4fff40;background:linear-gradient(135deg,#1e1e30,#1c1a38)}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;border-radius:6px;padding:3px 10px;margin-bottom:11px}
+.b-ship{background:#0bb68a18;color:#0bb68a;border:1px solid #0bb68a30}
+.b-dev{background:#d9770618;color:#f59e0b;border:1px solid #d9770628}
+.b-concept{background:#5b4fff18;color:#a594ff;border:1px solid #5b4fff30}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+.ai-card-title{font-size:16px;font-weight:700;color:#e8e8f8;margin-bottom:5px}
+.ai-card-desc{font-size:13px;color:#8080a8;line-height:1.6}
+.ai-card-result{margin-top:11px;font-size:12px;color:var(--teal);font-weight:600}
+.ai-progress{margin-top:13px;display:flex;flex-direction:column;gap:7px}
+.prog-row{display:flex;align-items:center;gap:10px;font-size:12px;color:#7070a0}
+.prog-row.done{color:#0bb68a}
+.prog-row.active{color:#a594ff}
+.prog-icon{width:16px;height:16px;border-radius:50%;border:1.5px solid #ffffff14;display:flex;align-items:center;justify-content:center;font-size:8px;flex-shrink:0}
+.prog-row.done .prog-icon{background:#0bb68a;border-color:#0bb68a;color:#fff}
+.prog-row.active .prog-icon{border-color:#7c6fff;color:#a594ff}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:2rem}
+.skill-group{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.3rem}
+.sg-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.sg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:4px 11px;transition:all 0.18s}
+.skill-tag:hover{background:var(--accent-lt);border-color:var(--accent);color:var(--accent)}
+
+/* FOUNDATION */
+.found-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:2rem}
+.found-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.3rem}
+.found-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:7px}
+.found-card h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px}
+.found-card p{font-size:13px;color:var(--text2);line-height:1.6}
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.chip{font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:3px 11px}
+
+/* CTA */
+.cta-band{background:var(--accent);padding:3.5rem 1.25rem;text-align:center}
+.cta-inner{max-width:560px;margin:0 auto}
+.cta-h{font-size:clamp(22px,4vw,36px);font-weight:800;letter-spacing:-1px;color:#fff;margin-bottom:10px}
+.cta-sub{font-size:14px;color:rgba(255,255,255,0.72);margin-bottom:1.8rem;line-height:1.6}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--accent);padding:12px 22px;border-radius:10px;font-size:14px;font-weight:700;transition:all 0.2s;white-space:nowrap}
+.btn-white:hover{transform:translateY(-1px);opacity:0.92}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.85);padding:12px 22px;border-radius:10px;font-size:14px;font-weight:500;border:1.5px solid rgba(255,255,255,0.3);transition:all 0.2s;white-space:nowrap}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.7);transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:2rem 1.25rem}
+.foot-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-name{font-size:14px;font-weight:700;color:#e0e0f0}
+.foot-links{display:flex;gap:1.2rem;flex-wrap:wrap}
+.foot-links a{font-size:13px;color:#505070;transition:color 0.2s}
+.foot-links a:hover{color:#e0e0f0}
+.foot-copy{font-size:12px;color:#404060}
+
+/* ── RESPONSIVE ── */
+
+/* Tablet: 601–900px */
+@media(max-width:900px){
+  .nav-links-desktop{display:none}
+  .hamburger{display:flex}
+  .hero{grid-template-columns:1fr;gap:2rem;padding-top:5.5rem}
+  .hero-right{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
+  .profile-img{width:160px;height:160px;flex-shrink:0;border-radius:14px}
+  .profile-img img{border-radius:14px}
+  .impact-groups{grid-template-columns:1fr}
+  .loop-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .dual-customer{grid-template-columns:1fr;gap:10px}
+  .dual-mid{display:none}
+  .flow-strip{grid-template-columns:1fr 1fr}
+  .flow-node:nth-child(2){border-right:none}
+  .flow-node:nth-child(4){border-right:none}
+  .flow-arrow{display:none}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .ai-grid{grid-template-columns:1fr}
+  .found-grid{grid-template-columns:1fr}
+  .dp-grid{grid-template-columns:1fr}
+}
+
+/* Mobile: ≤600px */
+@media(max-width:600px){
+  .hero{padding:5rem 1rem 2rem}
+  .hero-right{grid-template-columns:1fr;gap:10px}
+  .profile-img{width:100%;height:auto;aspect-ratio:1;max-width:200px;margin:0 auto;border-radius:14px}
+  .profile-img img{border-radius:14px}
+  .hero-btns{flex-direction:column}
+  .hero-btns a{justify-content:center}
+  .impact-band{padding:2.5rem 1rem}
+  .impact-groups{grid-template-columns:1fr;gap:12px}
+  .section{padding:3rem 1rem}
+  .pharma-section{padding:3rem 1rem}
+  .ai-section{padding:3rem 1rem}
+  .loop-grid{grid-template-columns:1fr;gap:8px}
+  .loop-step{display:grid;grid-template-columns:auto 1fr;gap:0 12px;align-items:start;padding:0.9rem}
+  .loop-num{grid-column:1;grid-row:1;white-space:nowrap}
+  .loop-title{grid-column:2;grid-row:1;margin-bottom:2px}
+  .loop-desc{grid-column:2;grid-row:2}
+  .dual-customer{grid-template-columns:1fr;gap:10px}
+  .dual-mid{display:none}
+  .flow-strip{grid-template-columns:1fr;border-radius:12px}
+  .flow-node{border-right:none;border-bottom:1px solid var(--border)}
+  .flow-node:last-child{border-bottom:none}
+  .flow-arrow{display:none}
+  .skills-grid{grid-template-columns:1fr;gap:10px}
+  .found-grid{grid-template-columns:1fr;gap:10px}
+  .dp-grid{grid-template-columns:1fr;gap:8px}
+  .ai-grid{grid-template-columns:1fr;gap:10px}
+  .infographic{padding:1rem}
+  .cta-btns{flex-direction:column;align-items:stretch}
+  .cta-btns a{text-align:center;justify-content:center}
+  .foot-inner{flex-direction:column;align-items:flex-start;gap:0.8rem}
+  .foot-links{gap:1rem}
+  .qf-row{gap:4px}
+}
+
+/* Very small: ≤380px */
+@media(max-width:380px){
+  h1{font-size:28px;letter-spacing:-1.5px}
+  .imp-num{font-size:17px}
+  .ai-card-title{font-size:15px}
+  .qf-pill{font-size:10px;padding:2px 7px}
+}
 </style>
 </head>
-<body class="bg-zinc-100 text-zinc-900">
+<body>
 
-<!-- ═══ MOBILE STICKY HEADER ═══ -->
-<header class="md:hidden sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200 shadow-sm px-4 py-2.5 flex items-center justify-between gap-2">
-  <span class="font-serif text-sm font-bold text-zinc-900 shrink-0">Rushi Sheth</span>
-  <div class="flex gap-2">
-    <button class="text-[11.5px] font-medium px-3 py-1.5 rounded bg-indigo-900 text-white">↓ Resume</button>
-    <button class="text-[11.5px] font-medium px-3 py-1.5 rounded bg-white text-zinc-800 border border-zinc-300">✉ Contact</button>
-    <button class="text-[11.5px] font-medium px-3 py-1.5 rounded bg-zinc-900 text-zinc-200 border border-zinc-700">Ask AI</button>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Rushi<span>Sheth</span></div>
+  <div class="nav-links-desktop">
+    <a href="#impact">Impact</a>
+    <a href="#pharma">Analytics</a>
+    <a href="#ai">AI Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta"><div class="pulse"></div>rushi.ai</a>
   </div>
-</header>
-
-<main class="max-w-[1440px] mx-auto flex items-start pt-14 lg:pt-0">
-
-<!-- ──── LEFT NAV ──── -->
-<nav class="hidden md:flex flex-col w-[162px] shrink-0 sticky top-0 self-start h-screen overflow-y-auto z-10 px-5 pt-10 pb-8 bg-white border-r border-zinc-200">
-  <div class="mb-7 pb-5 border-b border-zinc-100">
-    <p class="font-serif text-[15px] font-bold text-zinc-900 mb-0.5">Rushi Sheth</p>
-    <p class="text-[10px] text-zinc-400 uppercase tracking-[.1em] leading-relaxed">Analytics<br/>GTM Strategy</p>
-  </div>
-  <p class="text-[9px] uppercase tracking-[.16em] text-zinc-400 font-semibold mb-2.5">Contents</p>
-  <ul id="nl" class="flex flex-col gap-0.5 mb-8 list-none p-0 m-0">
-    <li class="ni ah" data-target="hero">
-      <a href="#hero" class="flex items-center gap-2.5 px-2 py-1.5 rounded transition-all hover:bg-zinc-50 no-underline">
-        <span class="nd w-1.5 h-1.5 rounded-full border-[1.5px] border-zinc-300 bg-transparent shrink-0 transition-all"></span>
-        <span class="nt text-[12px] text-zinc-400 leading-tight transition-colors">Introduction</span>
-      </a>
-    </li>
-    <li class="ni" data-target="decision">
-      <a href="#decision" class="flex items-center gap-2.5 px-2 py-1.5 rounded transition-all hover:bg-zinc-50 no-underline">
-        <span class="nd w-1.5 h-1.5 rounded-full border-[1.5px] border-zinc-300 bg-transparent shrink-0 transition-all"></span>
-        <span class="nt text-[12px] text-zinc-400 leading-tight transition-colors">Value Loop</span>
-      </a>
-      <span class="block text-[10px] text-zinc-400 pl-[22px] mt-0.5 mb-1">Loop + AI Projects &amp; Workflows</span>
-    </li>
-    <li class="ni" data-target="toolkit">
-      <a href="#toolkit" class="flex items-center gap-2.5 px-2 py-1.5 rounded transition-all hover:bg-zinc-50 no-underline">
-        <span class="nd w-1.5 h-1.5 rounded-full border-[1.5px] border-zinc-300 bg-transparent shrink-0 transition-all"></span>
-        <span class="nt text-[12px] text-zinc-400 leading-tight transition-colors">Toolkit</span>
-      </a>
-      <span class="block text-[10px] text-zinc-400 pl-[22px] mt-0.5 mb-1">Skills</span>
-    </li>
-
-    <li class="ni" data-target="foundation">
-      <a href="#foundation" class="flex items-center gap-2.5 px-2 py-1.5 rounded transition-all hover:bg-zinc-50 no-underline">
-        <span class="nd w-1.5 h-1.5 rounded-full border-[1.5px] border-zinc-300 bg-transparent shrink-0 transition-all"></span>
-        <span class="nt text-[12px] text-zinc-400 leading-tight transition-colors">Foundation</span>
-      </a>
-      <span class="block text-[10px] text-zinc-400 pl-[22px] mt-0.5 mb-1">Life &amp; Background</span>
-    </li>
-  </ul>
-  <div class="mt-auto pt-5 border-t border-zinc-100">
-    <p class="text-[9px] uppercase tracking-[.14em] text-zinc-400 mb-2">Read progress</p>
-    <div class="h-0.5 bg-zinc-200 rounded-full overflow-hidden">
-      <div id="pf" class="h-full bg-indigo-900 rounded-full transition-[width] duration-100" style="width:0%"></div>
-    </div>
-    <span id="pp" class="font-mono text-[10px] text-zinc-400 mt-1 block">0%</span>
-  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-
-<!-- ──── STORY COLUMN ──── -->
-<main class="flex-1 min-w-0 bg-zinc-50 border-x border-zinc-200">
-
-  <!-- HERO -->
-  <section id="hero" class="px-8 md:px-12 pt-12 pb-10 border-b border-zinc-200">
-    <div class="flex flex-wrap md:flex-nowrap items-start gap-6">
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-5">
-          <span class="inline-block w-5 h-px bg-indigo-900 shrink-0"></span>
-          <span class="text-[10.5px] uppercase tracking-[.16em] font-semibold text-zinc-400">Revenue, Operations &amp; AI</span>
-        </div>
-        <h1 class="font-serif font-bold text-zinc-900 leading-[1.06] mb-4" style="font-size:clamp(2rem,3.2vw,3.2rem)">
-          Systems Thinking Across<br><em style="font-style:italic;color:#1e3a5f">Revenue &amp; Operations.</em>
-        </h1>
-        <p class="text-[15px] leading-[1.78] text-zinc-600 font-light max-w-[500px] mb-6">
-          I link advanced analytics and AI with revenue and operations to drive top-line growth and bottom-line efficiency. I specialize in mapping complex, high-volume customer journeys, building the AI-enabled systems, segmentation models, and supply chain optimizations that turn messy data into scalable GTM strategy.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-[11px] font-medium px-3 py-1 rounded-full bg-indigo-50 text-indigo-900 border border-indigo-200">Open to Opportunities</span>
-          <span class="text-[11px] font-medium px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">7+ Years Experience</span>
-          <span class="text-[11px] font-medium px-3 py-1 rounded-full bg-white text-zinc-500 border border-zinc-200">United States</span>
-          <span class="text-[11px] font-medium px-3 py-1 rounded-full bg-indigo-50 text-indigo-800 border border-indigo-200">MS Industrial Engg.</span>
-        </div>
-      </div>
-      <!-- Profile photo + Industry Wheel: side-by-side on mobile, stacked on desktop -->
-      <div class="flex flex-row md:flex-col items-center justify-center gap-4 md:gap-3 mt-6 md:mt-0 shrink-0 md:w-[220px]">
-
-        <!-- Profile photo -->
-        <div class="flex flex-col items-center gap-1.5 w-1/2 md:w-auto max-w-[160px] md:max-w-none">
-          <div class="w-full md:w-[104px] md:h-[104px] aspect-square rounded-xl overflow-hidden border border-zinc-200 shadow-md bg-zinc-100">
-            <img src="./assets/profile.jpg" alt="Rushi Sheth" class="w-full h-full object-cover object-top"/>
-          </div>
-          <span class="text-[11px] text-zinc-500 font-medium tracking-wide">Rushi Sheth</span>
-        </div>
-
-        <!-- Industry Wheel -->
-        <div class="w-1/2 md:w-[220px] max-w-[160px] md:max-w-none" style="background:#f9f8f5;border:1px solid #d4d1ca;border-radius:10px;padding:10px 8px 8px">
-          <p style="font-size:7.5px;font-weight:600;letter-spacing:.12em;color:#71717a;text-transform:uppercase;text-align:center;margin-bottom:6px">Industry Experience</p>
-          <svg id="iw" viewBox="0 0 204 188" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" style="display:block;overflow:visible;font-family:'Inter',sans-serif">
-            <defs>
-              <filter id="lft" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.08"/>
-              </filter>
-            </defs>
-
-            <!-- SCM shell -->
-            <ellipse cx="163" cy="100" rx="48" ry="68"
-              fill="rgba(67,122,34,0.05)"
-              stroke="rgba(67,122,34,0.42)"
-              stroke-width="1.2"
-              stroke-dasharray="4 3"/>
-            <text x="163" y="23" text-anchor="middle"
-              font-size="6" font-weight="600" letter-spacing="1.1" fill="#437a22" opacity="0.8">SUPPLY CHAIN</text>
-
-            <!-- Spokes -->
-            <line x1="124" y1="100" x2="66" y2="100"  stroke="#01696f" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="121" y1="91"  x2="141" y2="66"  stroke="#437a22" stroke-width="1.1" stroke-linecap="round"/>
-            <line x1="124" y1="100" x2="142" y2="100" stroke="#964219" stroke-width="1.1" stroke-linecap="round"/>
-            <line x1="121" y1="109" x2="141" y2="134" stroke="#006494" stroke-width="1.1" stroke-linecap="round"/>
-
-            <!-- Hub -->
-            <circle cx="102" cy="100" r="22" fill="#1c1b19" stroke="#cdccca" stroke-width="0.8"/>
-            <circle cx="102" cy="100" r="28" fill="none" stroke="#cdccca" stroke-width="0.8" stroke-dasharray="2.5 3" opacity="0.4"/>
-            <text x="102" y="97"  text-anchor="middle" font-size="9"   font-weight="700" fill="#cdccca" letter-spacing="0.3">7+</text>
-            <text x="102" y="109" text-anchor="middle" font-size="6.5" font-weight="500" fill="#cdccca" letter-spacing="0.8">YOE</text>
-
-            <!-- Life Sciences (left) -->
-            <g id="iw-ls" style="cursor:pointer" filter="url(#lft)">
-              <path d="M 21.4,132.9 A 36,36 0 1 1 71.9,96.2"
-                fill="none" stroke="#01696f" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-              <circle cx="36" cy="100" r="30" fill="#d4e8e6" stroke="#01696f" stroke-width="1.5"/>
-              <text x="36" y="97"  text-anchor="middle" font-size="8.5" font-weight="700" fill="#01696f">Life</text>
-              <text x="36" y="109" text-anchor="middle" font-size="8.5" font-weight="700" fill="#01696f">Sciences</text>
-            </g>
-
-            <!-- Medical Device (upper-right) -->
-            <g id="iw-md" style="cursor:pointer" filter="url(#lft)">
-              <path d="M 184.3,27.4 A 36,36 0 0 1 184.3,76.6"
-                fill="none" stroke="#437a22" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
-              <circle cx="158" cy="52" r="30" fill="#daeacf" stroke="#437a22" stroke-width="1.4"/>
-              <text x="158" y="48"  text-anchor="middle" font-size="8"   font-weight="700" fill="#437a22">Medical</text>
-              <text x="158" y="60"  text-anchor="middle" font-size="8"   font-weight="700" fill="#437a22">Device</text>
-            </g>
-
-            <!-- FMCG (mid-right) -->
-            <g id="iw-fmcg" style="cursor:pointer" filter="url(#lft)">
-              <path d="M 201.1,78.8 A 36,36 0 0 1 201.1,121.2"
-                fill="none" stroke="#964219" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
-              <circle cx="172" cy="100" r="30" fill="#ead9cc" stroke="#964219" stroke-width="1.4"/>
-              <text x="172" y="104" text-anchor="middle" font-size="8.5" font-weight="700" fill="#964219">FMCG</text>
-            </g>
-
-            <!-- Automotive (lower-right) -->
-            <g id="iw-auto" style="cursor:pointer" filter="url(#lft)">
-              <path d="M 189.5,130.5 A 36,36 0 0 1 189.5,165.5"
-                fill="none" stroke="#006494" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
-              <circle cx="158" cy="148" r="30" fill="#ccdde8" stroke="#006494" stroke-width="1.4"/>
-              <text x="158" y="152" text-anchor="middle" font-size="8" font-weight="700" fill="#006494">Automotive</text>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <!-- MOBILE inline WIP -->
-    <div class="md:hidden mt-8 bg-zinc-950 border border-zinc-800 rounded overflow-hidden">
-      <div class="flex items-center justify-between px-4 py-2.5 bg-zinc-900 border-b border-zinc-800">
-        <div class="flex items-center gap-2.5">
-          <div class="flex gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
-          </div>
-          <span class="font-mono text-[11px] text-zinc-500">rushi.ai — copilot</span>
-        </div>
-        <div class="flex items-center gap-1.5 bg-amber-950/50 border border-amber-800/40 rounded-full px-2.5 py-0.5">
-          <span class="wpulse w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          <span class="font-mono text-[10px] text-amber-400 uppercase tracking-widest">In Dev</span>
-        </div>
-      </div>
-      <div class="flex flex-col items-center gap-3 px-5 py-6 text-center">
-        <div class="flex items-center gap-1.5 bg-amber-950/30 border border-amber-800/25 rounded-full px-3 py-1">
-          <span class="wpulse w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          <span class="font-mono text-[10.5px] text-amber-400 uppercase tracking-widest">Coming Soon</span>
-        </div>
-        <p class="font-serif text-zinc-100 text-base font-bold">AI Portfolio Copilot</p>
-        <p class="font-mono text-[11px] text-zinc-500 leading-relaxed max-w-[220px]">Chat with Rushi's resume, experience &amp; project context in real time.</p>
-        <div class="w-8 h-px bg-zinc-800"></div>
-        <div class="flex flex-col gap-1.5 w-full">
-          <div class="flex items-center gap-2 px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded"><span class="font-mono text-[11px] text-zinc-500 flex-1 text-left">Knowledge Base &amp; Embedding</span><span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/40">Done</span></div>
-          <div class="flex items-center gap-2 px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded"><span class="font-mono text-[11px] text-zinc-500 flex-1 text-left">RAG Pipeline &amp; Agent Logic</span><span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-amber-950/30 text-amber-400 border border-amber-800/30">Building</span></div>
-          <div class="flex items-center gap-2 px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded"><span class="font-mono text-[11px] text-zinc-500 flex-1 text-left">UI/UX Integration</span><span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-blue-950/30 text-blue-400 border border-blue-800/30">Next</span></div>
-          <div class="flex items-center gap-2 px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded"><span class="font-mono text-[11px] text-zinc-500 flex-1 text-left">Memory &amp; Context Agent</span><span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-blue-950/30 text-blue-400 border border-blue-800/30">Next</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUE LOOP -->
-  <section id="decision" class="px-8 md:px-12 py-12 border-b border-zinc-200 fu">
-
-    <!-- Section header -->
-    <p class="text-[10.5px] uppercase tracking-[.16em] font-semibold text-slate-500 mb-1.5">The Value Loop</p>
-    <h2 class="font-serif font-bold text-zinc-900 leading-tight mb-2" style="font-size:clamp(1.3rem,2vw,1.65rem)">Systems Thinking applied to Go-To-Market.</h2>
-    <p class="text-[13.5px] text-zinc-500 mb-10 max-w-2xl leading-relaxed">How I operate across every stage — bridging the gap between technical infrastructure and executive commercial decisions.</p>
-
-    <!-- ══ SUB-SECTION A: THE LOOP ══ -->
-    <div style="display:flex;flex-direction:column;gap:20px">
-
-      <!-- ROW 1: Nodes 01+02 / Data Products -->
-      <div style="display:grid;grid-template-columns:5fr 7fr;gap:16px;align-items:stretch">
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="background:#ffffff;border:1px solid #e4e4e7;padding:14px 16px">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-              <div style="width:24px;height:24px;border-radius:50%;background:#4f46e5;color:#fff;font-family:monospace;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">01</div>
-              <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#4f46e5;margin:0">Signals</p>
-            </div>
-            <p style="font-size:12px;color:#71717a;font-style:italic;line-height:1.55;margin-bottom:0">Customer behavior, operational data, market changes, stakeholder inputs.</p>
-          </div>
-          <div style="width:2px;background:#e4e4e7;height:8px;margin:0 0 0 11px"></div>
-          <div style="background:#ffffff;border:1px solid #e4e4e7;padding:14px 16px">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-              <div style="width:24px;height:24px;border-radius:50%;background:#2563eb;color:#fff;font-family:monospace;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">02</div>
-              <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#2563eb;margin:0">Structure</p>
-            </div>
-            <p style="font-size:12px;color:#71717a;font-style:italic;line-height:1.55;margin-bottom:0">Data models, definitions, pipelines, semantic layers.</p>
-          </div>
-        </div>
-        <div style="background:#fff;border:1px solid #e4e4e7;border-top:3px solid #2563eb;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:20px 22px;height:100%;display:flex;flex-direction:column;justify-content:flex-start">
-          <p style="font-size:20px;font-family:'Playfair Display',serif;font-weight:700;color:#111827;margin-bottom:16px">Data Products</p>
-          <div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">Customer 360: </span><span style="font-size:12px;color:#71717a">PySpark/SQL lakehouse; 2 days → 4 hrs refresh</span></div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">Network Intel Tool: </span><span style="font-size:12px;color:#71717a">Unified 400K+ entity map; single decision layer</span></div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">Affiliation DB: </span><span style="font-size:12px;color:#71717a">4-tier segmentation model; field targeting backbone</span></div>
-            <div style="margin-bottom:0"><span style="font-size:12px;font-weight:600;color:#1f2937">Enterprise Dashboards: </span><span style="font-size:12px;color:#71717a">Product-owned KPIs across forecasting &amp; ops</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ROW 2: Node 03 / AI ML Intelligence -->
-      <div style="display:grid;grid-template-columns:5fr 7fr;gap:16px;align-items:stretch">
-        <div style="display:flex;flex-direction:column">
-          <div style="background:#fffbf7;border:1px solid #e4e4e7;border-left:3px solid #f97316;padding:14px 16px">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-              <div style="width:24px;height:24px;border-radius:50%;background:#f97316;color:#fff;font-family:monospace;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">03</div>
-              <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#f97316;margin:0">Intelligence</p>
-            </div>
-            <p style="font-size:12px;color:#71717a;font-style:italic;line-height:1.55;margin-bottom:0">ML, segmentation, forecasting, optimization, AI workflows.</p>
-          </div>
-        </div>
-        <div style="background:#fff;border:1px solid #e4e4e7;border-top:3px solid #f97316;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:20px 22px;height:100%;display:flex;flex-direction:column;justify-content:flex-start">
-          <p style="font-size:20px;font-family:'Playfair Display',serif;font-weight:700;color:#111827;margin-bottom:16px">AI / ML Intelligence</p>
-          <div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">QueryMind: </span><span style="font-size:12px;color:#71717a">Text-to-SQL commercial application for natural language querying</span></div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">ML Targeting: </span><span style="font-size:12px;color:#71717a">Hybrid ML + rules; scored output → $110M (8%) growth</span></div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">Patient Segmentation: </span><span style="font-size:12px;color:#71717a">60M universe → 10 ML clusters; reusable definitions</span></div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">Supply Chain Opt: </span><span style="font-size:12px;color:#71717a">CPLEX/AMPL model; 7% cost reduction across 500+ customers</span></div>
-            <div style="margin-bottom:0"><span style="font-size:12px;font-weight:600;color:#1f2937">Marketing Mix Model: </span><span style="font-size:12px;color:#71717a">Multivariate MMM; $12M quarterly media spend optimized</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ROW 3: Nodes 04+05 / GTM Commercial -->
-      <div style="display:grid;grid-template-columns:5fr 7fr;gap:16px;align-items:stretch">
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="background:#f0fdf8;border:1px solid #e4e4e7;border-left:3px solid #10b981;padding:14px 16px">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-              <div style="width:24px;height:24px;border-radius:50%;background:#10b981;color:#fff;font-family:monospace;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">04</div>
-              <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#10b981;margin:0">Decisions</p>
-            </div>
-            <p style="font-size:12px;color:#71717a;font-style:italic;line-height:1.55;margin-bottom:0">Prioritization, targeting, resource allocation, GTM actions.</p>
-          </div>
-          <div style="width:2px;background:#e4e4e7;height:8px;margin:0 0 0 11px"></div>
-          <div style="background:#faf5ff;border:1px solid #e4e4e7;border-left:3px solid #8b5cf6;padding:14px 16px">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-              <div style="width:24px;height:24px;border-radius:50%;background:#8b5cf6;color:#fff;font-family:monospace;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">05</div>
-              <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#8b5cf6;margin:0">Execution</p>
-            </div>
-            <p style="font-size:12px;color:#71717a;font-style:italic;line-height:1.55;margin-bottom:0">Field action, ops changes, outcomes.</p>
-          </div>
-        </div>
-        <div style="background:#fff;border:1px solid #e4e4e7;border-top:3px solid #7c3aed;box-shadow:0 1px 3px rgba(0,0,0,.06);padding:20px 22px;height:100%;display:flex;flex-direction:column;justify-content:flex-start">
-          <p style="font-size:20px;font-family:'Playfair Display',serif;font-weight:700;color:#111827;margin-bottom:16px">GTM &amp; Commercial</p>
-          <div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">Sub-National Growth: </span><span style="font-size:12px;color:#71717a">NBRx scaled 1.5K → 11K/wk; specialty targeting</span></div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">CRM &amp; Field Analytics: </span><span style="font-size:12px;color:#71717a">Over/under-served detection; 3% incremental sales</span></div>
-            <div style="margin-bottom:9px"><span style="font-size:12px;font-weight:600;color:#1f2937">A/B Geo-Testing: </span><span style="font-size:12px;color:#71717a">Field expansion ROI; $185M forecast error prevented</span></div>
-            <div style="margin-bottom:0"><span style="font-size:12px;font-weight:600;color:#1f2937">Account Analytics: </span><span style="font-size:12px;color:#71717a">Health system prioritization; market share defense</span></div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /loop rows -->
-
-    <!-- ══ SUB-SECTION B: AI + WORKFLOWS ══ -->
-    <h2 class="font-serif text-zinc-900 mb-6" style="font-size:1.5rem;font-weight:700;margin-top:4rem">AI + Workflows</h2>
-
-    <div class="flex flex-col" style="gap:16px">
-
-      <div class="bg-white border border-zinc-200 shadow-sm p-6 rounded-xl">
-        <p class="font-serif font-bold text-indigo-900 text-[1.05rem] mb-1.5">QueryMind</p>
-        <span class="text-[9.5px] uppercase tracking-[.1em] font-semibold px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200 inline-block mb-3">AI Product · Shipped</span>
-        <p class="text-[13.5px] text-zinc-600 leading-relaxed">AI-assisted Text-to-SQL commercial application allowing business users to query databases using natural language.</p>
-      </div>
-
-      <div class="bg-white border border-zinc-200 shadow-sm p-6 rounded-xl">
-        <p class="font-serif font-bold text-indigo-900 text-[1.05rem] mb-1.5">Agentic AI for HCP Targeting</p>
-        <span class="text-[9.5px] uppercase tracking-[.1em] font-semibold px-2 py-0.5 bg-indigo-50 text-indigo-700 border border-dashed border-indigo-300 inline-block mb-3">Concept 01</span>
-        <p class="text-[13.5px] text-zinc-600 leading-relaxed">Multi-agent LLM workflow ingesting unstructured market studies to dynamically recalibrate target tiering.</p>
-      </div>
-
-      <div class="bg-white border border-zinc-200 shadow-sm p-6 rounded-xl">
-        <p class="font-serif font-bold text-indigo-900 text-[1.05rem] mb-1.5">Zero-UI WhatsApp CRM for SMBs</p>
-        <span class="text-[9.5px] uppercase tracking-[.1em] font-semibold px-2 py-0.5 bg-indigo-50 text-indigo-700 border border-dashed border-indigo-300 inline-block mb-3">Concept 02</span>
-        <p class="text-[13.5px] text-zinc-600 leading-relaxed">Conversational agent that passively ingests client chats, scores leads on ROI, and proactively messages the owner to close revenue.</p>
-      </div>
-
-      <div class="bg-white border border-zinc-200 shadow-sm p-6 rounded-xl">
-        <p class="font-serif font-bold text-indigo-900 text-[1.05rem] mb-1.5">Omni-Channel AI Knowledge Synthesizer</p>
-        <span class="text-[9.5px] uppercase tracking-[.1em] font-semibold px-2 py-0.5 bg-indigo-50 text-indigo-700 border border-dashed border-indigo-300 inline-block mb-3">Concept 03</span>
-        <p class="text-[13.5px] text-zinc-600 leading-relaxed">Automated pipeline tracking passive content consumption (iOS webhooks, DOM extraction, Spotify APIs) to deliver a synthesized weekly narrative via WhatsApp.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- THE FULL P&L TOOLKIT -->
-  <section id="toolkit" class="px-8 md:px-12 py-12 border-b border-zinc-200 fu">
-    <p class="text-[10.5px] uppercase tracking-[.16em] font-semibold text-zinc-400 mb-1.5">The Foundation</p>
-    <h2 class="font-serif font-bold text-zinc-900 leading-tight mb-7" style="font-size:clamp(1.2rem,1.8vw,1.5rem)">Skills &amp; Infrastructure</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
-      <!-- Pillar 1 -->
-      <div class="bg-white border border-zinc-200 shadow-sm px-4 py-4">
-        <p class="text-[9.5px] uppercase tracking-[.13em] font-semibold text-slate-600 mb-2.5">Data Engineering &amp; AI Infrastructure</p>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-slate-50 text-slate-700 border border-slate-200">dbt</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-slate-50 text-slate-700 border border-slate-200">Databricks</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-slate-50 text-slate-700 border border-slate-200">Snowflake</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-slate-50 text-slate-700 border border-slate-200">Python</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-slate-50 text-slate-700 border border-slate-200">PySpark</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-slate-50 text-slate-700 border border-slate-200">SQL</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-800 border border-indigo-100">LangChain</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-800 border border-indigo-100">Agentic AI</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-800 border border-indigo-100">Text-to-SQL</span>
-        </div>
-      </div>
-
-      <!-- Pillar 2 -->
-      <div class="bg-white border border-zinc-200 shadow-sm px-4 py-4">
-        <p class="text-[9.5px] uppercase tracking-[.13em] font-semibold text-amber-700 mb-2.5">Applied Analytics &amp; Optimization</p>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-100">Behavioral Segmentation</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-100">Market Mix Modeling</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-100">Predictive ML</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-100">Forecasting</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-100">Network Optimization</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-100">LTL/TL Planning</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-100">Operations Research</span>
-        </div>
-      </div>
-
-      <!-- Pillar 3 -->
-      <div class="bg-white border border-zinc-200 shadow-sm px-4 py-4">
-        <p class="text-[9.5px] uppercase tracking-[.13em] font-semibold text-indigo-900 mb-2.5">Strategy, Execution &amp; Influence</p>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-900 border border-indigo-100">Program Management</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-900 border border-indigo-100">0-to-1 Scoping</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-900 border border-indigo-100">Analytics Intake</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-900 border border-indigo-100">Executive Storyboarding</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-900 border border-indigo-100">Stakeholder Management</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-900 border border-indigo-100">GTM Execution</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-900 border border-indigo-100">Market Defense</span>
-          <span class="font-mono text-[10.5px] px-2 py-0.5 bg-indigo-50 text-indigo-900 border border-indigo-100">Territory Design</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-
-    <!-- FOUNDATION -->
-  <section id="foundation" class="px-8 md:px-12 py-12 fu">
-    <p class="text-[10.5px] uppercase tracking-[.16em] font-semibold text-zinc-400 mb-1.5">Foundation &amp; Life</p>
-    <h2 class="font-serif font-bold text-zinc-900 leading-tight mb-7" style="font-size:clamp(1.3rem,2vw,1.65rem)">Where It Started</h2>
-
-    <div class="border-l-2 border-amber-500 pl-5 pr-4 py-3 mb-7 bg-amber-50 border border-l-0 border-amber-100">
-      <p class="font-semibold text-zinc-800 text-[14.5px]">Lehigh University</p>
-      <p class="text-[13px] text-zinc-500 mt-0.5">M.S. / B.S. — Mechanical &amp; Industrial Engineering</p>
-      <p class="text-[12px] text-zinc-400 mt-2 italic leading-relaxed">Led a nationally ranked Robotics team. Systems thinking, constraint optimization, and real-world feedback loops — the foundation for everything that came after.</p>
-    </div>
-
-    <p class="text-[10px] uppercase tracking-[.15em] font-semibold text-zinc-400 mb-3.5">Outside the Terminal</p>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-      <!-- Wide -->
-      <div class="col-span-2 bg-white border border-zinc-200 shadow-sm p-5 hover:-translate-y-0.5 transition-transform duration-150">
-        <p class="text-[11px] font-semibold uppercase tracking-[.09em] text-slate-700 mb-2">Operating Rhythms</p>
-        <p class="text-[12.5px] text-zinc-500 leading-relaxed font-light">Cross-functional execution requires aligning product, operations, marketing, sales, and leadership. I design the operating cadence — dashboards, reviews, business health rituals, and escalation paths — that keeps teams moving.</p>
-      </div>
-      <!-- Tall single -->
-      <div class="row-span-2 bg-white border border-zinc-200 shadow-sm p-5 hover:-translate-y-0.5 transition-transform duration-150">
-        <p class="text-[11px] font-semibold uppercase tracking-[.09em] text-amber-800 mb-2">Hardware &amp; Robotics</p>
-        <p class="text-[12.5px] text-zinc-500 leading-relaxed font-light">My foundation is in mechanical engineering. Leading a nationally ranked robotics team taught me systems thinking and physical prototyping long before I wrote my first SQL query. My next learning would be on 3D printing!!</p>
-      </div>
-      <!-- Bottom wide -->
-      <div class="col-span-2 bg-white border border-zinc-200 shadow-sm p-5 hover:-translate-y-0.5 transition-transform duration-150">
-        <p class="text-[11px] font-semibold uppercase tracking-[.09em] text-indigo-900 mb-2">Off the screen</p>
-        <p class="text-[12.5px] text-zinc-500 leading-relaxed font-light">I decompress through cooking, learning photography, and cultivating a garden. I'm a constant learner, fueling my curiosity with podcasts spanning business, global markets, mythology, and history.</p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ──── RIGHT WIP COLUMN ──── -->
-<aside class="hidden md:flex flex-col w-[280px] shrink-0 sticky top-0 self-start h-screen overflow-y-auto bg-zinc-950">
-  <div class="flex flex-col gap-3 p-4 h-full">
-
-    <div class="flex gap-2 shrink-0">
-      <button class="flex-1 font-sans text-[12px] font-medium py-2 rounded bg-indigo-700 text-white border-none cursor-pointer hover:bg-indigo-800 transition-colors">Download Resume</button>
-      <button class="flex-1 font-sans text-[12px] font-medium py-2 rounded bg-transparent text-zinc-300 border border-zinc-700 cursor-pointer hover:border-zinc-500 transition-colors">Get in Touch</button>
-    </div>
-
-    <!-- WIP box -->
-    <div class="flex-1 flex flex-col rounded overflow-hidden border border-zinc-800 min-h-0">
-      <div class="flex items-center justify-between px-4 py-2.5 bg-zinc-900 border-b border-zinc-800 shrink-0">
-        <div class="flex items-center gap-2.5">
-          <div class="flex gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
-          </div>
-          <span class="font-mono text-[11px] text-zinc-500 tracking-wide">rushi.ai — copilot</span>
-        </div>
-        <div class="flex items-center gap-1.5 bg-amber-950/50 border border-amber-800/40 rounded-full px-2.5 py-0.5">
-          <span class="wpulse w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          <span class="font-mono text-[10px] text-amber-400 uppercase tracking-widest">In Dev</span>
-        </div>
-      </div>
-
-      <div class="flex-1 flex flex-col items-center justify-center gap-4 px-5 py-8 text-center bg-zinc-950">
-        <div class="flex items-center gap-1.5 bg-amber-950/30 border border-amber-800/25 rounded-full px-3 py-1">
-          <span class="wpulse w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          <span class="font-mono text-[10.5px] text-amber-400 uppercase tracking-widest">Coming Soon</span>
-        </div>
-        <p class="font-serif text-zinc-100 text-[1.1rem] font-bold leading-snug">AI Portfolio Copilot</p>
-        <p class="font-mono text-[11.5px] text-zinc-500 leading-relaxed max-w-[200px]">Chat directly with Rushi's resume, experience &amp; project context — in real time as you browse.</p>
-        <div class="w-8 h-px bg-zinc-800"></div>
-        <div class="flex flex-col gap-1.5 w-full">
-          <div class="flex items-center gap-2 px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded"><span class="font-mono text-[11px] text-zinc-500 flex-1 text-left">Knowledge Base &amp; Embedding</span><span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/40">Done</span></div>
-          <div class="flex items-center gap-2 px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded"><span class="font-mono text-[11px] text-zinc-500 flex-1 text-left">RAG Pipeline &amp; Agent Logic</span><span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-amber-950/40 text-amber-400 border border-amber-800/30">Building</span></div>
-          <div class="flex items-center gap-2 px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded"><span class="font-mono text-[11px] text-zinc-500 flex-1 text-left">UI/UX Integration</span><span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-blue-950/30 text-blue-400 border border-blue-800/30">Next</span></div>
-          <div class="flex items-center gap-2 px-3 py-1.5 bg-zinc-900 border border-zinc-800 rounded"><span class="font-mono text-[11px] text-zinc-500 flex-1 text-left">Memory &amp; Context Agent</span><span class="font-mono text-[10px] px-2 py-0.5 rounded-full bg-blue-950/30 text-blue-400 border border-blue-800/30">Next</span></div>
-        </div>
-      </div>
-
-      <div class="px-4 py-2 bg-zinc-900 border-t border-zinc-800 shrink-0">
-        <p class="font-mono text-[10px] text-zinc-600">rushi.ai · v0.2 · target: Q3 2025</p>
-      </div>
-    </div>
-
-  </div>
-</aside>
-
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#impact" onclick="closeMenu()">Impact</a>
+  <a href="#pharma" onclick="closeMenu()">Analytics</a>
+  <a href="#ai" onclick="closeMenu()">AI Projects</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#contact" onclick="closeMenu()">rushi.ai ↗</a>
 </div>
 
+<!-- HERO -->
+<div class="hero-wrap">
+<div class="hero">
+  <div>
+    <div class="hero-open"><div class="pulse"></div>Open to opportunities · United States</div>
+    <h1>Revenue &<br><em>Operations</em><br>meets AI.</h1>
+    <p class="hero-sub">7+ years linking advanced analytics and AI with commercial strategy — turning messy data into scalable GTM execution across Life Sciences, Supply Chain, and FMCG.</p>
+    <div class="hero-btns">
+      <a href="mailto:rushi.sheth@hotmail.com" class="btn-dark">✉ Get in touch</a>
+      <a href="#" class="btn-outline">↓ Resume</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="profile-img">
+      <img src="https://rushisheth.com/assets/profile.jpg" alt="Rushi Sheth" onerror="this.style.display='none';this.parentElement.querySelector('.initials-box').style.display='flex'">
+      <div class="initials-box" style="display:none">RS</div>
+    </div>
+    <div class="quick-fact">
+      <div class="qf-icon">🎓</div>
+      <div>
+        <div class="qf-label">Education</div>
+        <div class="qf-val">M.S. Industrial Engineering · Lehigh</div>
+        <div class="qf-row">
+          <span class="qf-pill">GTM · AI / ML · Ops</span>
+          <span class="qf-pill">United States</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- INDUSTRY STRIP -->
+<div class="ind-strip">
+  <div class="ind-inner">
+    <span class="ind-label">Industries</span>
+    <div class="ind-tags">
+      <span class="ind-tag">Supply Chain</span>
+      <span class="ind-tag">Life Sciences / Pharma</span>
+      <span class="ind-tag">Medical Device</span>
+      <span class="ind-tag">FMCG</span>
+      <span class="ind-tag">Automotive</span>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT BAND -->
+<div class="impact-band" id="impact">
+  <div class="impact-inner">
+    <div class="imp-section-label">Quantified impact</div>
+    <div class="impact-groups">
+      <div class="imp-group">
+        <div class="imp-group-header">
+          <div class="imp-group-dot" style="background:#a594ff"></div>
+          <div class="imp-group-title">GTM & Commercial</div>
+        </div>
+        <div class="imp-cells">
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#a594ff">$110M</em> revenue growth</div>
+            <div class="imp-desc">Hybrid ML + rules targeting model driving 8% top-line growth via scored field output</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#a594ff">$185M</em> forecast defended</div>
+            <div class="imp-desc">A/B geo-testing that quantified field expansion ROI and prevented forecast error</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#a594ff">1.5K → 11K</em> NBRx/wk</div>
+            <div class="imp-desc">Specialty scripts scaled via sub-national growth strategy and HCP targeting</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#a594ff">3%</em> incremental sales</div>
+            <div class="imp-desc">CRM & field analytics detecting over/under-served territories to reallocate effort</div>
+          </div>
+        </div>
+      </div>
+      <div class="imp-group">
+        <div class="imp-group-header">
+          <div class="imp-group-dot" style="background:#0bb68a"></div>
+          <div class="imp-group-title">Data Products</div>
+        </div>
+        <div class="imp-cells">
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#0bb68a">2 days → 4 hrs</em></div>
+            <div class="imp-desc">Customer 360 refresh via PySpark/SQL lakehouse — batch bottleneck to near-real-time</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#0bb68a">400K+</em> entities unified</div>
+            <div class="imp-desc">Network Intelligence Tool mapping HCP affiliations into a single commercial decision layer</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#0bb68a">60M</em> patients segmented</div>
+            <div class="imp-desc">Claims universe mapped into 10 ML clusters — reusable definitions for market map and targeting</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#0bb68a">4-tier</em> affiliation model</div>
+            <div class="imp-desc">HCP segmentation backbone powering field targeting across the commercial org</div>
+          </div>
+        </div>
+      </div>
+      <div class="imp-group">
+        <div class="imp-group-header">
+          <div class="imp-group-dot" style="background:#f59e0b"></div>
+          <div class="imp-group-title">AI / ML & Optimization</div>
+        </div>
+        <div class="imp-cells">
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#f59e0b">$12M</em> media optimized</div>
+            <div class="imp-desc">Quarterly media spend allocation via multivariate Marketing Mix Model</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#f59e0b">7%</em> supply chain savings</div>
+            <div class="imp-desc">CPLEX/AMPL optimization reducing logistics costs across 500+ customers</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#f59e0b">QueryMind</em> shipped</div>
+            <div class="imp-desc">Text-to-SQL AI product enabling natural language database queries for non-technical users</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#f59e0b">rushi.ai</em> in dev</div>
+            <div class="imp-desc">RAG-powered AI portfolio copilot — chat with resume, projects & context in real time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHARMA ANALYTICS -->
+<div class="pharma-wrap" id="pharma">
+<div class="pharma-section">
+  <div class="section-label">Pharma Analytics · Transferable Expertise</div>
+  <h2>Analytics built for complexity.</h2>
+  <p class="section-sub" style="margin-bottom:2rem">In pharma, I operate across two distinct customer types simultaneously — and the analytical infrastructure I build is directly transferable to any data-rich commercial environment.</p>
+
+  <div class="infographic">
+    <div class="infographic-title">Dual-Customer Commercial Analytics Framework</div>
+    <div class="dual-customer">
+      <div class="cust-block hcp">
+        <div class="cust-block-label">Customer 01</div>
+        <div class="cust-block-title">Healthcare Provider (HCP)</div>
+        <div class="cust-method hcp-m"><strong>Affiliation Mapping</strong>400K+ entity network — where HCPs work, who they influence, referral patterns, practice affiliations.</div>
+        <div class="cust-method hcp-m"><strong>Prescribing Behavior</strong>Rx patterns, market share by molecule, competitive dynamics, over/under-served territory detection.</div>
+        <div class="cust-method hcp-m"><strong>Network Intelligence</strong>Influence mapping across HCP clusters to identify key opinion leaders and cascade targeting.</div>
+      </div>
+      <div class="dual-mid">
+        <div class="mid-connector"></div>
+        <div class="mid-label">Integrated signal</div>
+        <div class="mid-connector"></div>
+      </div>
+      <div class="cust-block patient">
+        <div class="cust-block-label">Customer 02</div>
+        <div class="cust-block-title">Patient</div>
+        <div class="cust-method pat-m"><strong>Claims-Based Segmentation</strong>60M patient universe → 10 ML clusters defining the addressable market map and priority populations.</div>
+        <div class="cust-method pat-m"><strong>Longitudinal Journey Mapping</strong>Tracking diagnosis → treatment → switching → persistence over time using multi-million claim records.</div>
+        <div class="cust-method pat-m"><strong>Population Targeting</strong>Identifying which patient segments to target, through which HCP channel, and at what point in the journey.</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;color:var(--text3);text-align:center;margin-bottom:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase">From data → commercial action</div>
+      <div class="flow-strip">
+        <div class="flow-node"><div class="flow-node-num">01</div><div class="flow-node-title">Raw Claims</div><div class="flow-node-desc">Multi-million Rx & medical records ingested</div><div class="flow-arrow">›</div></div>
+        <div class="flow-node"><div class="flow-node-num">02</div><div class="flow-node-title">Segment</div><div class="flow-node-desc">ML clusters define addressable patient populations</div><div class="flow-arrow">›</div></div>
+        <div class="flow-node"><div class="flow-node-num">03</div><div class="flow-node-title">Map Journeys</div><div class="flow-node-desc">Longitudinal paths reveal when & where to intervene</div><div class="flow-arrow">›</div></div>
+        <div class="flow-node"><div class="flow-node-num">04</div><div class="flow-node-title">Link HCPs</div><div class="flow-node-desc">Affiliation network identifies the right prescriber</div><div class="flow-arrow">›</div></div>
+        <div class="flow-node"><div class="flow-node-num">05</div><div class="flow-node-title">GTM Action</div><div class="flow-node-desc">Field targeting, call plans, resource allocation</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pharma-text" style="margin-top:1.8rem">
+    <p>Longitudinal journey mapping is not easy — it requires linking millions of fragmented records across time, normalizing patient identities, and making sense of non-linear treatment paths. In pharma this means knowing <em>which patient, through which physician, at which point in their disease journey</em> to target.</p>
+    <p>The infrastructure I build — claims pipelines, affiliation databases, ML segmentation models — is the same architecture that drives customer intelligence in retail, fintech, and B2B commercial strategy.</p>
+  </div>
+  <div class="transfer-box">
+    <div class="transfer-label">Transferable to any industry</div>
+    <div class="transfer-title">The underlying skills are universal</div>
+    <div class="transfer-items">
+      <div class="transfer-item">Network graph analysis → B2B account mapping, influencer identification</div>
+      <div class="transfer-item">Claims segmentation → Customer LTV clustering, churn risk modeling</div>
+      <div class="transfer-item">Longitudinal journeys → Retention analysis, funnel drop-off mapping</div>
+      <div class="transfer-item">HCP targeting → Sales territory design, rep prioritization</div>
+      <div class="transfer-item">Patient population maps → Addressable market sizing, persona development</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- VALUE LOOP -->
+<div style="background:var(--bg)">
+<div class="section" id="loop">
+  <div class="section-label">How I operate</div>
+  <h2>The Value Loop</h2>
+  <p class="section-sub">I operate across every stage — bridging the gap between technical infrastructure and executive commercial decisions.</p>
+  <div class="loop-grid">
+    <div class="loop-step"><div class="loop-num">01 · Signals</div><div class="loop-title">Sense</div><div class="loop-desc">Customer behavior, operational data, market changes, stakeholder inputs.</div></div>
+    <div class="loop-step"><div class="loop-num">02 · Structure</div><div class="loop-title">Model</div><div class="loop-desc">Data models, pipelines, semantic layers, unified entity maps.</div></div>
+    <div class="loop-step"><div class="loop-num">03 · Intelligence</div><div class="loop-title">Analyze</div><div class="loop-desc">ML, segmentation, forecasting, optimization, AI workflows.</div></div>
+    <div class="loop-step"><div class="loop-num">04 · Decisions</div><div class="loop-title">Prioritize</div><div class="loop-desc">Targeting, resource allocation, GTM actions, executive alignment.</div></div>
+    <div class="loop-step"><div class="loop-num">05 · Execution</div><div class="loop-title">Ship</div><div class="loop-desc">Field action, ops changes, measured outcomes, loop back.</div></div>
+  </div>
+  <div style="margin-top:2.5rem">
+    <div class="section-label">Data products built</div>
+    <div class="dp-grid">
+      <div class="dp-card"><div class="dp-title">Customer 360</div><div class="dp-desc">PySpark/SQL lakehouse — refresh cut from 2 days to 4 hours.</div></div>
+      <div class="dp-card"><div class="dp-title">Network Intel Tool</div><div class="dp-desc">400K+ HCP entities unified into a single commercial decision layer.</div></div>
+      <div class="dp-card"><div class="dp-title">Affiliation Database</div><div class="dp-desc">4-tier segmentation model powering the field targeting backbone.</div></div>
+      <div class="dp-card"><div class="dp-title">Enterprise Dashboards</div><div class="dp-desc">Product-owned KPIs across forecasting & operations for exec review.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- AI PROJECTS -->
+<div class="ai-wrap" id="ai">
+<div class="ai-section">
+  <div class="ai-label">AI + Workflows</div>
+  <div class="ai-h2">Building the next layer.</div>
+  <div class="ai-sub">Shipped product and in-flight concepts at the intersection of AI, GTM, and commercial operations.</div>
+  <div class="ai-grid">
+    <div class="ai-card featured">
+      <div class="badge b-ship"><div class="badge-dot"></div>Shipped · AI Product</div>
+      <div class="ai-card-title">QueryMind</div>
+      <div class="ai-card-desc">Text-to-SQL commercial application — business users query databases in plain English. No SQL knowledge required. Built and shipped.</div>
+      <div class="ai-card-result">↗ Live · Commercial Application</div>
+    </div>
+    <div class="ai-card featured">
+      <div class="badge b-dev"><div class="badge-dot"></div>In Dev · v0.2</div>
+      <div class="ai-card-title">rushi.ai — Portfolio Copilot</div>
+      <div class="ai-card-desc">RAG-powered agent to chat with my full resume, projects, and context in real time — right in this browser.</div>
+      <div class="ai-progress">
+        <div class="prog-row done"><div class="prog-icon">✓</div>Knowledge base & embedding</div>
+        <div class="prog-row active"><div class="prog-icon">→</div>RAG pipeline & agent logic</div>
+        <div class="prog-row"><div class="prog-icon"></div>UI/UX integration</div>
+        <div class="prog-row"><div class="prog-icon"></div>Memory & context agent</div>
+      </div>
+    </div>
+    <div class="ai-card">
+      <div class="badge b-concept"><div class="badge-dot"></div>Concept 01</div>
+      <div class="ai-card-title">Agentic HCP Targeting</div>
+      <div class="ai-card-desc">Multi-agent LLM workflow ingesting unstructured market studies to dynamically recalibrate healthcare provider target tiering.</div>
+    </div>
+    <div class="ai-card">
+      <div class="badge b-concept"><div class="badge-dot"></div>Concept 02</div>
+      <div class="ai-card-title">Zero-UI WhatsApp CRM</div>
+      <div class="ai-card-desc">Conversational agent passively ingesting client chats, scoring leads on ROI, and proactively messaging owners to close revenue.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SKILLS -->
+<div style="background:var(--bg)">
+<div class="section" id="skills">
+  <div class="section-label">Toolkit</div>
+  <h2>Skills & Infrastructure</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="sg-title"><div class="sg-dot" style="background:var(--accent)"></div>Data Engineering & AI</div>
+      <div class="skill-tags"><span class="skill-tag">dbt</span><span class="skill-tag">Databricks</span><span class="skill-tag">Snowflake</span><span class="skill-tag">Python</span><span class="skill-tag">PySpark</span><span class="skill-tag">SQL</span><span class="skill-tag">LangChain</span><span class="skill-tag">Agentic AI</span><span class="skill-tag">RAG</span><span class="skill-tag">Text-to-SQL</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="sg-title"><div class="sg-dot" style="background:var(--teal)"></div>Applied Analytics</div>
+      <div class="skill-tags"><span class="skill-tag">Behavioral Segmentation</span><span class="skill-tag">Longitudinal Analysis</span><span class="skill-tag">Market Mix Modeling</span><span class="skill-tag">Predictive ML</span><span class="skill-tag">Forecasting</span><span class="skill-tag">Network Optimization</span><span class="skill-tag">Operations Research</span><span class="skill-tag">CPLEX / AMPL</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="sg-title"><div class="sg-dot" style="background:var(--amber)"></div>Strategy & GTM</div>
+      <div class="skill-tags"><span class="skill-tag">Program Management</span><span class="skill-tag">0-to-1 Scoping</span><span class="skill-tag">Executive Storyboarding</span><span class="skill-tag">Stakeholder Management</span><span class="skill-tag">GTM Execution</span><span class="skill-tag">Territory Design</span><span class="skill-tag">Market Defense</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div style="background:#fff;border-top:1px solid var(--border)">
+<div class="section" id="about">
+  <div class="section-label">Background</div>
+  <h2>Where it started.</h2>
+  <div class="found-grid">
+    <div class="found-card"><div class="found-label">Education</div><h3>Lehigh University</h3><p>M.S. / B.S. Mechanical & Industrial Engineering. Led a nationally ranked Robotics team — systems thinking and constraint optimization before the first SQL query.</p></div>
+    <div class="found-card"><div class="found-label">Operating Style</div><h3>Cross-functional at heart</h3><p>Designing cadence — dashboards, reviews, escalation paths — that keeps product, ops, marketing, sales, and leadership aligned and moving.</p></div>
+    <div class="found-card"><div class="found-label">Roots</div><h3>Engineer first</h3><p>Mechanical engineering foundation, robotics team leadership, and a belief that physical systems and data systems obey the same laws. Next: 3D printing.</p></div>
+    <div class="found-card"><div class="found-label">Off the clock</div><h3>Constant learner</h3><p>Cooking, photography, gardening. Fueled by podcasts spanning business, global markets, mythology, and history.</p><div class="chip-row"><span class="chip">Cooking</span><span class="chip">Photography</span><span class="chip">Gardening</span><span class="chip">Podcasts</span></div></div>
+  </div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band" id="contact">
+  <div class="cta-inner">
+    <div class="cta-h">Let's build something that moves the needle.</div>
+    <div class="cta-sub">Open to full-time roles in Revenue Operations, Analytics, GTM Strategy, or AI-enabled product.</div>
+    <div class="cta-btns">
+      <a href="mailto:rushi.sheth@hotmail.com" class="btn-white">✉ Get in touch</a>
+      <a href="#" class="btn-ghost">↓ Download resume</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-name">Rushi Sheth</div>
+    <div class="foot-links"><a href="#">Resume</a><a href="https://www.linkedin.com/in/rushissheth/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/rushi-sheth" target="_blank" rel="noopener">GitHub</a><a href="mailto:rushi.sheth@hotmail.com">Email</a><a href="#">rushi.ai</a></div>
+    <div class="foot-copy">© 2025 · Built with intent.</div>
+  </div>
+</footer>
+
 <script>
-// Scroll-spy + progress
-const SECS = ['hero','decision','toolkit','foundation'];
-const ACT  = {hero:'ah',decision:'ad',toolkit:'at',foundation:'af'};
-const nis  = document.querySelectorAll('.ni[data-target]');
-const pf   = document.getElementById('pf');
-const pp   = document.getElementById('pp');
-
-function tick(){
-  const y   = window.scrollY;
-  const vh  = window.innerHeight;
-  const dh  = document.documentElement.scrollHeight;
-  const h   = dh - vh;
-  const pct = h > 0 ? Math.round((y/h)*100) : 0;
-  if(pf) pf.style.width = pct+'%';
-  if(pp) pp.textContent  = pct+'%';
-
-  // If within 80px of page bottom, force Foundation active
-  const nearBottom = (y + vh) >= (dh - 80);
-  let active = SECS[0];
-
-  if(nearBottom){
-    active = 'foundation';
-  } else {
-    // Use 40% viewport threshold for reliable mid-page tracking
-    const thr = y + vh * 0.4;
-    SECS.forEach(id => {
-      const el = document.getElementById(id);
-      if(el && el.getBoundingClientRect().top + y <= thr) active = id;
-    });
-  }
-
-  nis.forEach(ni => {
-    Object.values(ACT).forEach(c => ni.classList.remove(c));
-    if(ni.dataset.target === active) ni.classList.add(ACT[active]);
-  });
-}
-window.addEventListener('scroll', tick, {passive:true});
-tick();
-
-// Nav click
-document.querySelectorAll('.ni a').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const el = document.getElementById(a.getAttribute('href').slice(1));
-    if(el) window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 20, behavior:'smooth'});
-  });
+const hb = document.getElementById('hamburger');
+const mm = document.getElementById('mobileMenu');
+hb.addEventListener('click', () => {
+  hb.classList.toggle('open');
+  mm.classList.toggle('open');
 });
-
-// Fade-up
-const faders = document.querySelectorAll('.fu');
-const fo = new IntersectionObserver(entries => {
-  entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'),i*60); fo.unobserve(e.target); } });
-},{threshold:.07});
-faders.forEach(el=>fo.observe(el));
-
-// Industry wheel tooltips
-(function(){
-  const IW_DATA = {
-    'iw-ls':   'Commercial Analytics & HCP Targeting · ML Behavioral Segmentation · Agentic AI Workflows · dbt · Databricks · Snowflake',
-    'iw-md':   'Network Optimization · LTL/TL Transport Planning · Inventory Capacity Modeling · Operations Research (CPLEX)',
-    'iw-fmcg': 'Market Mix Modeling · GTM Strategy & Territory Design · Commercial Operating Rhythms · Stakeholder Management',
-    'iw-auto': 'Systems Design & Robotics · 3D Printing & Prototyping · Mechanical Engineering Foundation · Nationally Ranked Robotics Team',
-  };
-  // Create tooltip
-  const iwt = document.createElement('div');
-  iwt.style.cssText = 'position:fixed;pointer-events:none;background:#1c1b19;color:#cdccca;font-family:Inter,sans-serif;font-size:11px;font-weight:500;line-height:1.6;letter-spacing:.02em;padding:10px 13px;border-radius:6px;max-width:240px;white-space:normal;opacity:0;transition:opacity .15s;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.25)';
-  document.body.appendChild(iwt);
-
-  Object.keys(IW_DATA).forEach(id => {
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.addEventListener('mouseenter', e => { iwt.textContent = IW_DATA[id]; iwt.style.opacity='1'; mv(e); });
-    el.addEventListener('mousemove', mv);
-    el.addEventListener('mouseleave', () => { iwt.style.opacity='0'; });
-  });
-
-  function mv(e){
-    const pad=14, tw=252;
-    let x=e.clientX+pad, y=e.clientY+pad;
-    if(x+tw>window.innerWidth) x=e.clientX-tw-pad;
-    if(y+90>window.innerHeight) y=e.clientY-90;
-    iwt.style.left=x+'px'; iwt.style.top=y+'px';
-  }
-})();
+function closeMenu() {
+  hb.classList.remove('open');
+  mm.classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if (!hb.contains(e.target) && !mm.contains(e.target)) closeMenu();
+});
 </script>
 </body>
 </html>
