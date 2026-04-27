@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#f8f8f5;--bg2:#ffffff;--bg3:#f2f1ed;--bg4:#eae9e4;
+  --bg:#f8f8f5;--bg2:#fff;--bg3:#f2f1ed;--bg4:#eae9e4;
   --dark:#1a1a2e;--dark2:#22223a;--dark3:#2a2a45;
   --border:#e2e1dc;--border2:#ccccc4;
   --text:#111118;--text2:#5a5a6e;--text3:#9898a8;
@@ -57,7 +57,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--ac
 .initials-box{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:800;color:var(--border2)}
 .nameplate{text-align:center;padding:6px 0 2px}
 .nameplate-name{font-size:18px;font-weight:800;letter-spacing:-0.5px;color:var(--text)}
-.nameplate-sub{font-size:12px;color:var(--text3);margin-top:2px;letter-spacing:0.2px}
+.nameplate-sub{font-size:12px;color:var(--text3);margin-top:2px}
 .quick-fact{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:11px 13px;display:flex;align-items:flex-start;gap:10px;min-width:0}
 .qf-icon{font-size:13px;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--accent-lt)}
 .qf-label{font-size:11px;color:var(--text3)}
@@ -72,7 +72,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--ac
 .ind-tags{display:flex;gap:7px}
 .ind-tag{font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:3px 11px;white-space:nowrap}
 
-/* IMPACT BAND */
+/* IMPACT */
 .impact-band{background:var(--dark);padding:3rem 1.5rem}
 .impact-inner{max-width:1120px;margin:0 auto}
 .imp-section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7878a8;margin-bottom:1.4rem}
@@ -113,7 +113,7 @@ h2{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-1px;margin-bot
 .cust-method.pat-m strong{color:var(--teal)}
 .dual-mid{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 0.7rem;gap:6px}
 .mid-connector{width:2px;flex:1;background:linear-gradient(to bottom,#c4b8ff,#b2f0dd)}
-.mid-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg)}
+.mid-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);writing-mode:vertical-rl;transform:rotate(180deg)}
 .flow-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .flow-node{padding:9px 10px;background:#fff;border-right:1px solid var(--border);position:relative}
 .flow-node:last-child{border-right:none}
@@ -214,12 +214,10 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   .dual-customer{grid-template-columns:1fr;gap:10px}
   .dual-mid{display:none}
   .flow-strip{grid-template-columns:1fr 1fr}
-  .flow-node:nth-child(2){border-right:none}
-  .flow-node:nth-child(4){border-right:none}
+  .flow-node:nth-child(2),.flow-node:nth-child(4){border-right:none}
   .flow-arrow{display:none}
   .skills-grid{grid-template-columns:1fr 1fr}
-  .ai-grid{grid-template-columns:1fr}
-  .found-grid{grid-template-columns:1fr}
+  .ai-grid,.found-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   .hero{padding:5.5rem 1rem 2rem}
@@ -265,13 +263,11 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Rushi<span>Sheth</span></div>
   <a href="#contact" class="nav-cta"><div class="pulse"></div>rushi.ai</a>
 </nav>
 
-<!-- PILLS -->
 <div class="pills-wrap" id="pills">
   <div class="pills-inner">
     <a href="#impact" class="pill" data-short="Impact">Impact</a>
@@ -283,7 +279,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero-wrap">
 <div class="hero">
   <div>
@@ -320,7 +315,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 </div>
 </div>
 
-<!-- INDUSTRY STRIP -->
 <div class="ind-strip">
   <div class="ind-inner">
     <span class="ind-label">Industries</span>
@@ -334,7 +328,12 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   </div>
 </div>
 
-<!-- IMPACT -->
+<!-- ═══════════════════════════════════════
+     IMPACT SECTION - FINAL CONFIRMED DATA
+     GTM: $110M, $185M, 1.5K-11K, 3%, 60M TAM, Omnichannel
+     Data Products: 4-tier, 2d-4h, 400K+, Customer 360
+     AI/ML: Enterprise Gen AI Pilot, QueryMind POC, Breadth Classifier, $12M, 7%
+     ═══════════════════════════════════════ -->
 <div class="impact-band" id="impact">
   <div class="impact-inner">
     <div class="imp-section-label">Quantified impact</div>
@@ -362,6 +361,14 @@ footer{background:var(--dark);padding:2rem 1.5rem}
             <div class="imp-num"><em style="color:#a594ff">3%</em> incremental sales</div>
             <div class="imp-desc">CRM analytics reallocated field capacity, creating 3% incremental sales.</div>
           </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#a594ff">60M</em> patient TAM mapped</div>
+            <div class="imp-desc">Segmented 60M patients into 10 cohorts - quantifying addressable market size and informing growth prioritization.</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#a594ff">Omnichannel</em> analytics</div>
+            <div class="imp-desc">Touchpoint attribution model identifying highest-reach and highest-conversion channels across the media mix.</div>
+          </div>
         </div>
       </div>
 
@@ -371,10 +378,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <div class="imp-group-title">Data Products</div>
         </div>
         <div class="imp-cells">
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#0bb68a">60M</em> patients segmented</div>
-            <div class="imp-desc">Segmented 60M patients/customers into 10 actionable, growth-focused cohorts.</div>
-          </div>
           <div class="imp-cell">
             <div class="imp-num"><em style="color:#0bb68a">4-tier</em> affiliation model</div>
             <div class="imp-desc">Built four-tier affiliation model powering enterprise-wide field targeting.</div>
@@ -387,10 +390,9 @@ footer{background:var(--dark);padding:2rem 1.5rem}
             <div class="imp-num"><em style="color:#0bb68a">400K+</em> entities unified</div>
             <div class="imp-desc">Network Intelligence Tool mapping HCP affiliations into a single commercial decision layer.</div>
           </div>
-
           <div class="imp-cell">
-            <div class="imp-num"><em style="color:#0bb68a">7%</em> supply chain savings</div>
-            <div class="imp-desc">CPLEX optimization reduced transportation costs by 7% across 500 customers.</div>
+            <div class="imp-num"><em style="color:#0bb68a">Customer 360</em> dashboard</div>
+            <div class="imp-desc">Tableau platform consolidating HCP profiles, patient panels, brand usage, affiliation networks, and insurance coverage into one commercial view.</div>
           </div>
         </div>
       </div>
@@ -402,8 +404,12 @@ footer{background:var(--dark);padding:2rem 1.5rem}
         </div>
         <div class="imp-cells">
           <div class="imp-cell">
-            <div class="imp-num"><em style="color:#f59e0b">QueryMind</em> shipped</div>
-            <div class="imp-desc">Shipped QueryMind: RAG-powered, natural-language analytics over enterprise data.</div>
+            <div class="imp-num"><em style="color:#f59e0b">Enterprise Gen AI Pilot</em></div>
+            <div class="imp-desc">Brand-level LLM deployment - translating commercial requirements into technical scope, validating semantic schemas, and driving UAT alignment.</div>
+          </div>
+          <div class="imp-cell">
+            <div class="imp-num"><em style="color:#f59e0b">QueryMind</em> (Personal POC)</div>
+            <div class="imp-desc">RAG-powered, natural-language analytics over enterprise data - business users query databases without writing SQL.</div>
           </div>
           <div class="imp-cell">
             <div class="imp-num"><em style="color:#f59e0b">Breadth Classifier</em></div>
@@ -424,7 +430,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   </div>
 </div>
 
-<!-- PHARMA -->
 <div class="pharma-wrap" id="pharma">
 <div class="pharma-section">
   <div class="section-label">Pharma Analytics · Transferable Expertise</div>
@@ -482,7 +487,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 </div>
 </div>
 
-<!-- AI -->
 <div class="ai-wrap" id="ai">
 <div class="ai-section">
   <div class="ai-label">AI + Workflows</div>
@@ -492,8 +496,8 @@ footer{background:var(--dark);padding:2rem 1.5rem}
     <div class="ai-card featured">
       <div class="badge b-ship"><div class="badge-dot"></div>Shipped · AI Product</div>
       <div class="ai-card-title">QueryMind</div>
-      <div class="ai-card-desc">RAG-powered, natural-language analytics over enterprise data. Business users query databases without writing a single line of SQL. Built and shipped.</div>
-      <div class="ai-card-result">↗ Live · Commercial Application</div>
+      <div class="ai-card-desc">RAG-powered, natural-language analytics over enterprise data. Business users query databases without writing a single line of SQL.</div>
+      <div class="ai-card-result">↗ Live · Personal POC</div>
     </div>
     <div class="ai-card featured">
       <div class="badge b-dev"><div class="badge-dot"></div>In Dev · v0.2</div>
@@ -520,7 +524,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 </div>
 </div>
 
-<!-- VALUE LOOP -->
 <div style="background:var(--bg)" id="loop">
 <div class="section">
   <div class="section-label">How I operate</div>
@@ -536,7 +539,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 </div>
 </div>
 
-<!-- SKILLS -->
 <div style="background:#fff;border-top:1px solid var(--border)" id="skills">
 <div class="section">
   <div class="section-label">Toolkit</div>
@@ -558,7 +560,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 </div>
 </div>
 
-<!-- ABOUT -->
 <div style="background:var(--bg);border-top:1px solid var(--border)" id="about">
 <div class="section">
   <div class="section-label">Background</div>
@@ -572,7 +573,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 </div>
 </div>
 
-<!-- CTA -->
 <div class="cta-band" id="contact">
   <div class="cta-inner">
     <div class="cta-h">Let's build something that moves the needle.</div>
@@ -601,19 +601,16 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 const sections=['impact','pharma','ai','loop','skills','about'];
 const pills=document.querySelectorAll('.pill');
 window.addEventListener('scroll',()=>{
-  const scrollY=window.scrollY+120;
-  let current='';
-  sections.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el&&el.offsetTop<=scrollY)current=id;
-  });
-  pills.forEach(p=>{p.classList.toggle('active',p.getAttribute('href')==='#'+current)});
+  const y=window.scrollY+120;
+  let cur='';
+  sections.forEach(id=>{const el=document.getElementById(id);if(el&&el.offsetTop<=y)cur=id;});
+  pills.forEach(p=>{p.classList.toggle('active',p.getAttribute('href')==='#'+cur);});
 });
 pills.forEach(pill=>{
   pill.addEventListener('click',e=>{
     e.preventDefault();
-    const target=document.getElementById(pill.getAttribute('href').slice(1));
-    if(target){const offset=52+48;window.scrollTo({top:target.offsetTop-offset,behavior:'smooth'});}
+    const t=document.getElementById(pill.getAttribute('href').slice(1));
+    if(t)window.scrollTo({top:t.offsetTop-100,behavior:'smooth'});
   });
 });
 </script>
