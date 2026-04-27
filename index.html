@@ -29,8 +29,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 1.5rem;height:52px
 .pulse{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2s infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-/* ── SECTION PILLS ROW (sticky, inside dark band) ── */
-.pills-wrap{position:sticky;top:52px;z-index:150;background:rgba(26,26,46,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff10;padding:0.65rem 1.5rem}
+/* ── SECTION PILLS ROW (truly fixed below nav) ── */
+.pills-wrap{position:fixed;top:52px;left:0;right:0;z-index:150;background:rgba(26,26,46,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff10;padding:0.65rem 1.5rem}
 .pills-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .pills-inner::-webkit-scrollbar{display:none}
 .pill{font-size:14px;font-weight:500;color:#c0c0d8;background:transparent;border:1px solid #ffffff22;border-radius:20px;padding:6px 18px;white-space:nowrap;cursor:pointer;transition:all 0.18s;flex-shrink:0;letter-spacing:0.1px}
@@ -39,7 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 1.5rem;height:52px
 
 /* ── HERO ── */
 .hero-wrap{background:#fff;border-bottom:1px solid var(--border)}
-.hero{padding:5.5rem 1.5rem 2.5rem;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:start}
+.hero{padding:7rem 1.5rem 2.5rem;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:start}
 .hero-open{display:inline-flex;align-items:center;gap:8px;background:var(--teal-lt);border:1px solid #b2f0dd;border-radius:20px;padding:5px 14px;font-size:12px;color:var(--teal);font-weight:600;margin-bottom:1.1rem}
 h1{font-size:clamp(32px,4.5vw,54px);font-weight:800;line-height:1.08;letter-spacing:-2px;margin-bottom:1rem}
 h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -271,7 +271,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
     <div class="hero-open"><div class="pulse"></div>Open to opportunities · United States</div>
     <h1>Revenue &<br><em>Operations</em><br>meets AI.</h1>
     <p class="hero-sub">8+ years linking advanced analytics and AI with commercial strategy — I think in systems, reason causally, and translate complexity into decisions executives can act on. Built on a foundation of engineering, econometrics, and business strategy — applied across Life Sciences, Supply Chain, and FMCG.</p>
-    <p class="hero-sub" style="margin-top:0.9rem;font-style:italic;font-weight:600;color:var(--text);letter-spacing:-0.2px"><span style="color:var(--accent);font-style:normal;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:4px">Specialty</span>Mapping complex, high-volume customer journeys — and building the AI-enabled systems, segmentation models, and supply chain optimizations around them. From 60M patient claims in pharma to any industry where understanding how customers evolve over time is the competitive edge.</p>
+    <p class="hero-sub" style="margin-top:0.9rem;font-style:italic;font-weight:600;color:var(--text);letter-spacing:-0.2px">        <span style="color:var(--accent);font-style:normal;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:4px">Core Focus</span>Mapping complex, high-volume customer journeys — and building the AI-enabled systems, segmentation models, and supply chain optimizations around them. From 60M patient claims in pharma to any industry where understanding how customers evolve over time is the competitive edge.</p>
     <div class="hero-btns">
       <a href="mailto:rushi.sheth@hotmail.com" class="btn-dark">✉ Get in touch</a>
       <a href="#" class="btn-outline">↓ Resume</a>
@@ -317,21 +317,22 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 
 
 
+<!-- SECTION PILLS (fixed, always visible) -->
+<div class="pills-wrap" id="pills">
+  <div class="pills-inner">
+    <a href="#impact" class="pill">Impact</a>
+    <a href="#pharma" class="pill">Transferable Expertise</a>
+    <a href="#ai" class="pill">AI + Workflows</a>
+    <a href="#loop" class="pill">Value Loop</a>
+    <a href="#skills" class="pill">Toolkit</a>
+    <a href="#about" class="pill">Background</a>
+  </div>
+</div>
+
 <!-- IMPACT BAND -->
 <div class="impact-band" id="impact">
   <div class="impact-inner">
-    <!-- SECTION PILLS inside dark band -->
-    <div class="pills-wrap" id="pills">
-      <div class="pills-inner">
-        <a href="#impact" class="pill">Impact</a>
-        <a href="#pharma" class="pill">Transferable Expertise</a>
-        <a href="#ai" class="pill">AI + Workflows</a>
-        <a href="#loop" class="pill">Value Loop</a>
-        <a href="#skills" class="pill">Toolkit</a>
-        <a href="#about" class="pill">Background</a>
-      </div>
-    </div>
-    <div style="margin-top:1.8rem">
+    <div style="margin-top:0.5rem">
     <div class="imp-section-label">Quantified impact</div>
     <div class="impact-groups">
       <div class="imp-group">
@@ -609,7 +610,7 @@ pills.forEach(pill => {
     e.preventDefault();
     const target = document.getElementById(pill.getAttribute('href').slice(1));
     if(target){
-      const offset = 52 + 46; // nav + pills height
+      const offset = 52 + 48; // nav + pills height
       window.scrollTo({top: target.offsetTop - offset, behavior:'smooth'});
     }
   });
