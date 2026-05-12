@@ -298,10 +298,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZXCR5M2"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
 <nav>
   <div class="nav-logo">Rushi<span>Sheth</span></div>
   <a href="#contact" class="nav-cta"><div class="pulse"></div>rushi.ai</a>
@@ -686,6 +683,46 @@ pills.forEach(pill=>{
     e.preventDefault();
     const t=document.getElementById(pill.getAttribute('href').slice(1));
     if(t)window.scrollTo({top:t.offsetTop-100,behavior:'smooth'});
+  });
+});
+  // ── Section visibility tracking ──
+// Fires when a section enters the viewport (once per session per section)
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      gtag('event', 'section_viewed', {
+        section_id: entry.target.id,
+        section_name: entry.target.dataset.trackName || entry.target.id
+      });
+      // Stop observing once seen — avoids duplicate fires on scroll up/down
+      sectionObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 }); // 30% of section must be visible
+
+['impact','pharma','ai','loop','skills','about'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectionObserver.observe(el);
+});
+
+// ── Pill / nav click tracking ──
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    gtag('event', 'nav_pill_click', {
+      pill_label: pill.textContent.trim(),
+      pill_target: pill.getAttribute('href')
+    });
+  });
+});
+
+// ── Outbound link tracking (GitHub, LinkedIn, Email, etc.) ──
+document.querySelectorAll('a[href^="http"], a[href^="mailto"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'outbound_link_click', {
+      link_url: link.href,
+      link_text: link.textContent.trim(),
+      link_location: link.closest('[id]')?.id || 'unknown'
+    });
   });
 });
 </script>
