@@ -65,6 +65,24 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--ac
 .qf-row{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap}
 .qf-pill{font-size:11px;color:var(--text2);background:#fff;border:1px solid var(--border);border-radius:12px;padding:2px 9px;white-space:nowrap}
 
+/* QueryMind project card in hero sidebar */
+.qm-card{background:linear-gradient(135deg,#1e1e30,#1c1a38);border:1px solid #5b4fff40;border-radius:12px;padding:13px;display:flex;flex-direction:column;gap:9px;min-width:0}
+.qm-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0bb68a;background:#0bb68a18;border:1px solid #0bb68a30;border-radius:6px;padding:2px 8px;width:fit-content}
+.qm-badge-dot{width:5px;height:5px;border-radius:50%;background:#0bb68a}
+.qm-title{font-size:14px;font-weight:700;color:#e8e8f8}
+.qm-desc{font-size:11.5px;color:#8080a8;line-height:1.5}
+.qm-links{display:flex;flex-direction:column;gap:5px}
+.qm-link{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:500;color:#a594ff;padding:6px 9px;background:#ffffff08;border:1px solid #ffffff14;border-radius:7px;transition:all 0.18s;cursor:pointer}
+.qm-link:hover{background:#ffffff14;border-color:#5b4fff60;color:#c4b8ff}
+.qm-link-icon{flex-shrink:0;opacity:0.8}
+.qm-coming{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:500;color:#4a4a6a;padding:6px 9px;background:#ffffff05;border:1px solid #ffffff0a;border-radius:7px}
+
+/* Mobile QueryMind block — above hero buttons */
+.mob-qm{display:none;margin-bottom:1.5rem;background:linear-gradient(135deg,#1e1e30,#1c1a38);border:1px solid #5b4fff40;border-radius:12px;padding:14px;flex-direction:column;gap:9px}
+.mob-qm-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7878a8;margin-bottom:2px}
+.mob-qm-title{font-size:15px;font-weight:700;color:#e8e8f8;margin-bottom:3px}
+.mob-qm-desc{font-size:12px;color:#8080a8;line-height:1.55;margin-bottom:4px}
+
 /* INDUSTRY STRIP */
 .ind-strip{border-bottom:1px solid var(--border);background:#fff;padding:0.75rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .ind-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;min-width:max-content}
@@ -149,6 +167,10 @@ h2{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-1px;margin-bot
 .ai-card-title{font-size:16px;font-weight:700;color:#e8e8f8;margin-bottom:5px}
 .ai-card-desc{font-size:13px;color:#8080a8;line-height:1.6}
 .ai-card-result{margin-top:11px;font-size:12px;color:var(--teal);font-weight:600}
+.ai-links{display:flex;flex-direction:column;gap:5px;margin-top:13px}
+.ai-link{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:#a594ff;padding:6px 9px;background:#ffffff08;border:1px solid #ffffff14;border-radius:7px;transition:all 0.18s}
+.ai-link:hover{background:#ffffff14;border-color:#5b4fff60;color:#c4b8ff}
+.ai-link-coming{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:#404060;padding:6px 9px;background:#ffffff05;border:1px solid #ffffff0a;border-radius:7px}
 .ai-progress{margin-top:13px;display:flex;flex-direction:column;gap:7px}
 .prog-row{display:flex;align-items:center;gap:10px;font-size:12px;color:#7070a0}
 .prog-row.done{color:#0bb68a}
@@ -209,6 +231,8 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   .hero-right{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
   .profile-img{width:160px;height:160px;flex-shrink:0;border-radius:14px}
   .profile-img img{border-radius:14px}
+  /* hide desktop QM card at tablet */
+  .qm-card{display:none}
   .impact-groups{grid-template-columns:1fr}
   .loop-grid{grid-template-columns:1fr 1fr}
   .dual-customer{grid-template-columns:1fr;gap:10px}
@@ -224,6 +248,9 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   .hero-right{grid-template-columns:1fr;gap:10px}
   .profile-img{width:100%;height:auto;aspect-ratio:1;max-width:200px;margin:0 auto;border-radius:14px}
   .profile-img img{border-radius:14px}
+  /* show mobile QM block, hide desktop card */
+  .mob-qm{display:flex}
+  .qm-card{display:none}
   .hero-btns{flex-direction:column}
   .hero-btns a{justify-content:center}
   .impact-band{padding:2.5rem 1rem}
@@ -282,16 +309,46 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 <div class="hero-wrap">
 <div class="hero">
   <div>
-    <div class="hero-open"><div class="pulse"></div>Open to Digital Health, E-commerce, Analytics &amp; AI roles · United States</div>
+    <div class="hero-open"><div class="pulse"></div>Open to Analytics &amp; AI roles · United States</div>
     <h1>Complex Data.<br><em>People at Scale.</em><br>Commercial Impact.</h1>
     <p class="hero-sub">8+ years understanding how people behave over time - as patients, as customers, as members. My work has always been about mapping those journeys at scale, building the data infrastructure around them, and translating the signal into decisions that drive measurable commercial outcomes.</p>
     <p class="hero-sub">That lens applies equally whether I'm mapping a treatment journey in pharma, a ride pattern at Uber, a stay at Airbnb, a health signal at WHOOP, or a purchase path at Amazon. Built on a foundation of engineering, econometrics, and business strategy - applied across Life Sciences, Supply Chain, and FMCG.</p>
     <p class="hero-sub-focus"><span class="focus-label">Core Focus</span>Mapping complex, high-volume customer journeys - and building the AI-enabled systems, segmentation models, and supply chain optimizations around them. From 60M patient claims in pharma to any industry where understanding how people evolve over time is the competitive edge.</p>
+
+    <!-- ── MOBILE ONLY: QueryMind block above buttons ── -->
+    <div class="mob-qm">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7878a8;margin-bottom:4px">AI POC · Text-to-SQL</div>
+        <div style="font-size:15px;font-weight:700;color:#e8e8f8;margin-bottom:4px">QueryMind</div>
+        <div style="font-size:12px;color:#8080a8;line-height:1.55;margin-bottom:10px">RAG-powered application letting business users query enterprise databases in plain English — no SQL required.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener" class="qm-link">
+          <svg class="qm-link-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repository
+        </a>
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/prd.md" target="_blank" rel="noopener" class="qm-link">
+          <svg class="qm-link-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Product Requirements Doc (PRD)
+        </a>
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/system_architecture" target="_blank" rel="noopener" class="qm-link">
+          <svg class="qm-link-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          System Architecture
+        </a>
+        <div class="qm-coming">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          Loom Demo — coming soon
+        </div>
+      </div>
+    </div>
+
     <div class="hero-btns">
       <a href="mailto:rushi.sheth@hotmail.com" class="btn-dark">✉ Get in touch</a>
       <a href="https://www.linkedin.com/in/rushissheth/" target="_blank" rel="noopener" class="btn-outline">↗ Connect on LinkedIn</a>
     </div>
   </div>
+
+  <!-- RIGHT COLUMN -->
   <div class="hero-right">
     <div class="profile-img">
       <img src="https://rushisheth.com/assets/profile.jpg" alt="Rushi Sheth" onerror="this.style.display='none';this.parentElement.querySelector('.initials-box').style.display='flex'">
@@ -312,6 +369,35 @@ footer{background:var(--dark);padding:2rem 1.5rem}
         </div>
       </div>
     </div>
+
+    <!-- ── DESKTOP ONLY: QueryMind card below education ── -->
+    <div class="qm-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <div class="qm-badge"><div class="qm-badge-dot"></div>Shipped · AI POC</div>
+        <span style="font-size:10px;font-weight:600;letter-spacing:.5px;color:#5a5a6e;text-transform:uppercase">Text-to-SQL</span>
+      </div>
+      <div class="qm-title">QueryMind</div>
+      <div class="qm-desc">RAG-powered application letting business users query enterprise databases in plain English — no SQL required. Built end-to-end: schema embedding, semantic retrieval, query generation.</div>
+      <div class="qm-links">
+        <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener" class="qm-link">
+          <svg class="qm-link-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repository
+        </a>
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/prd.md" target="_blank" rel="noopener" class="qm-link">
+          <svg class="qm-link-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Product Requirements Doc
+        </a>
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/System%20Architecture%20v0.2.png" target="_blank" rel="noopener" class="qm-link">
+          <svg class="qm-link-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          System Architecture
+        </a>
+        <div class="qm-coming">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          Loom Demo — coming soon
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 </div>
@@ -342,30 +428,12 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <div class="imp-group-title">GTM &amp; Commercial</div>
         </div>
         <div class="imp-cells">
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#a594ff">$110M</em> revenue growth</div>
-            <div class="imp-desc">Sub-national ML + rules targeting unlocked $110M in incremental revenue.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#a594ff">$185M</em> forecast defended</div>
-            <div class="imp-desc">Fixed journey rules, preventing a $185M annual revenue overestimation.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#a594ff">1.5K - 11K</em> Rx/week</div>
-            <div class="imp-desc">Owned brand analytics and executive MBR/QBR readouts using longitudinal performance dashboards to guide decisions as weekly new customers grew from 1.5K to 11K, reaching <em style="color:#a594ff">$1.7B</em> in annual revenue.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#a594ff">3%</em> incremental sales</div>
-            <div class="imp-desc">CRM analytics reallocated field capacity, creating 3% incremental sales.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#a594ff">60M</em> patient TAM mapped</div>
-            <div class="imp-desc">Productized a 60M-patient market map with funnel, growth, and segmentation views that informed opportunity sizing, cohort prioritization, and commercial strategy.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#a594ff">Omnichannel</em> analytics</div>
-            <div class="imp-desc">Touchpoint attribution model identifying highest-reach and highest-conversion channels across the media mix.</div>
-          </div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">$110M</em> revenue growth</div><div class="imp-desc">Sub-national ML + rules targeting unlocked $110M in incremental revenue.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">$185M</em> forecast defended</div><div class="imp-desc">Fixed journey rules, preventing a $185M annual revenue overestimation.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">1.5K → 11K</em> Rx/week</div><div class="imp-desc">Owned brand analytics and executive MBR/QBR readouts as weekly new customers grew from 1.5K to 11K, reaching <em style="color:#a594ff">$1.7B</em> in annual revenue.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">3%</em> incremental sales</div><div class="imp-desc">CRM analytics reallocated field capacity, creating 3% incremental sales.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">60M</em> patient TAM mapped</div><div class="imp-desc">Productized a 60M-patient market map with funnel, growth, and segmentation views informing commercial strategy.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">Omnichannel</em> analytics</div><div class="imp-desc">Touchpoint attribution model identifying highest-reach and highest-conversion channels across the media mix.</div></div>
         </div>
       </div>
 
@@ -375,22 +443,10 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <div class="imp-group-title">Data Products</div>
         </div>
         <div class="imp-cells">
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#0bb68a">4-tier</em> affiliation model</div>
-            <div class="imp-desc">Built four-tier affiliation model powering enterprise-wide field targeting.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#0bb68a">2 days - 4 hrs</em></div>
-            <div class="imp-desc">Customer 360 refresh via PySpark/SQL lakehouse - batch bottleneck to near-real-time.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#0bb68a">400K+</em> entities unified</div>
-            <div class="imp-desc">Network Intelligence Tool mapping HCP affiliations into a single commercial decision layer.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#0bb68a">Customer 360</em> dashboard</div>
-            <div class="imp-desc">Tableau platform consolidating HCP profiles, patient panels, brand usage, affiliation networks, and insurance coverage into one commercial view.</div>
-          </div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#0bb68a">4-tier</em> affiliation model</div><div class="imp-desc">Built four-tier affiliation model powering enterprise-wide field targeting.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#0bb68a">2 days → 2 hrs</em></div><div class="imp-desc">Customer 360 refresh via PySpark/SQL lakehouse — batch bottleneck to near-real-time.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#0bb68a">400K+</em> entities unified</div><div class="imp-desc">Network Intelligence Tool mapping HCP affiliations into a single commercial decision layer.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#0bb68a">Customer 360</em> dashboard</div><div class="imp-desc">Tableau platform consolidating HCP profiles, patient panels, brand usage, affiliation networks, and insurance coverage.</div></div>
         </div>
       </div>
 
@@ -400,26 +456,11 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <div class="imp-group-title">AI / ML &amp; Optimization</div>
         </div>
         <div class="imp-cells">
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#f59e0b">Enterprise Gen AI Pilot</em></div>
-            <div class="imp-desc">Brand-level LLM deployment - translating commercial requirements into technical scope, validating semantic schemas, and driving UAT alignment.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#f59e0b">QueryMind</em> (Personal POC)</div>
-            <div class="imp-desc">RAG-powered, natural-language analytics over enterprise data - business users query databases without writing SQL.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#f59e0b">Customer at risk Classifier</em></div>
-            <div class="imp-desc">ML classifier surfaced switch-risk customers using longitudinal customer behavior.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#f59e0b">$12M</em> media evaluated</div>
-            <div class="imp-desc">MMM quantified omnichannel ROI, informing $12M quarterly media investments.</div>
-          </div>
-          <div class="imp-cell">
-            <div class="imp-num"><em style="color:#f59e0b">7%</em> supply chain savings</div>
-            <div class="imp-desc">Owned roadmap, feature definition, and stakeholder discovery for a CPLEX-based optimization, reducing transportation costs by 7% across 500 customers.</div>
-          </div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">Enterprise Gen AI Pilot</em></div><div class="imp-desc">Brand-level LLM deployment — translating commercial requirements into technical scope, validating semantic schemas, driving UAT.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">QueryMind</em> (Personal POC)</div><div class="imp-desc">RAG-powered, natural-language analytics over enterprise data — business users query databases without writing SQL.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">Customer at risk Classifier</em></div><div class="imp-desc">ML classifier surfaced switch-risk customers using longitudinal customer behavior.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">$12M</em> media evaluated</div><div class="imp-desc">MMM quantified omnichannel ROI, informing $12M quarterly media investments.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">7%</em> supply chain savings</div><div class="imp-desc">CPLEX-based optimization reducing transportation costs by 7% across 500 customers.</div></div>
         </div>
       </div>
 
@@ -431,7 +472,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 <div class="pharma-section">
   <div class="section-label">Pharma Analytics · Transferable Expertise</div>
   <h2>Analytics built for complexity.</h2>
-  <p class="section-sub" style="margin-bottom:1.5rem">In pharma, I operate across two distinct customer types simultaneously - and the analytical infrastructure I build is directly transferable to any data-rich commercial environment.</p>
+  <p class="section-sub" style="margin-bottom:1.5rem">In pharma, I operate across two distinct customer types simultaneously — and the analytical infrastructure I build is directly transferable to any data-rich commercial environment.</p>
 
   <div style="background:var(--accent-lt);border:1px solid #c4b8ff;border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.8rem;font-size:13px;color:var(--text2);line-height:1.6">
     <strong style="color:var(--accent);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:6px">The same framework, different domains</strong>
@@ -444,7 +485,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
       <div class="cust-block hcp">
         <div class="cust-block-label">Customer 01</div>
         <div class="cust-block-title">Healthcare Provider (HCP)</div>
-        <div class="cust-method hcp-m"><strong>Affiliation Mapping</strong>400K+ entity network - where HCPs work, who they influence, referral patterns, practice affiliations.</div>
+        <div class="cust-method hcp-m"><strong>Affiliation Mapping</strong>400K+ entity network — where HCPs work, who they influence, referral patterns, practice affiliations.</div>
         <div class="cust-method hcp-m"><strong>Prescribing Behavior</strong>Rx patterns, market share by molecule, competitive dynamics, over/under-served territory detection.</div>
         <div class="cust-method hcp-m"><strong>Network Intelligence</strong>Influence mapping across HCP clusters to identify key opinion leaders and cascade targeting.</div>
       </div>
@@ -456,8 +497,8 @@ footer{background:var(--dark);padding:2rem 1.5rem}
       <div class="cust-block patient">
         <div class="cust-block-label">Customer 02</div>
         <div class="cust-block-title">Patient</div>
-        <div class="cust-method pat-m"><strong>Claims-Based Segmentation</strong>60M patient universe - 10 ML clusters defining the addressable market map and priority populations.</div>
-        <div class="cust-method pat-m"><strong>Longitudinal Journey Mapping</strong>Tracking diagnosis - treatment - switching - persistence over time using multi-million claim records.</div>
+        <div class="cust-method pat-m"><strong>Claims-Based Segmentation</strong>60M patient universe — 10 ML clusters defining the addressable market map and priority populations.</div>
+        <div class="cust-method pat-m"><strong>Longitudinal Journey Mapping</strong>Tracking diagnosis → treatment → switching → persistence over time using multi-million claim records.</div>
         <div class="cust-method pat-m"><strong>Population Targeting</strong>Identifying which patient segments to target, through which HCP channel, and at what point in the journey.</div>
       </div>
     </div>
@@ -474,19 +515,19 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   </div>
 
   <div class="pharma-text" style="margin-top:1.8rem">
-    <p>Longitudinal journey mapping is not easy - it requires linking millions of fragmented records across time, normalizing patient identities, and making sense of non-linear treatment paths. In pharma this means knowing which patient, through which physician, at which point in their disease journey to target.</p>
-    <p>The infrastructure I build - claims pipelines, affiliation databases, ML segmentation models - is the same architecture that drives customer intelligence in retail, fintech, and B2B commercial strategy.</p>
+    <p>Longitudinal journey mapping is not easy — it requires linking millions of fragmented records across time, normalizing patient identities, and making sense of non-linear treatment paths. In pharma this means knowing which patient, through which physician, at which point in their disease journey to target.</p>
+    <p>The infrastructure I build — claims pipelines, affiliation databases, ML segmentation models — is the same architecture that drives customer intelligence in retail, fintech, and B2B commercial strategy.</p>
   </div>
 
   <div class="transfer-box">
     <div class="transfer-label">Transferable to any industry</div>
     <div class="transfer-title">The underlying skills are universal</div>
     <div class="transfer-items">
-      <div class="transfer-item">Longitudinal patient journeys - Member/rider/guest retention curves, churn prediction</div>
-      <div class="transfer-item">HCP affiliation network - Host supply network, seller ecosystem, driver supply mapping</div>
-      <div class="transfer-item">Claims segmentation (60M) - User cohort modeling at consumer scale, TAM sizing</div>
-      <div class="transfer-item">Territory design - Market expansion, geo-based supply planning, coverage optimization</div>
-      <div class="transfer-item">Omnichannel attribution - Performance marketing analytics, growth channel optimization</div>
+      <div class="transfer-item">Longitudinal patient journeys → Member/rider/guest retention curves, churn prediction</div>
+      <div class="transfer-item">HCP affiliation network → Host supply network, seller ecosystem, driver supply mapping</div>
+      <div class="transfer-item">Claims segmentation (60M) → User cohort modeling at consumer scale, TAM sizing</div>
+      <div class="transfer-item">Territory design → Market expansion, geo-based supply planning, coverage optimization</div>
+      <div class="transfer-item">Omnichannel attribution → Performance marketing analytics, growth channel optimization</div>
     </div>
   </div>
 </div>
@@ -501,13 +542,30 @@ footer{background:var(--dark);padding:2rem 1.5rem}
     <div class="ai-card featured">
       <div class="badge b-ship"><div class="badge-dot"></div>Shipped · AI Product</div>
       <div class="ai-card-title">QueryMind</div>
-      <div class="ai-card-desc">RAG-powered, natural-language analytics over enterprise data. Business users query databases without writing a single line of SQL.</div>
-      <div class="ai-card-result">↗ Live · Personal POC</div>
+      <div class="ai-card-desc">RAG-powered, natural-language analytics over enterprise data. Business users query databases without writing a single line of SQL. Built end-to-end: schema embedding, semantic retrieval, query generation.</div>
+      <div class="ai-links">
+        <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener" class="ai-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repository
+        </a>
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/prd.md" target="_blank" rel="noopener" class="ai-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Product Requirements Doc (PRD)
+        </a>
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/system_architecture" target="_blank" rel="noopener" class="ai-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          System Architecture
+        </a>
+        <div class="ai-link-coming">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          Loom Demo — coming soon
+        </div>
+      </div>
     </div>
     <div class="ai-card featured">
       <div class="badge b-dev"><div class="badge-dot"></div>In Dev · v0.2</div>
-      <div class="ai-card-title">rushi.ai - Portfolio Copilot</div>
-      <div class="ai-card-desc">RAG-powered agent to chat with my full resume, projects, and context in real time - right in this browser.</div>
+      <div class="ai-card-title">rushi.ai — Portfolio Copilot</div>
+      <div class="ai-card-desc">RAG-powered agent to chat with my full resume, projects, and context in real time — right in this browser.</div>
       <div class="ai-progress">
         <div class="prog-row done"><div class="prog-icon">✓</div>Knowledge base &amp; embedding</div>
         <div class="prog-row active"><div class="prog-icon">→</div>RAG pipeline &amp; agent logic</div>
@@ -533,7 +591,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 <div class="section">
   <div class="section-label">How I operate</div>
   <h2>The Value Loop</h2>
-  <p class="section-sub">I operate across every stage - bridging the gap between technical infrastructure and executive commercial decisions.</p>
+  <p class="section-sub">I operate across every stage — bridging the gap between technical infrastructure and executive commercial decisions.</p>
   <div class="loop-grid">
     <div class="loop-step"><div class="loop-num">01 · Signals</div><div class="loop-title">Sense</div><div class="loop-desc">Customer behavior, operational data, market changes, stakeholder inputs.</div></div>
     <div class="loop-step"><div class="loop-num">02 · Structure</div><div class="loop-title">Model</div><div class="loop-desc">Data models, pipelines, semantic layers, unified entity maps.</div></div>
@@ -570,9 +628,9 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   <div class="section-label">Background</div>
   <h2>Where it started.</h2>
   <div class="found-grid">
-    <div class="found-card"><div class="found-label">Education</div><h3>Lehigh University</h3><p>M.S. / B.S. Mechanical &amp; Industrial Engineering. Led a nationally ranked Robotics team - systems thinking and constraint optimization before the first SQL query.</p></div>
-    <div class="found-card"><div class="found-label">Operating Style</div><h3>Cross-functional at heart</h3><p>Designing cadence - dashboards, reviews, escalation paths - that keeps product, ops, marketing, sales, and leadership aligned and moving.</p></div>
-    <div class="found-card"><div class="found-label">Formal Training</div><h3>Beyond Engineering</h3><p>Coursework in Managerial Economics, Econometrics, Financial Management, and Marketing - building intuition for causal reasoning, market structure, and the business model behind the data.</p></div>
+    <div class="found-card"><div class="found-label">Education</div><h3>Lehigh University</h3><p>M.S. / B.S. Mechanical &amp; Industrial Engineering. Led a nationally ranked Robotics team — systems thinking and constraint optimization before the first SQL query.</p></div>
+    <div class="found-card"><div class="found-label">Operating Style</div><h3>Cross-functional at heart</h3><p>Designing cadence — dashboards, reviews, escalation paths — that keeps product, ops, marketing, sales, and leadership aligned and moving.</p></div>
+    <div class="found-card"><div class="found-label">Formal Training</div><h3>Beyond Engineering</h3><p>Coursework in Managerial Economics, Econometrics, Financial Management, and Marketing — building intuition for causal reasoning, market structure, and the business model behind the data.</p></div>
     <div class="found-card"><div class="found-label">Off the clock</div><h3>Constant learner</h3><p>Cooking, photography, gardening. Fueled by podcasts spanning business, global markets, mythology, and history.</p><div class="chip-row"><span class="chip">Cooking</span><span class="chip">Photography</span><span class="chip">Gardening</span><span class="chip">Podcasts</span></div></div>
   </div>
 </div>
@@ -581,7 +639,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 <div class="cta-band" id="contact">
   <div class="cta-inner">
     <div class="cta-h">Let's build something that moves the needle.</div>
-    <div class="cta-sub">If your business runs on understanding how people behave, grow, and churn - let's talk.</div>
+    <div class="cta-sub">If your business runs on understanding how people behave, grow, and churn — let's talk.</div>
     <div class="cta-btns">
       <a href="mailto:rushi.sheth@hotmail.com" class="btn-white">✉ Get in touch</a>
       <a href="https://www.linkedin.com/in/rushissheth/" target="_blank" rel="noopener" class="btn-ghost">↗ Connect on LinkedIn</a>
@@ -594,7 +652,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
     <div class="foot-name">Rushi Sheth</div>
     <div class="foot-links">
       <a href="https://www.linkedin.com/in/rushissheth/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/rushi-sheth" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener">GitHub</a>
       <a href="mailto:rushi.sheth@hotmail.com">Email</a>
       <a href="#">rushi.ai</a>
     </div>
