@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-S37E9EQ7RB');
 </script>
 <meta charset="UTF-8">
@@ -50,12 +49,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 1.5rem;height:52px
 .hero-wrap{background:#fff;border-bottom:1px solid var(--border)}
 .hero{padding:8.5rem 1.5rem 2.5rem;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:start}
 .hero-open{display:inline-flex;align-items:center;gap:8px;background:var(--teal-lt);border:1px solid #b2f0dd;border-radius:20px;padding:5px 14px;font-size:12px;color:var(--teal);font-weight:600;margin-bottom:1.1rem}
-h1{font-size:clamp(32px,4.5vw,54px);font-weight:800;line-height:1.08;letter-spacing:-2px;margin-bottom:1rem}
+h1{font-size:clamp(32px,4.5vw,54px);font-weight:800;line-height:1.08;letter-spacing:-2px;margin-bottom:1.2rem}
 h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* At-a-glance card */
+.hero-glance{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:1.4rem;display:flex;flex-direction:column;gap:9px}
+.glance-row{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:baseline}
+.glance-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3)}
+.glance-val{font-size:13px;color:var(--text2);line-height:1.5}
+.glance-val strong{color:var(--text);font-weight:600}
+.glance-divider{height:1px;background:var(--border)}
+
 .hero-sub{font-size:15px;color:var(--text2);line-height:1.75;max-width:500px;margin-bottom:0.9rem}
-.hero-sub-focus{font-size:15px;line-height:1.75;max-width:500px;margin-bottom:1.8rem;font-style:italic;font-weight:600;color:var(--text)}
-.focus-label{color:var(--accent);font-style:normal;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:4px}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.6rem}
 .btn-dark{background:var(--dark);color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:500;transition:all 0.2s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
 .btn-dark:hover{opacity:0.85;transform:translateY(-1px)}
 .btn-outline{background:#fff;color:var(--text2);padding:11px 20px;border-radius:10px;font-size:14px;font-weight:500;border:1px solid var(--border2);transition:all 0.2s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
@@ -86,11 +92,8 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--ac
 .qm-link-icon{flex-shrink:0;opacity:0.8}
 .qm-coming{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:500;color:#4a4a6a;padding:6px 9px;background:#ffffff05;border:1px solid #ffffff0a;border-radius:7px}
 
-/* Mobile QueryMind block — above hero buttons */
+/* Mobile QueryMind block */
 .mob-qm{display:none;margin-bottom:1.5rem;background:linear-gradient(135deg,#1e1e30,#1c1a38);border:1px solid #5b4fff40;border-radius:12px;padding:14px;flex-direction:column;gap:9px}
-.mob-qm-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7878a8;margin-bottom:2px}
-.mob-qm-title{font-size:15px;font-weight:700;color:#e8e8f8;margin-bottom:3px}
-.mob-qm-desc{font-size:12px;color:#8080a8;line-height:1.55;margin-bottom:4px}
 
 /* INDUSTRY STRIP */
 .ind-strip{border-bottom:1px solid var(--border);background:#fff;padding:0.75rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -240,7 +243,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   .hero-right{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
   .profile-img{width:160px;height:160px;flex-shrink:0;border-radius:14px}
   .profile-img img{border-radius:14px}
-  /* hide desktop QM card at tablet */
   .qm-card{display:none}
   .impact-groups{grid-template-columns:1fr}
   .loop-grid{grid-template-columns:1fr 1fr}
@@ -257,9 +259,9 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   .hero-right{grid-template-columns:1fr;gap:10px}
   .profile-img{width:100%;height:auto;aspect-ratio:1;max-width:200px;margin:0 auto;border-radius:14px}
   .profile-img img{border-radius:14px}
-  /* show mobile QM block, hide desktop card */
   .mob-qm{display:flex}
   .qm-card{display:none}
+  .glance-row{grid-template-columns:80px 1fr;gap:8px}
   .hero-btns{flex-direction:column}
   .hero-btns a{justify-content:center}
   .impact-band{padding:2.5rem 1rem}
@@ -320,11 +322,34 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   <div>
     <div class="hero-open"><div class="pulse"></div>Open to Analytics &amp; AI roles · United States</div>
     <h1>Complex Data.<br><em>People at Scale.</em><br>Commercial Impact.</h1>
-    <p class="hero-sub">8+ years understanding how people behave over time - as patients, as customers, as members. My work has always been about mapping those journeys at scale, building the data infrastructure around them, and translating the signal into decisions that drive measurable commercial outcomes.</p>
-    <p class="hero-sub">That lens applies equally whether I'm mapping a treatment journey in pharma, a ride pattern at Uber, a stay at Airbnb, a health signal at WHOOP, or a purchase path at Amazon. Built on a foundation of engineering, econometrics, and business strategy - applied across Life Sciences, Supply Chain, and FMCG.</p>
-    <p class="hero-sub-focus"><span class="focus-label">Core Focus</span>Mapping complex, high-volume customer journeys - and building the AI-enabled systems, segmentation models, and supply chain optimizations around them. From 60M patient claims in pharma to any industry where understanding how people evolve over time is the competitive edge.</p>
 
-    <!-- ── MOBILE ONLY: QueryMind block above buttons ── -->
+    <!-- At-a-glance card — implicit TL;DR, no label -->
+    <div class="hero-glance">
+      <div class="glance-row">
+        <span class="glance-label">What I do</span>
+        <span class="glance-val">Data infrastructure → ML models → commercial insight → GTM execution</span>
+      </div>
+      <div class="glance-divider"></div>
+      <div class="glance-row">
+        <span class="glance-label">Where</span>
+        <span class="glance-val">Wherever longitudinal behavior at scale drives commercial decisions</span>
+      </div>
+      <div class="glance-divider"></div>
+      <div class="glance-row">
+        <span class="glance-label">Who I serve</span>
+        <span class="glance-val"><strong>Sales · Marketing · Supply Chain</strong> — translating data into decisions each function can act on</span>
+      </div>
+      <div class="glance-divider"></div>
+      <div class="glance-row">
+        <span class="glance-label">What I built</span>
+        <span class="glance-val"><strong>$110M</strong> targeting model · <strong>60M-patient</strong> segmentation · <strong>CPLEX</strong> optimizer · Customer 360 · Network Intelligence Tool · <strong>QueryMind</strong> (Text-to-SQL) · <strong>$185M</strong> forecast defended</span>
+      </div>
+    </div>
+
+    <p class="hero-sub">8+ years going from raw data to revenue — building pipelines, models, and the commercial systems that turn signal into market action.</p>
+    <p class="hero-sub">The lens applies anywhere people behavior drives decisions — pharma, logistics, e-commerce, digital health. Same infrastructure. Different domain.</p>
+
+    <!-- Mobile QueryMind block -->
     <div class="mob-qm">
       <div>
         <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7878a8;margin-bottom:4px">AI POC · Text-to-SQL</div>
@@ -340,7 +365,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <svg class="qm-link-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           Product Requirements Doc (PRD)
         </a>
-        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/system_architecture" target="_blank" rel="noopener" class="qm-link">
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/System%20Architecture%20v0.2.png" target="_blank" rel="noopener" class="qm-link">
           <svg class="qm-link-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           System Architecture
         </a>
@@ -365,7 +390,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
     </div>
     <div class="nameplate">
       <div class="nameplate-name">Rushi Sheth</div>
-      <div class="nameplate-sub">Systems Thinker · Data · AI</div>
+      <div class="nameplate-sub">Full-Stack Analytics · GTM · AI</div>
     </div>
     <div class="quick-fact">
       <div class="qf-icon">🎓</div>
@@ -379,7 +404,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
       </div>
     </div>
 
-    <!-- ── DESKTOP ONLY: QueryMind card below education ── -->
+    <!-- Desktop QueryMind card -->
     <div class="qm-card">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
         <div class="qm-badge"><div class="qm-badge-dot"></div>Shipped · AI POC</div>
@@ -406,7 +431,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
         </div>
       </div>
     </div>
-
   </div>
 </div>
 </div>
@@ -430,12 +454,8 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   <div class="impact-inner">
     <div class="imp-section-label">Quantified impact</div>
     <div class="impact-groups">
-
       <div class="imp-group">
-        <div class="imp-group-header">
-          <div class="imp-group-dot" style="background:#a594ff"></div>
-          <div class="imp-group-title">GTM &amp; Commercial</div>
-        </div>
+        <div class="imp-group-header"><div class="imp-group-dot" style="background:#a594ff"></div><div class="imp-group-title">GTM &amp; Commercial</div></div>
         <div class="imp-cells">
           <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">$110M</em> revenue growth</div><div class="imp-desc">Sub-national ML + rules targeting unlocked $110M in incremental revenue.</div></div>
           <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">$185M</em> forecast defended</div><div class="imp-desc">Fixed journey rules, preventing a $185M annual revenue overestimation.</div></div>
@@ -445,12 +465,8 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">Omnichannel</em> analytics</div><div class="imp-desc">Touchpoint attribution model identifying highest-reach and highest-conversion channels across the media mix.</div></div>
         </div>
       </div>
-
       <div class="imp-group">
-        <div class="imp-group-header">
-          <div class="imp-group-dot" style="background:#0bb68a"></div>
-          <div class="imp-group-title">Data Products</div>
-        </div>
+        <div class="imp-group-header"><div class="imp-group-dot" style="background:#0bb68a"></div><div class="imp-group-title">Data Products</div></div>
         <div class="imp-cells">
           <div class="imp-cell"><div class="imp-num"><em style="color:#0bb68a">4-tier</em> affiliation model</div><div class="imp-desc">Built four-tier affiliation model powering enterprise-wide field targeting.</div></div>
           <div class="imp-cell"><div class="imp-num"><em style="color:#0bb68a">2 days → 2 hrs</em></div><div class="imp-desc">Customer 360 refresh via PySpark/SQL lakehouse — batch bottleneck to near-real-time.</div></div>
@@ -458,12 +474,8 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <div class="imp-cell"><div class="imp-num"><em style="color:#0bb68a">Customer 360</em> dashboard</div><div class="imp-desc">Tableau platform consolidating HCP profiles, patient panels, brand usage, affiliation networks, and insurance coverage.</div></div>
         </div>
       </div>
-
       <div class="imp-group">
-        <div class="imp-group-header">
-          <div class="imp-group-dot" style="background:#f59e0b"></div>
-          <div class="imp-group-title">AI / ML &amp; Optimization</div>
-        </div>
+        <div class="imp-group-header"><div class="imp-group-dot" style="background:#f59e0b"></div><div class="imp-group-title">AI / ML &amp; Optimization</div></div>
         <div class="imp-cells">
           <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">Enterprise Gen AI Pilot</em></div><div class="imp-desc">Brand-level LLM deployment — translating commercial requirements into technical scope, validating semantic schemas, driving UAT.</div></div>
           <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">QueryMind</em> (Personal POC)</div><div class="imp-desc">RAG-powered, natural-language analytics over enterprise data — business users query databases without writing SQL.</div></div>
@@ -472,7 +484,6 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">7%</em> supply chain savings</div><div class="imp-desc">CPLEX-based optimization reducing transportation costs by 7% across 500 customers.</div></div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -482,12 +493,10 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   <div class="section-label">Pharma Analytics · Transferable Expertise</div>
   <h2>Analytics built for complexity.</h2>
   <p class="section-sub" style="margin-bottom:1.5rem">In pharma, I operate across two distinct customer types simultaneously — and the analytical infrastructure I build is directly transferable to any data-rich commercial environment.</p>
-
   <div style="background:var(--accent-lt);border:1px solid #c4b8ff;border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.8rem;font-size:13px;color:var(--text2);line-height:1.6">
     <strong style="color:var(--accent);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:6px">The same framework, different domains</strong>
     The dual-customer model that maps HCP-Patient in pharma maps <strong>Host-Guest at Airbnb</strong>, <strong>Driver-Rider at Uber</strong>, <strong>Seller-Buyer at Amazon</strong>, and <strong>Coach-Member at WHOOP</strong>. In digital health, members replace patients, engagement data replaces claims, and the longitudinal journey from signal to outcome is the same analytical challenge at a different layer of the health stack.
   </div>
-
   <div class="infographic">
     <div class="infographic-title">Dual-Customer Commercial Analytics Framework</div>
     <div class="dual-customer">
@@ -522,12 +531,10 @@ footer{background:var(--dark);padding:2rem 1.5rem}
       </div>
     </div>
   </div>
-
   <div class="pharma-text" style="margin-top:1.8rem">
     <p>Longitudinal journey mapping is not easy — it requires linking millions of fragmented records across time, normalizing patient identities, and making sense of non-linear treatment paths. In pharma this means knowing which patient, through which physician, at which point in their disease journey to target.</p>
     <p>The infrastructure I build — claims pipelines, affiliation databases, ML segmentation models — is the same architecture that drives customer intelligence in retail, fintech, and B2B commercial strategy.</p>
   </div>
-
   <div class="transfer-box">
     <div class="transfer-label">Transferable to any industry</div>
     <div class="transfer-title">The underlying skills are universal</div>
@@ -561,7 +568,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           Product Requirements Doc (PRD)
         </a>
-        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/system_architecture" target="_blank" rel="noopener" class="ai-link">
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/System%20Architecture%20v0.2.png" target="_blank" rel="noopener" class="ai-link">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           System Architecture
         </a>
@@ -685,44 +692,32 @@ pills.forEach(pill=>{
     if(t)window.scrollTo({top:t.offsetTop-100,behavior:'smooth'});
   });
 });
-  // ── Section visibility tracking ──
-// Fires when a section enters the viewport (once per session per section)
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      gtag('event', 'section_viewed', {
-        section_id: entry.target.id,
-        section_name: entry.target.dataset.trackName || entry.target.id
-      });
-      // Stop observing once seen — avoids duplicate fires on scroll up/down
+
+// Section visibility tracking
+const sectionObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      gtag('event','section_viewed',{section_id:entry.target.id});
       sectionObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.3 }); // 30% of section must be visible
-
-['impact','pharma','ai','loop','skills','about'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) sectionObserver.observe(el);
+},{threshold:0.3});
+['impact','pharma','ai','loop','skills','about'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el)sectionObserver.observe(el);
 });
 
-// ── Pill / nav click tracking ──
-document.querySelectorAll('.pill').forEach(pill => {
-  pill.addEventListener('click', () => {
-    gtag('event', 'nav_pill_click', {
-      pill_label: pill.textContent.trim(),
-      pill_target: pill.getAttribute('href')
-    });
+// Pill click tracking
+document.querySelectorAll('.pill').forEach(pill=>{
+  pill.addEventListener('click',()=>{
+    gtag('event','nav_pill_click',{pill_label:pill.textContent.trim(),pill_target:pill.getAttribute('href')});
   });
 });
 
-// ── Outbound link tracking (GitHub, LinkedIn, Email, etc.) ──
-document.querySelectorAll('a[href^="http"], a[href^="mailto"]').forEach(link => {
-  link.addEventListener('click', () => {
-    gtag('event', 'outbound_link_click', {
-      link_url: link.href,
-      link_text: link.textContent.trim(),
-      link_location: link.closest('[id]')?.id || 'unknown'
-    });
+// Outbound link tracking
+document.querySelectorAll('a[href^="http"], a[href^="mailto"]').forEach(link=>{
+  link.addEventListener('click',()=>{
+    gtag('event','outbound_link_click',{link_url:link.href,link_text:link.textContent.trim(),link_location:link.closest('[id]')?.id||'unknown'});
   });
 });
 </script>
