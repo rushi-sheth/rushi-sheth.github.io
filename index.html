@@ -106,7 +106,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--ac
 .impact-band{background:var(--dark);padding:3rem 1.5rem}
 .impact-inner{max-width:1120px;margin:0 auto}
 .imp-section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7878a8;margin-bottom:1.4rem}
-.impact-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.impact-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .imp-group{background:var(--dark2);border:1px solid #ffffff12;border-radius:14px;overflow:hidden}
 .imp-group-header{padding:10px 13px 8px;border-bottom:1px solid #ffffff0d;display:flex;align-items:center;gap:8px}
 .imp-group-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -244,7 +244,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   .profile-img{width:160px;height:160px;flex-shrink:0;border-radius:14px}
   .profile-img img{border-radius:14px}
   .qm-card{display:none}
-  .impact-groups{grid-template-columns:1fr}
+  .impact-groups{grid-template-columns:1fr 1fr}
   .ai-workflow-grid{grid-template-columns:1fr 1fr!important}
   .loop-grid{grid-template-columns:1fr 1fr}
   .dual-customer{grid-template-columns:1fr;gap:10px}
@@ -491,44 +491,42 @@ footer{background:var(--dark);padding:2rem 1.5rem}
         </div>
       </div>
     </div>
-
-    <!-- AI + Workflows — 4th section -->
-    <div style="margin-top:20px;background:linear-gradient(135deg,#1e1e30,#1c1a38);border:1px solid #5b4fff30;border-radius:14px;overflow:hidden">
-      <div style="padding:12px 16px;border-bottom:1px solid #ffffff0a;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
-        <div style="display:flex;align-items:center;gap:8px">
-          <div style="width:8px;height:8px;border-radius:50%;background:#a594ff"></div>
-          <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8888b0">AI + Workflows</span>
-          <span style="font-size:11px;color:#404060;margin-left:4px">· Building the next layer</span>
-        </div>
-        <a href="building-in-ai.html" style="font-size:11px;font-weight:600;color:#a594ff;background:#ffffff08;border:1px solid #ffffff18;border-radius:6px;padding:4px 11px;white-space:nowrap;transition:all 0.18s" onmouseover="this.style.background='#ffffff14'" onmouseout="this.style.background='#ffffff08'">Full project writeups →</a>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
-        <div style="padding:13px 14px;border-right:1px solid #ffffff07">
-          <div style="font-size:11px;font-weight:700;color:#a594ff;margin-bottom:4px">QueryMind</div>
-          <div style="font-size:11px;color:#6060a0;line-height:1.5;margin-bottom:8px">RAG + Text-to-SQL app. Natural language over enterprise databases. dbt semantic layer, LangChain, vector store, 30-question eval suite.</div>
-          <div style="display:flex;flex-direction:column;gap:4px">
-            <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#a594ff'" onmouseout="this.color='#7070a8'">↗ GitHub</a>
-            <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/prd.md" target="_blank" rel="noopener" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#a594ff'" onmouseout="this.color='#7070a8'">↗ PRD</a>
-            <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/System%20Architecture%20v0.2.png" target="_blank" rel="noopener" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#a594ff'" onmouseout="this.color='#7070a8'">↗ Architecture</a>
-          </div>
-        </div>
-        <div style="padding:13px 14px;border-right:1px solid #ffffff07">
-          <div style="font-size:11px;font-weight:700;color:#0bb68a;margin-bottom:4px">Agentic Booking System</div>
-          <div style="font-size:11px;color:#6060a0;line-height:1.5;margin-bottom:8px">WhatsApp-native scheduling agent for service businesses. Claude tool-use loop: check plan → check availability → match preferences → book → confirm. No back-and-forth.</div>
-          <a href="building-in-ai.html#pilates" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#0bb68a'" onmouseout="this.color='#7070a8'">↗ Full writeup + system diagram</a>
-        </div>
-        <div style="padding:13px 14px;border-right:1px solid #ffffff07">
-          <div style="font-size:11px;font-weight:700;color:#f59e0b;margin-bottom:4px">Agentic HCP Targeting</div>
-          <div style="font-size:11px;color:#6060a0;line-height:1.5;margin-bottom:8px">Concept: multi-agent LLM workflow ingesting unstructured market studies to dynamically recalibrate provider target tiering — replacing manual, infrequent recalibration.</div>
-          <a href="building-in-ai.html" style="font-size:10px;font-weight:600;color:#7070a8">↗ Concept overview</a>
-        </div>
-        <div style="padding:13px 14px">
-          <div style="font-size:11px;font-weight:700;color:#a594ff;margin-bottom:4px">Careway</div>
-          <div style="font-size:11px;color:#6060a0;line-height:1.5;margin-bottom:8px">Clinical pathway coordination — Patient, PCP, Specialist on shared live data. Designed through 6 iterations. Agentic layer: coordinator gets a pre-call brief synthesized across pathway, overdue items, and outreach queue.</div>
-          <a href="building-in-ai.html#careway" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#a594ff'" onmouseout="this.color='#7070a8'">↗ App design + flow</a>
-        </div>
+    <div class="imp-group" style="border-color:#5b4fff30;background:linear-gradient(135deg,#1e1e30,#1c1a38)">
+  <div class="imp-group-header" style="justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="imp-group-dot" style="background:#a594ff"></div>
+      <div class="imp-group-title">AI + Workflows</div>
+    </div>
+    <a href="building-in-ai.html" style="font-size:10px;font-weight:600;color:#a594ff;white-space:nowrap">Full writeups →</a>
+  </div>
+  <div class="imp-cells">
+    <div class="imp-cell">
+      <div class="imp-num"><em style="color:#a594ff">QueryMind</em></div>
+      <div class="imp-desc">RAG + Text-to-SQL. Natural language over enterprise databases. dbt semantic layer, LangChain, vector store, 30-question eval suite.</div>
+      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+        <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener" style="font-size:10px;font-weight:600;color:#a594ff">↗ GitHub</a>
+        <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/prd.md" target="_blank" rel="noopener" style="font-size:10px;font-weight:600;color:#a594ff">↗ PRD</a>
       </div>
     </div>
+    <div class="imp-cell">
+      <div class="imp-num"><em style="color:#0bb68a">Agentic Booking</em></div>
+      <div class="imp-desc">WhatsApp-native scheduling agent for service businesses. Claude tool-use loop: check plan → availability → preferences → book → confirm. No back-and-forth.</div>
+      <a href="building-in-ai.html#pilates" style="font-size:10px;font-weight:600;color:#0bb68a;display:block;margin-top:6px">↗ Full writeup</a>
+    </div>
+    <div class="imp-cell">
+      <div class="imp-num"><em style="color:#f59e0b">Agentic HCP Targeting</em></div>
+      <div class="imp-desc">Concept: multi-agent LLM workflow ingesting unstructured market studies to dynamically recalibrate provider target tiering — replacing manual, infrequent recalibration.</div>
+      <a href="building-in-ai.html" style="font-size:10px;font-weight:600;color:#f59e0b;display:block;margin-top:6px">↗ Concept overview</a>
+    </div>
+    <div class="imp-cell">
+      <div class="imp-num"><em style="color:#a594ff">Careway</em></div>
+      <div class="imp-desc">Clinical pathway coordination — Patient, PCP, Specialist on shared live data. Designed through 6 iterations. Agentic layer: coordinator gets pre-call brief across pathway, overdue items, and outreach queue.</div>
+      <a href="building-in-ai.html#careway" style="font-size:10px;font-weight:600;color:#a594ff;display:block;margin-top:6px">↗ App design + flow</a>
+    </div>
+  </div>
+</div>
+
+
   </div>
 </div>
 
