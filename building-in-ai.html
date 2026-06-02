@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S37E9EQ7RB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S37E9EQ7RB');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Building in AI — Rushi Sheth</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f8f8f5;--bg2:#fff;--bg3:#f2f1ed;--bg4:#eae9e4;
+  --dark:#1a1a2e;--dark2:#22223a;--dark3:#2a2a45;
+  --border:#e2e1dc;--border2:#ccccc4;
+  --text:#111118;--text2:#5a5a6e;--text3:#9898a8;
+  --accent:#5b4fff;--accent2:#7c6fff;--accent-lt:#eeebff;
+  --teal:#0bb68a;--teal-lt:#e6faf4;
+  --amber:#d97706;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 1.5rem;height:52px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,248,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:-0.4px}
+.nav-logo span{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-back{font-size:13px;color:var(--text3);font-weight:500;padding:6px 12px;border:1px solid var(--border);border-radius:8px;transition:all 0.2s}
+.nav-back:hover{color:var(--text);border-color:var(--border2)}
+.nav-cta{background:var(--dark);color:#fff;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.8}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* ── PAGE NAV PILLS ── */
+.pills-wrap{position:fixed;top:52px;left:0;right:0;z-index:150;background:rgba(26,26,46,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff10;padding:0.65rem 1.5rem}
+.pills-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pills-inner::-webkit-scrollbar{display:none}
+.pill{font-size:13px;font-weight:500;color:#c0c0d8;background:transparent;border:1px solid #ffffff22;border-radius:20px;padding:5px 16px;white-space:nowrap;cursor:pointer;transition:all 0.18s;flex-shrink:0}
+.pill:hover{color:#fff;border-color:#ffffff50}
+.pill.active{background:#ffffff22;color:#fff;border-color:#ffffff50}
+
+/* ── HERO ── */
+.page-hero{background:var(--dark);padding:7rem 1.5rem 3.5rem;border-bottom:1px solid #ffffff10}
+.page-hero-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:3rem;align-items:start}
+.page-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9898c0;margin-bottom:1rem}
+.page-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.page-h1{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-2px;color:#e8e8f8;line-height:1.05;margin-bottom:1rem}
+.page-h1 em{font-style:normal;color:var(--accent2)}
+.page-sub{font-size:15px;color:#b0b0c8;max-width:580px;line-height:1.75;margin-bottom:2.5rem}
+
+/* ── COMPACT SKILLS MATRIX ── */
+.matrix-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:0}
+.matrix-concept{display:flex;align-items:center;gap:8px;background:#ffffff08;border:1px solid #ffffff14;border-radius:10px;padding:8px 13px}
+.mc-label{font-size:11px;color:#a0a0c0;margin-right:2px;white-space:nowrap}
+.mc-dots{display:flex;gap:5px;align-items:center}
+.mc-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid #ffffff20;flex-shrink:0}
+.mc-dot.on-qm{background:var(--accent2);border-color:var(--accent2)}
+.mc-dot.on-pl{background:var(--teal);border-color:var(--teal)}
+.mc-dot.on-cw{background:var(--amber);border-color:var(--amber)}
+.mc-dot.off{background:transparent}
+.mc-legend{display:flex;gap:14px;margin-top:1rem;flex-wrap:wrap}
+.mc-legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#9898b8}
+.mc-legend-dot{width:7px;height:7px;border-radius:50%}
+
+/* ── COMPACT LEARNED (hero right column) ── */
+.hero-learned-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9898b8;margin-bottom:0.8rem}
+.hero-learned-grid{display:flex;flex-direction:column;gap:9px}
+.hero-learned-card{background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;padding:0.9rem 1rem}
+.hero-learned-project{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9898b8;margin-bottom:4px}
+.hero-learned-concept{font-size:13px;font-weight:700;color:#e8e8f8;margin-bottom:5px;line-height:1.3}
+.hero-learned-take{font-size:11px;color:#b0b0c8;line-height:1.55}
+.hero-learned-tag{display:inline-block;font-size:10px;font-weight:700;color:#a594ff;background:#5b4fff18;border:1px solid #5b4fff28;border-radius:6px;padding:2px 8px;margin-top:6px}
+
+/* ── SECTION WRAPPER ── */
+.section{padding:4rem 1.5rem;max-width:1120px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
+.section-h2{font-size:clamp(20px,2.8vw,30px);font-weight:800;letter-spacing:-1px;color:var(--text);margin-bottom:0.4rem}
+.section-sub{font-size:14px;color:var(--text2);max-width:600px;line-height:1.7;margin-bottom:2rem}
+
+/* Section wrappers */
+.sec-light{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-bg{background:var(--bg);border-top:1px solid var(--border)}
+.sec-dark{background:var(--dark)}
+
+/* ── PROJECT HEADER ── */
+.proj-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.proj-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:6px;padding:3px 10px;margin-bottom:8px}
+.b-ship{background:#0bb68a18;color:#0bb68a;border:1px solid #0bb68a30}
+.b-dev{background:#d9770618;color:#f59e0b;border:1px solid #d9770628}
+.b-concept{background:#5b4fff18;color:var(--accent2);border:1px solid #5b4fff30}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+.proj-links{display:flex;gap:8px;flex-wrap:wrap;align-self:flex-start;margin-top:28px}
+.proj-link{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--accent);padding:6px 13px;background:var(--accent-lt);border:1px solid #c4b8ff;border-radius:8px;transition:all 0.18s;white-space:nowrap}
+.proj-link:hover{background:#ddd8ff;border-color:var(--accent)}
+.proj-link-dark{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#a594ff;padding:6px 13px;background:#ffffff08;border:1px solid #ffffff14;border-radius:8px;transition:all 0.18s;white-space:nowrap}
+.proj-link-dark:hover{background:#ffffff14;border-color:#ffffff30}
+
+/* ── QUERYMIND ── */
+.qm-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:1.5rem}
+.qm-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1.2rem}
+.qm-card-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.qm-card-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px}
+.qm-card-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.qm-flow{display:flex;align-items:center;gap:0;margin-top:1.5rem;overflow-x:auto}
+.qm-step{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;flex-shrink:0;min-width:140px}
+.qm-step-num{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1px;margin-bottom:2px}
+.qm-step-title{font-size:12px;font-weight:700;color:var(--text)}
+.qm-step-desc{font-size:11px;color:var(--text2);line-height:1.4;margin-top:2px}
+.qm-arrow{font-size:16px;color:var(--border2);padding:0 6px;flex-shrink:0}
+.qm-concept-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--accent);background:var(--accent-lt);border:1px solid #c4b8ff;border-radius:6px;padding:3px 9px;margin-top:1rem}
+
+/* ── PILATES INFOGRAPHIC ── */
+.infographic-wrap{background:linear-gradient(135deg,#1a1a2e,#1c1a38);border:1px solid #5b4fff30;border-radius:18px;overflow:hidden}
+.infog-header{padding:1.4rem 1.6rem 1rem;border-bottom:1px solid #ffffff0a}
+.infog-title{font-size:13px;font-weight:700;color:#e8e8f8;margin-bottom:3px}
+.infog-sub{font-size:12px;color:#9898b8}
+.infog-body{padding:1.4rem 1.6rem;display:flex;flex-direction:column;gap:1.4rem}
+
+/* Problem cards */
+.prob-row{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.prob-card{background:#ffffff08;border:1px solid #ffffff0e;border-radius:10px;padding:10px 12px}
+.prob-card-icon{font-size:16px;margin-bottom:5px}
+.prob-card-title{font-size:12px;font-weight:700;color:#d0d0e8;margin-bottom:3px}
+.prob-card-desc{font-size:11px;color:#9898b8;line-height:1.5}
+
+/* Value props */
+.value-row{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.val-card{background:#0bb68a14;border:1px solid #0bb68a28;border-radius:10px;padding:10px 12px}
+.val-card-title{font-size:12px;font-weight:700;color:#4effc8;margin-bottom:3px}
+.val-card-desc{font-size:11px;color:#9898b8;line-height:1.5}
+
+/* Architecture layers */
+.arch-stack{display:flex;flex-direction:column;gap:6px}
+.arch-layer{border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:12px}
+.arch-layer.customer{background:#5b4fff20;border:1px solid #5b4fff40}
+.arch-layer.intelligence{background:#0bb68a18;border:1px solid #0bb68a35}
+.arch-layer.data{background:#d9770620;border:1px solid #d9770635}
+.arch-layer.owner{background:#ffffff0e;border:1px solid #ffffff1e}
+.arch-layer-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;width:90px;flex-shrink:0}
+.arch-layer.customer .arch-layer-label{color:#c4b8ff}
+.arch-layer.intelligence .arch-layer-label{color:#4effc8}
+.arch-layer.data .arch-layer-label{color:#fcd87a}
+.arch-layer.owner .arch-layer-label{color:#b0b0c8}
+.arch-chips{display:flex;gap:6px;flex-wrap:wrap}
+.arch-chip{font-size:11px;font-weight:500;padding:3px 10px;border-radius:6px;white-space:nowrap}
+.arch-layer.customer .arch-chip{background:#5b4fff28;color:#c4b8ff;border:1px solid #5b4fff40}
+.arch-layer.intelligence .arch-chip{background:#0bb68a20;color:#4effc8;border:1px solid #0bb68a35}
+.arch-layer.data .arch-chip{background:#d9770620;color:#fcd87a;border:1px solid #d9770635}
+.arch-layer.owner .arch-chip{background:#ffffff12;color:#c0c0d8;border:1px solid #ffffff20}
+.arch-note{font-size:11px;color:#8080a8;margin-left:auto;flex-shrink:0;white-space:nowrap}
+
+/* Agentic loop */
+.loop-section-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9090b8;margin-bottom:8px}
+.agent-split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.agent-box{background:#ffffff08;border:1px solid #ffffff14;border-radius:12px;padding:1rem}
+.agent-box-title{font-size:12px;font-weight:700;color:#e0e0f0;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.agent-box-dot{width:6px;height:6px;border-radius:50%}
+.tool-list{display:flex;flex-direction:column;gap:4px}
+.tool-item{display:grid;grid-template-columns:130px 1fr;gap:8px;font-size:10px;padding:5px 8px;border-radius:6px;background:#ffffff06;border:1px solid #ffffff0e}
+.tool-name{font-weight:700;color:#a594ff;font-family:monospace;font-size:10px}
+.tool-desc{color:#9090b8;line-height:1.4}
+
+/* Request loop */
+.req-loop{display:flex;align-items:center;justify-content:space-between;gap:4px;background:#ffffff08;border:1px solid #ffffff14;border-radius:10px;padding:10px 14px;overflow-x:auto}
+.req-node{font-size:11px;font-weight:600;color:#d0d0e8;text-align:center;flex-shrink:0;min-width:70px}
+.req-node span{display:block;font-size:10px;color:#8080a8;font-weight:400;margin-top:1px}
+.req-arrow{font-size:10px;color:#7070a0;flex-shrink:0;padding:0 2px}
+
+/* Tech grid */
+.tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.tech-cell{background:#ffffff0a;border:1px solid #ffffff14;border-radius:8px;padding:7px 10px;text-align:center}
+.tech-cell-cat{font-size:10px;color:#8080a8;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.tech-cell-val{font-size:11px;font-weight:700;color:#c8c8e0}
+
+/* Design decisions */
+.decision-row{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.decision-card{background:#ffffff08;border:1px solid #ffffff14;border-radius:10px;padding:10px 12px}
+.decision-card-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a594ff;margin-bottom:3px}
+.decision-card-title{font-size:12px;font-weight:700;color:#e0e0f0;margin-bottom:3px}
+.decision-card-why{font-size:11px;color:#9898b8;line-height:1.5}
+
+/* ── CAREWAY FLOW DIAGRAM ── */
+.cw-flow-wrap{background:linear-gradient(135deg,#f8f8f5,#f2f1ed);border:1px solid var(--border);border-radius:18px;overflow:hidden}
+.cw-flow-header{padding:1.3rem 1.5rem 1rem;border-bottom:1px solid var(--border)}
+.cw-flow-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.cw-flow-sub{font-size:11px;color:var(--text3)}
+.cw-roles{display:flex;gap:8px;padding:1rem 1.5rem;border-bottom:1px solid var(--border);background:#fff}
+.cw-role{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600}
+.cw-role-dot{width:9px;height:9px;border-radius:50%}
+.cw-body{padding:1.4rem 1.5rem;overflow-x:auto}
+
+/* Flow columns */
+.cw-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:0;min-width:600px}
+.cw-col{display:flex;flex-direction:column;gap:6px;padding:0 8px}
+.cw-col:first-child{padding-left:0}
+.cw-col:last-child{padding-right:0}
+.cw-col-header{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:7px;margin-bottom:6px;text-align:center}
+.col-patient .cw-col-header{background:#e6faf4;color:var(--teal);border:1px solid #b2f0dd}
+.col-pcp    .cw-col-header{background:var(--accent-lt);color:var(--accent);border:1px solid #c4b8ff}
+.col-spec   .cw-col-header{background:#fff8e6;color:var(--amber);border:1px solid #fcd87a}
+.cw-step{border-radius:9px;padding:9px 11px;font-size:11px;line-height:1.45;position:relative}
+.cw-step-title{font-weight:700;margin-bottom:2px;font-size:11px}
+.cw-step-desc{font-size:10px;opacity:0.8}
+
+/* Role colors */
+.col-patient .cw-step{background:#e6faf4;border:1px solid #b2f0dd;color:#065f46}
+.col-pcp    .cw-step{background:var(--accent-lt);border:1px solid #c4b8ff;color:#3730a3}
+.col-spec   .cw-step{background:#fff8e6;border:1px solid #fcd87a;color:#92400e}
+
+/* Connector arrow between steps */
+.cw-divider{height:1px;background:var(--border);margin:4px 0;position:relative}
+.cw-connector-row{display:flex;align-items:center;justify-content:center;gap:4px;padding:3px 0;font-size:9px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+.cw-connector-row.shared{color:var(--text3)}
+.cw-connector-arrow{font-size:11px}
+
+/* Shared event strip */
+.cw-shared-event{background:#fff;border:1px solid var(--border);border-radius:9px;padding:8px 12px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:8px;margin:4px -8px}
+.cw-shared-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ── LEARNED ── */
+.learned-band{background:var(--dark);padding:3.5rem 1.5rem}
+.learned-inner{max-width:1120px;margin:0 auto}
+.learned-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9898b8;margin-bottom:1.2rem}
+.learned-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:1.2rem}
+.learned-card{background:var(--dark2);border:1px solid #ffffff14;border-radius:14px;padding:1.3rem}
+.learned-project{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9898b8;margin-bottom:5px}
+.learned-concept{font-size:14px;font-weight:700;color:#e8e8f8;margin-bottom:6px}
+.learned-takeaway{font-size:12px;color:#b0b0c8;line-height:1.6}
+.learned-tag{display:inline-block;font-size:10px;font-weight:700;color:#a594ff;background:#5b4fff18;border:1px solid #5b4fff28;border-radius:6px;padding:2px 8px;margin-top:8px}
+
+/* ── CTA ── */
+.cta-band{background:var(--accent);padding:3rem 1.5rem;text-align:center}
+.cta-h{font-size:clamp(20px,3.5vw,32px);font-weight:800;letter-spacing:-1px;color:#fff;margin-bottom:8px}
+.cta-sub{font-size:14px;color:rgba(255,255,255,0.72);margin-bottom:1.6rem}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--accent);padding:11px 20px;border-radius:10px;font-size:14px;font-weight:700;transition:all 0.2s}
+.btn-white:hover{transform:translateY(-1px);opacity:0.92}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.85);padding:11px 20px;border-radius:10px;font-size:14px;font-weight:500;border:1.5px solid rgba(255,255,255,0.3);transition:all 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.7);transform:translateY(-1px)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:2rem 1.5rem;border-top:1px solid #ffffff08}
+.foot-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-name{font-size:14px;font-weight:700;color:#e0e0f0}
+.foot-links{display:flex;gap:1.2rem}
+.foot-links a{font-size:13px;color:#505070;transition:color 0.2s}
+.foot-links a:hover{color:#e0e0f0}
+.foot-copy{font-size:12px;color:#404060}
+
+/* ── DIVIDERS ── */
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:1120px;margin:0 auto}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .qm-grid,.agent-split,.decision-row,.learned-grid{grid-template-columns:1fr}
+  .prob-row,.value-row,.tech-grid{grid-template-columns:1fr 1fr}
+  .page-hero-inner{grid-template-columns:1fr!important}
+}
+@media(max-width:600px){
+  .page-hero{padding:6rem 1rem 2.5rem}
+  .section{padding:2.5rem 1rem}
+  .prob-row,.value-row{grid-template-columns:1fr 1fr}
+  .tech-grid{grid-template-columns:1fr 1fr 1fr}
+  .arch-layer{flex-direction:column;align-items:flex-start;gap:6px}
+  .arch-note{margin-left:0}
+  .proj-header{flex-direction:column;gap:0.8rem}
+  .proj-links{margin-top:0}
+  .qm-flow{gap:0}
+  .req-loop{justify-content:flex-start}
+  .matrix-row{gap:7px}
+  .matrix-concept{padding:6px 10px}
+  .feat-map{grid-template-columns:1fr!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav>
+  <a href="index.html" class="nav-logo">Rushi<span>Sheth</span></a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-back">← Portfolio</a>
+    <a href="mailto:rushi.sheth@hotmail.com" class="nav-cta"><div class="pulse"></div>Get in touch</a>
+  </div>
+</nav>
+
+<!-- ══════════════════ PILLS ══════════════════ -->
+<div class="pills-wrap">
+  <div class="pills-inner">
+    <a href="#querymind" class="pill" data-section="querymind">01 · QueryMind</a>
+    <a href="#pilates" class="pill" data-section="pilates">02 · Agentic Booking</a>
+    <a href="#careway" class="pill" data-section="careway">03 · Careway</a>
+    <a href="#learned" class="pill" data-section="learned">What I Learned</a>
+  </div>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<div class="page-hero">
+  <div class="page-hero-inner" style="display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start">
+
+    <!-- LEFT: existing content -->
+    <div>
+      <div class="page-tag"><div class="page-tag-dot"></div>AI Projects · Side Work · POCs</div>
+      <h1 class="page-h1">Building in <em>AI</em></h1>
+      <p class="page-sub">Three projects, three different layers of the AI stack. Started with a single-turn LLM query. Now building agentic loops with tool registries, multi-role state machines, and human-in-the-loop workflows.</p>
+
+      <!-- Compact skills progression -->
+      <div class="matrix-row">
+        <div class="matrix-concept">
+          <span class="mc-label">Prompt engineering</span>
+          <div class="mc-dots">
+            <div class="mc-dot on-qm" title="QueryMind"></div>
+            <div class="mc-dot on-pl" title="Agentic Booking"></div>
+            <div class="mc-dot on-cw" title="Careway"></div>
+          </div>
+        </div>
+        <div class="matrix-concept">
+          <span class="mc-label">Single-turn LLM</span>
+          <div class="mc-dots">
+            <div class="mc-dot on-qm"></div>
+            <div class="mc-dot off"></div>
+            <div class="mc-dot off"></div>
+          </div>
+        </div>
+        <div class="matrix-concept">
+          <span class="mc-label">Agentic loop</span>
+          <div class="mc-dots">
+            <div class="mc-dot off"></div>
+            <div class="mc-dot on-pl"></div>
+            <div class="mc-dot on-cw"></div>
+          </div>
+        </div>
+        <div class="matrix-concept">
+          <span class="mc-label">Tool / function calling</span>
+          <div class="mc-dots">
+            <div class="mc-dot off"></div>
+            <div class="mc-dot on-pl"></div>
+            <div class="mc-dot on-cw"></div>
+          </div>
+        </div>
+        <div class="matrix-concept">
+          <span class="mc-label">RAG</span>
+          <div class="mc-dots">
+            <div class="mc-dot on-qm"></div>
+            <div class="mc-dot off"></div>
+            <div class="mc-dot on-cw"></div>
+          </div>
+        </div>
+        <div class="matrix-concept">
+          <span class="mc-label">Episodic memory</span>
+          <div class="mc-dots">
+            <div class="mc-dot off"></div>
+            <div class="mc-dot on-pl"></div>
+            <div class="mc-dot on-cw"></div>
+          </div>
+        </div>
+        <div class="matrix-concept">
+          <span class="mc-label">State machine</span>
+          <div class="mc-dots">
+            <div class="mc-dot off"></div>
+            <div class="mc-dot off"></div>
+            <div class="mc-dot on-cw"></div>
+          </div>
+        </div>
+        <div class="matrix-concept">
+          <span class="mc-label">Human-in-the-loop</span>
+          <div class="mc-dots">
+            <div class="mc-dot off"></div>
+            <div class="mc-dot off"></div>
+            <div class="mc-dot on-cw"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mc-legend">
+        <div class="mc-legend-item"><div class="mc-legend-dot" style="background:var(--accent2)"></div>QueryMind</div>
+        <div class="mc-legend-item"><div class="mc-legend-dot" style="background:var(--teal)"></div>Agentic Booking System</div>
+        <div class="mc-legend-item"><div class="mc-legend-dot" style="background:var(--amber)"></div>Careway</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: compact What I Learned cards -->
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid #ffffff18;border-radius:14px;overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid #ffffff12;background:#ffffff08">
+        <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a0a0c0">What I learned</span>
+      </div>
+
+      <!-- Card 1 -->
+      <div style="padding:13px 14px;border-bottom:1px solid #ffffff0e;background:#ffffff04;transition:background 0.18s" onmouseover="this.style.background='#ffffff0c'" onmouseout="this.style.background='#ffffff04'">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px">
+          <span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent2)">QueryMind</span>
+          <span style="font-size:10px;font-weight:600;color:#9898b8;background:#ffffff0e;border:1px solid #ffffff18;border-radius:4px;padding:1px 7px;white-space:nowrap">RAG architecture</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;color:#e0e0f0;margin-bottom:4px;line-height:1.3">Retrieval precision beats prompt quality</div>
+        <div style="font-size:11px;color:#b0b0c8;line-height:1.55">SQL accuracy lives or dies on whether the right schema chunks reach the model. Chunking strategy matters more than prompt wording.</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div style="padding:13px 14px;border-bottom:1px solid #ffffff0e;background:#ffffff04;transition:background 0.18s" onmouseover="this.style.background='#ffffff0c'" onmouseout="this.style.background='#ffffff04'">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px">
+          <span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--teal)">Agentic Booking</span>
+          <span style="font-size:10px;font-weight:600;color:#9898b8;background:#ffffff0e;border:1px solid #ffffff18;border-radius:4px;padding:1px 7px;white-space:nowrap">Tool-use design</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;color:#e0e0f0;margin-bottom:4px;line-height:1.3">Agentic means reasoned sequencing, not just automation</div>
+        <div style="font-size:11px;color:#b0b0c8;line-height:1.55">The agent decides which tool to call based on what the previous tool returned. Tool ordering is a design decision.</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div style="padding:13px 14px;background:#ffffff04;transition:background 0.18s" onmouseover="this.style.background='#ffffff0c'" onmouseout="this.style.background='#ffffff04'">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px">
+          <span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber)">Careway</span>
+          <span style="font-size:10px;font-weight:600;color:#9898b8;background:#ffffff0e;border:1px solid #ffffff18;border-radius:4px;padding:1px 7px;white-space:nowrap">Shared state</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;color:#e0e0f0;margin-bottom:4px;line-height:1.3">Multi-role state is the hardest UX problem</div>
+        <div style="font-size:11px;color:#b0b0c8;line-height:1.55">Same data, three mental models. The data design is simple. Making the UI feel coherent across all three roles is where the real work is.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ QUERYMIND ══════════════════ -->
+<div class="sec-light" id="querymind">
+<div class="section">
+  <div class="proj-header">
+    <div>
+      <div class="proj-badge b-ship"><div class="badge-dot"></div>Shipped · AI POC</div>
+      <div class="section-label">Project 01</div>
+      <h2 class="section-h2">QueryMind</h2>
+      <p class="section-sub">RAG-powered Text-to-SQL. Business users query enterprise databases in plain English — no SQL required. Built end-to-end: schema embedding, semantic retrieval, query generation and execution.</p>
+    </div>
+    <div class="proj-links">
+      <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener" class="proj-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/prd.md" target="_blank" rel="noopener" class="proj-link">↗ PRD</a>
+      <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/System%20Architecture%20v0.2.png" target="_blank" rel="noopener" class="proj-link">↗ Architecture</a>
+    </div>
+  </div>
+
+  <!-- RAG pipeline flow -->
+  <div class="qm-flow">
+    <div class="qm-step">
+      <div class="qm-step-num">01</div>
+      <div class="qm-step-title">Schema Embedding</div>
+      <div class="qm-step-desc">Tables, columns, relationships vectorised into semantic index</div>
+    </div>
+    <div class="qm-arrow">→</div>
+    <div class="qm-step">
+      <div class="qm-step-num">02</div>
+      <div class="qm-step-title">NL Query In</div>
+      <div class="qm-step-desc">"Show me top customers by revenue last quarter"</div>
+    </div>
+    <div class="qm-arrow">→</div>
+    <div class="qm-step">
+      <div class="qm-step-num">03</div>
+      <div class="qm-step-title">Semantic Retrieval</div>
+      <div class="qm-step-desc">Relevant schema chunks retrieved via vector similarity</div>
+    </div>
+    <div class="qm-arrow">→</div>
+    <div class="qm-step">
+      <div class="qm-step-num">04</div>
+      <div class="qm-step-title">Query Generation</div>
+      <div class="qm-step-desc">LLM generates SQL grounded in retrieved schema context</div>
+    </div>
+    <div class="qm-arrow">→</div>
+    <div class="qm-step">
+      <div class="qm-step-num">05</div>
+      <div class="qm-step-title">Result</div>
+      <div class="qm-step-desc">SQL executes, result returned in plain language + table</div>
+    </div>
+  </div>
+
+  <div class="qm-grid" style="margin-top:1.5rem">
+    <div class="qm-card">
+      <div class="qm-card-label">Problem</div>
+      <div class="qm-card-title">Analytics bottleneck at the SQL layer</div>
+      <div class="qm-card-desc">Business stakeholders depend on data teams for every ad-hoc query. The back-and-forth is slow; context gets lost in translation. QueryMind removes that dependency — anyone who can describe a question can get the answer.</div>
+    </div>
+    <div class="qm-card">
+      <div class="qm-card-label">Architecture decision</div>
+      <div class="qm-card-title">RAG over fine-tuning — schema grounding matters more than model size</div>
+      <div class="qm-card-desc">SQL accuracy depends on knowing the exact schema, not just SQL syntax. RAG retrieves the right tables and columns at query time. Fine-tuning would bake in a static schema — useless for evolving enterprise databases.</div>
+    </div>
+    <div class="qm-card">
+      <div class="qm-card-label">Commercial lens</div>
+      <div class="qm-card-title">Directly applicable to my day job</div>
+      <div class="qm-card-desc">Built this to solve real friction from commercial analytics work — stakeholders asking the same data questions repeatedly. The same architecture works for any enterprise with a Snowflake, Databricks, or Supabase backend.</div>
+    </div>
+    <div class="qm-card">
+      <div class="qm-card-label">What I learned</div>
+      <div class="qm-card-title">Prompt engineering is only 20% of the problem</div>
+      <div class="qm-card-desc">Schema design, embedding chunking strategy, and retrieval precision determine SQL quality far more than prompt wording. The hardest part was making the retrieval step return <em>exactly</em> the right schema chunk — not just a relevant one.</div>
+    </div>
+  </div>
+
+  <div class="qm-concept-tag">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    New concepts: Single-turn LLM · RAG · Vector embeddings · Semantic retrieval
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ PILATES ══════════════════ -->
+<div class="sec-dark" id="pilates">
+<div class="section">
+  <div class="proj-header">
+    <div>
+      <div class="proj-badge b-dev" style="margin-bottom:8px"><div class="badge-dot"></div>In Dev · v0.2</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7878a8;margin-bottom:0.5rem">Project 02</div>
+      <h2 style="font-size:clamp(20px,2.8vw,30px);font-weight:800;letter-spacing:-1px;color:#e8e8f8;margin-bottom:0.4rem">Agentic Booking System</h2>
+      <p style="font-size:14px;color:#7878a0;max-width:560px;line-height:1.7;margin-bottom:0">Built for single-owner professional service businesses — Pilates studios, tutoring centers, clinics. WhatsApp-native scheduling agent that handles bookings, renewals, and owner follow-ups autonomously. No app. No portal. Just a message.</p>
+    </div>
+  </div>
+
+  <!-- Feature map — what this app does, by persona -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid #ffffff14;border-radius:14px;overflow:hidden;margin-bottom:1.2rem;background:#ffffff08">
+
+    <!-- Customer column -->
+    <div style="background:#1e2228;padding:1rem 1.1rem">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:0.9rem;padding-bottom:0.7rem;border-bottom:1px solid #0bb68a30">
+        <div style="width:8px;height:8px;border-radius:50%;background:#0bb68a;flex-shrink:0"></div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0bb68a">Customer</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#ffffff08;border:1px solid #0bb68a25;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#6effd8;margin-bottom:3px">Book in plain language</div>
+          <div style="font-size:11px;color:#a0b8b0;line-height:1.5">"Book me something this week" — agent picks the best slot based on history</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #0bb68a25;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#6effd8;margin-bottom:3px">Zero install</div>
+          <div style="font-size:11px;color:#a0b8b0;line-height:1.5">Lives inside WhatsApp — no app download, no portal login, no new habit</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #0bb68a25;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#6effd8;margin-bottom:3px">Session awareness</div>
+          <div style="font-size:11px;color:#a0b8b0;line-height:1.5">Agent knows sessions remaining before it tries to book — handles renewals proactively</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #0bb68a25;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#6effd8;margin-bottom:3px">Auto-waitlist</div>
+          <div style="font-size:11px;color:#a0b8b0;line-height:1.5">If no slot fits, customer is queued by priority — notified when one opens</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Owner column -->
+    <div style="background:#1e1e28;padding:1rem 1.1rem;border-left:1px solid #ffffff0a;border-right:1px solid #ffffff0a">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:0.9rem;padding-bottom:0.7rem;border-bottom:1px solid #5b4fff30">
+        <div style="width:8px;height:8px;border-radius:50%;background:#a594ff;flex-shrink:0"></div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a594ff">Owner</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#ffffff08;border:1px solid #5b4fff25;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#c4b8ff;margin-bottom:3px">Morning brief</div>
+          <div style="font-size:11px;color:#b0acd0;line-height:1.5">One prioritised action list every day — who to call, who to chase, who's at risk</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #5b4fff25;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#c4b8ff;margin-bottom:3px">Payment alerts</div>
+          <div style="font-size:11px;color:#b0acd0;line-height:1.5">Overdue customers surfaced automatically, ranked by days outstanding</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #5b4fff25;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#c4b8ff;margin-bottom:3px">Expiry warnings</div>
+          <div style="font-size:11px;color:#b0acd0;line-height:1.5">Plans flagged before they lapse — reach out before the customer disappears</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #5b4fff25;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#c4b8ff;margin-bottom:3px">Churn signals</div>
+          <div style="font-size:11px;color:#b0acd0;line-height:1.5">Attendance drop-offs flagged before they become cancellations</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- System column -->
+    <div style="background:#221e18;padding:1rem 1.1rem">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:0.9rem;padding-bottom:0.7rem;border-bottom:1px solid #d9770630">
+        <div style="width:8px;height:8px;border-radius:50%;background:#f59e0b;flex-shrink:0"></div>
+        <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#f59e0b">System</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#ffffff08;border:1px solid #d9770625;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#fcd87a;margin-bottom:3px">Always on</div>
+          <div style="font-size:11px;color:#c8b888;line-height:1.5">Bookings handled 24/7 with no owner involvement — nights and weekends included</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #d9770625;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#fcd87a;margin-bottom:3px">Auto-sync</div>
+          <div style="font-size:11px;color:#c8b888;line-height:1.5">Every booking written to DB, Sheets, and S3 — 2-tier backup, nothing lost</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #d9770625;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#fcd87a;margin-bottom:3px">Security enforced</div>
+          <div style="font-size:11px;color:#c8b888;line-height:1.5">Access rules live at the database layer — not application code, so they can't be bypassed</div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #d9770625;border-radius:8px;padding:8px 10px">
+          <div style="font-size:11px;font-weight:700;color:#fcd87a;margin-bottom:3px">Service-agnostic</div>
+          <div style="font-size:11px;color:#c8b888;line-height:1.5">Template works for any session-based service — yoga, tutoring, clinics, coaching</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="infographic-wrap">
+    <div class="infog-header">
+      <div class="infog-title">System Overview — Agentic Scheduling</div>
+      <div class="infog-sub">WhatsApp-native · LLM-orchestrated · Production-grade</div>
+    </div>
+
+    <div class="infog-body">
+
+      <!-- Problem -->
+      <div>
+        <div class="loop-section-label">01 — Problem space</div>
+        <div class="prob-row">
+          <div class="prob-card">
+            <div class="prob-card-title">Booking friction</div>
+            <div class="prob-card-desc">Manual WhatsApp threads lose class revenue daily with no structured follow-up</div>
+          </div>
+          <div class="prob-card">
+            <div class="prob-card-title">No plan guardrails</div>
+            <div class="prob-card-desc">Session limits and expiry go unenforced without automation</div>
+          </div>
+          <div class="prob-card">
+            <div class="prob-card-title">Owner admin burden</div>
+            <div class="prob-card-desc">Follow-ups, waitlist, check-ins consume 2–3 hrs of owner time daily</div>
+          </div>
+          <div class="prob-card">
+            <div class="prob-card-title">Prohibitive tooling</div>
+            <div class="prob-card-desc">Custom apps need months and large budgets. This doesn't.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Value props -->
+      <div>
+        <div class="loop-section-label">02 — Value proposition</div>
+        <div class="value-row">
+          <div class="val-card">
+            <div class="val-card-title">Zero install</div>
+            <div class="val-card-desc">Runs inside WhatsApp — customers use the app they already have</div>
+          </div>
+          <div class="val-card">
+            <div class="val-card-title">Always on</div>
+            <div class="val-card-desc">Autonomous booking without owner involvement</div>
+          </div>
+          <div class="val-card">
+            <div class="val-card-title">Customisable</div>
+            <div class="val-card-desc">Plans, rules, extensions — all configurable per studio</div>
+          </div>
+          <div class="val-card">
+            <div class="val-card-title">Service-agnostic</div>
+            <div class="val-card-desc">Template applies to yoga, tutoring, clinics, any session-based service</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System architecture -->
+      <div>
+        <div class="loop-section-label">03 — System architecture</div>
+        <div class="arch-stack">
+          <div class="arch-layer customer">
+            <span class="arch-layer-label">Customer</span>
+            <div class="arch-chips">
+              <span class="arch-chip">WhatsApp</span>
+              <span class="arch-chip">Slot UI (HTML mobile)</span>
+              <span class="arch-chip">OTP Auth</span>
+            </div>
+            <span class="arch-note">zero install · existing habit</span>
+          </div>
+          <div class="arch-layer intelligence">
+            <span class="arch-layer-label">Intelligence</span>
+            <div class="arch-chips">
+              <span class="arch-chip">Claude Haiku</span>
+              <span class="arch-chip">agent_loop.py</span>
+              <span class="arch-chip">n8n workflows</span>
+            </div>
+            <span class="arch-note">orchestrator + tool-use loop</span>
+          </div>
+          <div class="arch-layer data">
+            <span class="arch-layer-label">Data</span>
+            <div class="arch-chips">
+              <span class="arch-chip">Supabase PG</span>
+              <span class="arch-chip">Google Sheets</span>
+              <span class="arch-chip">AWS S3</span>
+            </div>
+            <span class="arch-note">primary + live sync + backup</span>
+          </div>
+          <div class="arch-layer owner">
+            <span class="arch-layer-label">Owner</span>
+            <div class="arch-chips">
+              <span class="arch-chip">React Dashboard</span>
+              <span class="arch-chip">Morning Brief</span>
+              <span class="arch-chip">NL Query</span>
+            </div>
+            <span class="arch-note">Claude text-to-SQL + Vercel realtime</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agentic tool-use loops -->
+      <div>
+        <div class="loop-section-label">04 — Agentic tool-use loops</div>
+        <div class="agent-split">
+          <div class="agent-box">
+            <div class="agent-box-title">
+              <div class="agent-box-dot" style="background:#a594ff"></div>
+              Customer agent
+            </div>
+            <div style="font-size:12px;color:#8080a8;line-height:1.65">Handles inbound booking requests autonomously. Draws on a set of tools covering plan validation, availability, preferences, and booking confirmation — deciding which to call in what order based on what it learns at each step. Customer messages once; agent handles the rest.</div>
+          </div>
+          <div class="agent-box">
+            <div class="agent-box-title">
+              <div class="agent-box-dot" style="background:#0bb68a"></div>
+              Owner agent
+            </div>
+            <div style="font-size:12px;color:#8080a8;line-height:1.65">Synthesises the owner's daily action queue across payments, renewals, attendance drop-offs, and waitlist openings. Uses a set of data tools to gather signals from multiple sources, then produces a single prioritised brief — ranked by urgency, with recommended next action per item.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End-to-end request loop -->
+      <div>
+        <div class="loop-section-label">05 — End-to-end request loop</div>
+        <div class="req-loop">
+          <div class="req-node">Customer<span>WhatsApp msg</span></div>
+          <div class="req-arrow">→</div>
+          <div class="req-node">Twilio<span>webhook</span></div>
+          <div class="req-arrow">→</div>
+          <div class="req-node">n8n<span>router</span></div>
+          <div class="req-arrow">→</div>
+          <div class="req-node">Claude Haiku<span>intent parse</span></div>
+          <div class="req-arrow">→</div>
+          <div class="req-node">Tool-use loop<span>get_plan → check_slot</span></div>
+          <div class="req-arrow">→</div>
+          <div class="req-node">Supabase<span>RLS enforced</span></div>
+          <div class="req-arrow">→</div>
+          <div class="req-node">Sheets + S3<span>2-tier backup</span></div>
+          <div class="req-arrow">→</div>
+          <div class="req-node">Confirmation<span>send_whatsapp()</span></div>
+        </div>
+      </div>
+
+      <!-- Tech stack -->
+      <div>
+        <div class="loop-section-label">06 — Tech stack</div>
+        <div class="tech-grid">
+          <div class="tech-cell"><div class="tech-cell-cat">Intelligence</div><div class="tech-cell-val">Claude Haiku</div></div>
+          <div class="tech-cell"><div class="tech-cell-cat">Data</div><div class="tech-cell-val">Supabase PG</div></div>
+          <div class="tech-cell"><div class="tech-cell-cat">Messaging</div><div class="tech-cell-val">Twilio / WA</div></div>
+          <div class="tech-cell"><div class="tech-cell-cat">Orchestration</div><div class="tech-cell-val">n8n + Azure Fn</div></div>
+          <div class="tech-cell"><div class="tech-cell-cat">Frontend</div><div class="tech-cell-val">React + Vercel</div></div>
+          <div class="tech-cell"><div class="tech-cell-cat">Cloud</div><div class="tech-cell-val">AWS S3 + SSM</div></div>
+        </div>
+      </div>
+
+      <!-- Key design decisions -->
+      <div>
+        <div class="loop-section-label">07 — Key design decisions</div>
+        <div class="decision-row">
+          <div class="decision-card">
+            <div class="decision-card-label">Identity</div>
+            <div class="decision-card-title">OTP via WhatsApp</div>
+            <div class="decision-card-why">Phone as identity — zero friction, no passwords, no separate login</div>
+          </div>
+          <div class="decision-card">
+            <div class="decision-card-label">Cost</div>
+            <div class="decision-card-title">n8n self-hosted</div>
+            <div class="decision-card-why">No per-execution cost, full data sovereignty, no vendor lock-in</div>
+          </div>
+          <div class="decision-card">
+            <div class="decision-card-label">Security</div>
+            <div class="decision-card-title">RLS at DB layer</div>
+            <div class="decision-card-why">Security enforced by Postgres, not application code — survives any layer failure</div>
+          </div>
+          <div class="decision-card">
+            <div class="decision-card-label">Model choice</div>
+            <div class="decision-card-title">Haiku over Sonnet</div>
+            <div class="decision-card-why">Right-sized for tool-loop tasks — fast, low token burn, still reasons well</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /infog-body -->
+  </div><!-- /infographic-wrap -->
+
+  <div style="margin-top:1rem;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--teal);background:#0bb68a14;border:1px solid #0bb68a28;border-radius:6px;padding:4px 11px">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    New concepts: Agentic loop · Tool/function calling · Episodic memory · Multi-source synthesis
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════ CAREWAY ══════════════════ -->
+<div class="sec-light" id="careway">
+<div class="section">
+  <div class="proj-header">
+    <div>
+      <div class="proj-badge b-concept"><div class="badge-dot"></div>Design · v6 Built</div>
+      <div class="section-label">Project 03</div>
+      <h2 class="section-h2">Careway</h2>
+      <p class="section-sub">Clinical pathway coordination for chronic disease management. One platform. Three roles — Patient, PCP, Specialist — all operating on the same live pathway, each seeing exactly what they need to act.</p>
+    </div>
+  </div>
+
+  <!-- INFOGRAPHIC -->
+  <div style="background:var(--bg);border:1px solid var(--border);border-radius:18px;overflow:hidden">
+
+    <!-- Header row -->
+    <div style="background:#fff;padding:1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Careway — Clinical Pathway Coordination Platform</div>
+        <div style="font-size:11px;color:var(--text3)">6 design iterations · 3 roles · shared live state · agentic coordinator layer planned</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--teal)"><div style="width:8px;height:8px;border-radius:50%;background:var(--teal)"></div>Patient</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--accent)"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></div>PCP</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--amber)"><div style="width:8px;height:8px;border-radius:50%;background:var(--amber)"></div>Specialist</div>
+      </div>
+    </div>
+
+    <!-- Row 1: The problem -->
+    <div style="padding:1.2rem 1.4rem;border-bottom:1px solid var(--border);background:#fff">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:10px">The problem Careway solves</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:11px 13px">
+          <div style="font-size:12px;font-weight:700;color:#b91c1c;margin-bottom:3px">Fragmented pathways</div>
+          <div style="font-size:11px;color:#7f1d1d;line-height:1.5">PCP builds a care plan. Specialist overrides it. Patient sees neither. No one has the full picture.</div>
+        </div>
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:11px 13px">
+          <div style="font-size:12px;font-weight:700;color:#b91c1c;margin-bottom:3px">Manual coordination</div>
+          <div style="font-size:11px;color:#7f1d1d;line-height:1.5">Walkout summaries are verbal or faxed. Overrides happen without documented reasoning. Accountability lives nowhere.</div>
+        </div>
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:11px 13px">
+          <div style="font-size:12px;font-weight:700;color:#b91c1c;margin-bottom:3px">Coverage blind spots</div>
+          <div style="font-size:11px;color:#7f1d1d;line-height:1.5">HCPs make drug decisions without knowing the patient's insurance coverage — leading to PA delays and patient drop-off.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Three role views -->
+    <div style="padding:1.2rem 1.4rem;border-bottom:1px solid var(--border)">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:10px">What each role sees — same data, different lens</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+
+        <!-- Patient card -->
+        <div style="background:#e6faf4;border:1px solid #b2f0dd;border-radius:12px;overflow:hidden">
+          <div style="background:#0bb68a;padding:8px 12px">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:1px">Patient view</div>
+            <div style="font-size:12px;font-weight:700;color:#fff">Sarah M.</div>
+          </div>
+          <div style="padding:10px 12px;display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:11px;color:#065f46;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#0bb68a;margin-bottom:1px">My Pathway</strong>Merged steps from PCP + Specialist in plain language. No clinical jargon. "Your next step" always visible at top.</div>
+            <div style="font-size:11px;color:#065f46;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#0bb68a;margin-bottom:1px">Medications</strong>Active meds with prescribing doctor + PA approval status. Knows who prescribed what.</div>
+            <div style="font-size:11px;color:#065f46;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#0bb68a;margin-bottom:1px">Daily Check-in</strong>Energy, symptoms, weight, BP — all logged and visible to care team.</div>
+            <div style="font-size:11px;color:#065f46;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#0bb68a;margin-bottom:1px">Walkout Summary</strong>Appears after PCP sends it — plain-language recap of the visit.</div>
+          </div>
+        </div>
+
+        <!-- PCP card -->
+        <div style="background:var(--accent-lt);border:1px solid #c4b8ff;border-radius:12px;overflow:hidden">
+          <div style="background:var(--accent);padding:8px 12px">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:1px">PCP view</div>
+            <div style="font-size:12px;font-weight:700;color:#fff">Dr. Kim</div>
+          </div>
+          <div style="padding:10px 12px;display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:11px;color:#3730a3;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--accent);margin-bottom:1px">Coverage sidebar (always visible)</strong>Insurance summary + per-drug PA status. Never tab-switches to check coverage at point of drug decision.</div>
+            <div style="font-size:11px;color:#3730a3;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--accent);margin-bottom:1px">Pathway builder</strong>Load ICD-10 → standard pathway loads. Add/remove/restore steps. Drug switcher updates sidebar live.</div>
+            <div style="font-size:11px;color:#3730a3;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--accent);margin-bottom:1px">Lab sparklines</strong>HbA1c, LDL, Weight, Fasting Glucose — trend lines in-visit.</div>
+            <div style="font-size:11px;color:#3730a3;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--accent);margin-bottom:1px">Walkout builder</strong>Auto-generated from pathway state → "Send to patient" updates Sarah's view live.</div>
+          </div>
+        </div>
+
+        <!-- Specialist card -->
+        <div style="background:#fff8e6;border:1px solid #fcd87a;border-radius:12px;overflow:hidden">
+          <div style="background:var(--amber);padding:8px 12px">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:1px">Specialist view</div>
+            <div style="font-size:12px;font-weight:700;color:#fff">Dr. Ramos</div>
+          </div>
+          <div style="padding:10px 12px;display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:11px;color:#92400e;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--amber);margin-bottom:1px">PCP pathway (read-only)</strong>Full PCP pathway visible. "Override" button per step — reason required, logged permanently.</div>
+            <div style="font-size:11px;color:#92400e;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--amber);margin-bottom:1px">My Steps</strong>Specialist-owned additions. Amber coverage sidebar to distinguish from PCP view.</div>
+            <div style="font-size:11px;color:#92400e;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--amber);margin-bottom:1px">Unified pathway</strong>Merged PCP + specialist steps. Overridden steps struck through with ⚡ reason shown.</div>
+            <div style="font-size:11px;color:#92400e;line-height:1.45"><strong style="display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--amber);margin-bottom:1px">Change log</strong>Both HCPs color-coded — full audit trail. Confidence signal fires if same step edited 3+ times.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Row 3: Key features strip -->
+    <div style="padding:1.2rem 1.4rem;border-bottom:1px solid var(--border);background:#fff">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Key design decisions across 6 iterations</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+        <div style="border-left:3px solid var(--teal);padding:7px 10px;background:var(--bg)">
+          <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px">Patient empathy first</div>
+          <div style="font-size:10px;color:var(--text2);line-height:1.4">Plain language throughout. "You're not alone in this." Coverage sidebar never patient-facing.</div>
+        </div>
+        <div style="border-left:3px solid var(--accent);padding:7px 10px;background:var(--bg)">
+          <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px">Coverage at point of decision</div>
+          <div style="font-size:10px;color:var(--text2);line-height:1.4">Sidebar always visible — HCP never has to tab-switch during a visit to check PA status or formulary.</div>
+        </div>
+        <div style="border-left:3px solid var(--amber);padding:7px 10px;background:var(--bg)">
+          <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px">Accountability without friction</div>
+          <div style="font-size:10px;color:var(--text2);line-height:1.4">Override requires a reason. Confidence signal on repeated edits. Every action timestamped and attributed.</div>
+        </div>
+        <div style="border-left:3px solid var(--text3);padding:7px 10px;background:var(--bg)">
+          <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px">One truth, multiple lenses</div>
+          <div style="font-size:10px;color:var(--text2);line-height:1.4">Same live pathway data. Patient sees merged plain-language view. HCPs see attributed steps. No duplication.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: AI layer planned -->
+    <div style="padding:1.2rem 1.4rem;background:linear-gradient(135deg,#1e1e30,#1c1a38)">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7878a8;margin-bottom:10px">Agentic coordinator layer — planned</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="background:#ffffff08;border:1px solid #ffffff0e;border-radius:10px;padding:11px 13px">
+          <div style="font-size:11px;font-weight:700;color:#c0c0d8;margin-bottom:5px">Pre-call brief on demand</div>
+          <div style="font-size:10px;color:#6060a0;line-height:1.5;margin-bottom:6px">Coordinator asks: <span style="color:#a594ff;font-style:italic">"Prep me for my 2pm call with patient X"</span></div>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:10px;color:#7070a8;display:flex;gap:5px;align-items:flex-start"><span style="color:#5b4fff;flex-shrink:0">→</span>Pulls pathway position + overdue steps</div>
+            <div style="font-size:10px;color:#7070a8;display:flex;gap:5px;align-items:flex-start"><span style="color:#5b4fff;flex-shrink:0">→</span>Checks last contact note</div>
+            <div style="font-size:10px;color:#7070a8;display:flex;gap:5px;align-items:flex-start"><span style="color:#5b4fff;flex-shrink:0">→</span>Drafts brief + 3 ranked outreach actions</div>
+          </div>
+        </div>
+        <div style="background:#ffffff08;border:1px solid #ffffff0e;border-radius:10px;padding:11px 13px">
+          <div style="font-size:11px;font-weight:700;color:#c0c0d8;margin-bottom:5px">Autonomous morning outreach queue</div>
+          <div style="font-size:10px;color:#6060a0;line-height:1.5;margin-bottom:6px">Every morning, agent decides which patients need outreach — drafts personalized messages — waits for coordinator approval — then sends.</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:4px">
+            <div style="font-size:10px;font-weight:600;color:#0bb68a;background:#0bb68a14;border:1px solid #0bb68a28;border-radius:4px;padding:2px 7px">Human-in-the-loop</div>
+            <div style="font-size:10px;color:#404060">approval before every send</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /infographic -->
+
+  <div style="margin-top:1rem;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--amber);background:#d9770614;border:1px solid #d9770630;border-radius:6px;padding:4px 11px">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    New concepts: State machine · Human-in-the-loop · Multi-role shared state · Semantic RAG (coordinator agent)
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════ CTA ══════════════════ -->
+<div class="cta-band">
+  <div style="max-width:520px;margin:0 auto">
+    <div class="cta-h">Interested in what I'm building?</div>
+    <div class="cta-sub">Happy to walk through any of these in a conversation — the architecture decisions, what worked, what didn't.</div>
+    <div class="cta-btns">
+      <a href="mailto:rushi.sheth@hotmail.com" class="btn-white">✉ Get in touch</a>
+      <a href="index.html" class="btn-ghost">← Back to portfolio</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-name">Rushi Sheth</div>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/rushissheth/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:rushi.sheth@hotmail.com">Email</a>
+    </div>
+    <div class="foot-copy">© 2026 · Built with intent.</div>
+  </div>
+</footer>
+
+<script>
+/* ── Pill active state on scroll ── */
+const sections = ['querymind','pilates','careway','learned'];
+const pills = document.querySelectorAll('.pill');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY + 120;
+  let cur = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= y) cur = id;
+  });
+  pills.forEach(p => {
+    p.classList.toggle('active', p.getAttribute('data-section') === cur);
+  });
+});
+
+/* ── Smooth scroll ── */
+pills.forEach(pill => {
+  pill.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.getElementById(pill.getAttribute('data-section'));
+    if (target) window.scrollTo({ top: target.offsetTop - 110, behavior: 'smooth' });
+  });
+});
+
+/* ── GA events ── */
+document.querySelectorAll('a[href^="http"], a[href^="mailto"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'outbound_link_click', {
+      link_url: link.href,
+      link_text: link.textContent.trim(),
+      page: 'building-in-ai'
+    });
+  });
+});
+</script>
+</body>
+</html>
