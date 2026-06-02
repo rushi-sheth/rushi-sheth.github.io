@@ -245,6 +245,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   .profile-img img{border-radius:14px}
   .qm-card{display:none}
   .impact-groups{grid-template-columns:1fr}
+  .ai-workflow-grid{grid-template-columns:1fr 1fr!important}
   .loop-grid{grid-template-columns:1fr 1fr}
   .dual-customer{grid-template-columns:1fr;gap:10px}
   .dual-mid{display:none}
@@ -303,7 +304,10 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 
 <nav>
   <div class="nav-logo">Rushi<span>Sheth</span></div>
-  <a href="#contact" class="nav-cta"><div class="pulse"></div>rushi.ai</a>
+  <div style="display:flex;align-items:center;gap:10px">
+    <a href="building-in-ai.html" style="font-size:13px;font-weight:600;color:var(--accent);padding:6px 13px;border:1px solid #c4b8ff;border-radius:8px;background:var(--accent-lt);transition:all 0.18s;white-space:nowrap" onmouseover="this.style.background='#ddd8ff'" onmouseout="this.style.background='var(--accent-lt)'">✦ Building in AI</a>
+    <a href="mailto:rushi.sheth@hotmail.com" class="nav-cta"><div class="pulse"></div>Get in touch</a>
+  </div>
 </nav>
 
 <div class="pills-wrap" id="pills">
@@ -314,6 +318,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
     <a href="#loop" class="pill" data-short="Loop">Value Loop</a>
     <a href="#skills" class="pill" data-short="Toolkit">Toolkit</a>
     <a href="#about" class="pill" data-short="About">Background</a>
+    <a href="building-in-ai.html" class="pill" data-short="AI Lab" style="border-color:#5b4fff60;color:#a594ff">✦ Building in AI</a>
   </div>
 </div>
 
@@ -327,17 +332,17 @@ footer{background:var(--dark);padding:2rem 1.5rem}
     <div class="hero-glance">
       <div class="glance-row">
         <span class="glance-label">What I do</span>
-        <span class="glance-val">Data infrastructure → ML models → commercial insight → GTM execution</span>
+        <span class="glance-val">Data infrastructure → ML/AI models → LLM workflows → clinical and commercial impact</span>
       </div>
       <div class="glance-divider"></div>
       <div class="glance-row">
         <span class="glance-label">Where</span>
-        <span class="glance-val">Wherever longitudinal behavior at scale drives commercial decisions</span>
+        <span class="glance-val">Wherever longitudinal health or behavior data at scale drives commercial decisions</span>
       </div>
       <div class="glance-divider"></div>
       <div class="glance-row">
         <span class="glance-label">Who I serve</span>
-        <span class="glance-val"><strong>Sales · Marketing · Supply Chain</strong> — translating data into decisions each function can act on</span>
+        <span class="glance-val"><strong>Commercial · Clinical Ops · Product</strong> — turning health and behavioral data into decisions each function can act on</span>
       </div>
       <div class="glance-divider"></div>
       <div class="glance-row">
@@ -346,8 +351,8 @@ footer{background:var(--dark);padding:2rem 1.5rem}
       </div>
     </div>
 
-    <p class="hero-sub">8+ years going from raw data to revenue — building pipelines, models, and the commercial systems that turn signal into market action.</p>
-    <p class="hero-sub">The lens applies anywhere people behavior drives decisions — pharma, logistics, e-commerce, digital health. Same infrastructure. Different domain.</p>
+    <p class="hero-sub">8+ years turning complex health and commercial data into revenue — building pipelines, ML models, and AI workflows that move from raw signal to market action.</p>
+    <p class="hero-sub">The lens applies anywhere longitudinal health or behavioral data drives decisions — pharma, healthtech SaaS, digital health, e-commerce. Same infrastructure. Different domain.</p>
 
     <!-- Mobile QueryMind block -->
     <div class="mob-qm">
@@ -463,6 +468,7 @@ footer{background:var(--dark);padding:2rem 1.5rem}
           <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">3%</em> incremental sales</div><div class="imp-desc">CRM analytics reallocated field capacity, creating 3% incremental sales.</div></div>
           <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">60M</em> patient TAM mapped</div><div class="imp-desc">Productized a 60M-patient market map with funnel, growth, and segmentation views informing commercial strategy.</div></div>
           <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">Omnichannel</em> analytics</div><div class="imp-desc">Touchpoint attribution model identifying highest-reach and highest-conversion channels across the media mix.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#a594ff">Coverage cadence</em> insight</div><div class="imp-desc">Cohort analysis revealed call density predicts provider activation — 44% of activated providers reached meaningful depth only with 9+ months of sustained monthly engagement.</div></div>
         </div>
       </div>
       <div class="imp-group">
@@ -478,10 +484,48 @@ footer{background:var(--dark);padding:2rem 1.5rem}
         <div class="imp-group-header"><div class="imp-group-dot" style="background:#f59e0b"></div><div class="imp-group-title">AI / ML &amp; Optimization</div></div>
         <div class="imp-cells">
           <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">Enterprise Gen AI Pilot</em></div><div class="imp-desc">Brand-level LLM deployment — translating commercial requirements into technical scope, validating semantic schemas, driving UAT.</div></div>
-          <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">QueryMind</em> (Personal POC)</div><div class="imp-desc">RAG-powered, natural-language analytics over enterprise data — business users query databases without writing SQL.</div></div>
+          <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">Databricks AI</em> workflow</div><div class="imp-desc">Embedded AI-assisted debugging and prompt frameworks across a 7-analyst team — accelerating onboarding and reducing manual reporting time.</div></div>
           <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">Customer at risk Classifier</em></div><div class="imp-desc">ML classifier surfaced switch-risk customers using longitudinal customer behavior.</div></div>
           <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">$12M</em> media evaluated</div><div class="imp-desc">MMM quantified omnichannel ROI, informing $12M quarterly media investments.</div></div>
           <div class="imp-cell"><div class="imp-num"><em style="color:#f59e0b">7%</em> supply chain savings</div><div class="imp-desc">CPLEX-based optimization reducing transportation costs by 7% across 500 customers.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI + Workflows — 4th section -->
+    <div style="margin-top:20px;background:linear-gradient(135deg,#1e1e30,#1c1a38);border:1px solid #5b4fff30;border-radius:14px;overflow:hidden">
+      <div style="padding:12px 16px;border-bottom:1px solid #ffffff0a;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:8px;height:8px;border-radius:50%;background:#a594ff"></div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8888b0">AI + Workflows</span>
+          <span style="font-size:11px;color:#404060;margin-left:4px">· Building the next layer</span>
+        </div>
+        <a href="building-in-ai.html" style="font-size:11px;font-weight:600;color:#a594ff;background:#ffffff08;border:1px solid #ffffff18;border-radius:6px;padding:4px 11px;white-space:nowrap;transition:all 0.18s" onmouseover="this.style.background='#ffffff14'" onmouseout="this.style.background='#ffffff08'">Full project writeups →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
+        <div style="padding:13px 14px;border-right:1px solid #ffffff07">
+          <div style="font-size:11px;font-weight:700;color:#a594ff;margin-bottom:4px">QueryMind</div>
+          <div style="font-size:11px;color:#6060a0;line-height:1.5;margin-bottom:8px">RAG + Text-to-SQL app. Natural language over enterprise databases. dbt semantic layer, LangChain, vector store, 30-question eval suite.</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <a href="https://github.com/rushi-sheth/querymind" target="_blank" rel="noopener" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#a594ff'" onmouseout="this.color='#7070a8'">↗ GitHub</a>
+            <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/prd.md" target="_blank" rel="noopener" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#a594ff'" onmouseout="this.color='#7070a8'">↗ PRD</a>
+            <a href="https://github.com/rushi-sheth/querymind/blob/main/docs/System%20Architecture%20v0.2.png" target="_blank" rel="noopener" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#a594ff'" onmouseout="this.color='#7070a8'">↗ Architecture</a>
+          </div>
+        </div>
+        <div style="padding:13px 14px;border-right:1px solid #ffffff07">
+          <div style="font-size:11px;font-weight:700;color:#0bb68a;margin-bottom:4px">Agentic Booking System</div>
+          <div style="font-size:11px;color:#6060a0;line-height:1.5;margin-bottom:8px">WhatsApp-native scheduling agent for service businesses. Claude tool-use loop: check plan → check availability → match preferences → book → confirm. No back-and-forth.</div>
+          <a href="building-in-ai.html#pilates" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#0bb68a'" onmouseout="this.color='#7070a8'">↗ Full writeup + system diagram</a>
+        </div>
+        <div style="padding:13px 14px;border-right:1px solid #ffffff07">
+          <div style="font-size:11px;font-weight:700;color:#f59e0b;margin-bottom:4px">Agentic HCP Targeting</div>
+          <div style="font-size:11px;color:#6060a0;line-height:1.5;margin-bottom:8px">Concept: multi-agent LLM workflow ingesting unstructured market studies to dynamically recalibrate provider target tiering — replacing manual, infrequent recalibration.</div>
+          <a href="building-in-ai.html" style="font-size:10px;font-weight:600;color:#7070a8">↗ Concept overview</a>
+        </div>
+        <div style="padding:13px 14px">
+          <div style="font-size:11px;font-weight:700;color:#a594ff;margin-bottom:4px">Careway</div>
+          <div style="font-size:11px;color:#6060a0;line-height:1.5;margin-bottom:8px">Clinical pathway coordination — Patient, PCP, Specialist on shared live data. Designed through 6 iterations. Agentic layer: coordinator gets a pre-call brief synthesized across pathway, overdue items, and outreach queue.</div>
+          <a href="building-in-ai.html#careway" style="font-size:10px;font-weight:600;color:#7070a8;transition:color 0.18s" onmouseover="this.color='#a594ff'" onmouseout="this.color='#7070a8'">↗ App design + flow</a>
         </div>
       </div>
     </div>
@@ -552,7 +596,12 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 <div class="ai-wrap" id="ai">
 <div class="ai-section">
   <div class="ai-label">AI + Workflows</div>
-  <div class="ai-h2">Building the next layer.</div>
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.3rem">
+    <div class="ai-h2" style="margin-bottom:0">Building the next layer.</div>
+    <a href="building-in-ai.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#a594ff;padding:7px 14px;background:#ffffff08;border:1px solid #ffffff18;border-radius:8px;transition:all 0.18s;white-space:nowrap;flex-shrink:0;margin-top:4px" onmouseover="this.style.background='#ffffff14'" onmouseout="this.style.background='#ffffff08'">
+      ✦ Full project writeups →
+    </a>
+  </div>
   <div class="ai-sub">Shipped product and in-flight concepts at the intersection of AI, GTM, and commercial operations.</div>
   <div class="ai-grid">
     <div class="ai-card featured">
@@ -589,15 +638,27 @@ footer{background:var(--dark);padding:2rem 1.5rem}
         <div class="prog-row"><div class="prog-icon"></div>Memory &amp; context agent</div>
       </div>
     </div>
-    <div class="ai-card">
-      <div class="badge b-concept"><div class="badge-dot"></div>Concept 01</div>
-      <div class="ai-card-title">Agentic HCP Targeting</div>
-      <div class="ai-card-desc">Multi-agent LLM workflow ingesting unstructured market studies to dynamically recalibrate healthcare provider target tiering.</div>
+    <div class="ai-card featured">
+      <div class="badge b-dev"><div class="badge-dot"></div>In Dev · Agentic</div>
+      <div class="ai-card-title">Pilates Scheduling Agent</div>
+      <div class="ai-card-desc">WhatsApp-native booking agent. Customer says "book me something this week" — agent checks plan validity, availability, past preferences, picks the best slot, books it, confirms. No back-and-forth.</div>
+      <div class="ai-links">
+        <a href="building-in-ai.html#pilates" class="ai-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Full writeup + system diagram
+        </a>
+      </div>
     </div>
-    <div class="ai-card">
-      <div class="badge b-concept"><div class="badge-dot"></div>Concept 02</div>
-      <div class="ai-card-title">Zero-UI WhatsApp CRM</div>
-      <div class="ai-card-desc">Conversational agent passively ingesting client chats, scoring leads on ROI, and proactively messaging owners to close revenue.</div>
+    <div class="ai-card featured">
+      <div class="badge b-concept"><div class="badge-dot"></div>Design · In Progress</div>
+      <div class="ai-card-title">Careway</div>
+      <div class="ai-card-desc">Clinical pathway coordination — three roles (Patient, PCP, Specialist) on shared live data. Designed through 6 iterations. Agent layer: coordinator asks "prep me for my 2pm call" → agent synthesises pathway + overdue items + outreach brief.</div>
+      <div class="ai-links">
+        <a href="building-in-ai.html#careway" class="ai-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          App flow diagram + design notes
+        </a>
+      </div>
     </div>
   </div>
 </div>
