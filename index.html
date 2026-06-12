@@ -298,6 +298,28 @@ footer{background:var(--dark);padding:2rem 1.5rem}
   h1{font-size:28px;letter-spacing:-1.5px}
   .imp-num{font-size:17px}
 }
+
+/* Cross-domain positioning table */
+.cdt-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.cdt-header-row,.cdt-data-row{display:grid;grid-template-columns:110px repeat(3,1fr)}
+.cdt-header-row{background:var(--bg3);border-bottom:2px solid var(--border)}
+.cdt-data-row{border-bottom:1px solid var(--border)}
+.cdt-data-row:last-child{border-bottom:none}
+.cdt-label-cell{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);padding:10px 12px;display:flex;align-items:center;border-right:1px solid var(--border);background:var(--bg)}
+.cdt-col-head{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 12px;text-align:center;border-right:1px solid var(--border)}
+.cdt-col-head:last-child{border-right:none}
+.pharma-head{color:var(--accent);background:var(--accent-lt)}
+.mkt-head{color:var(--teal);background:var(--teal-lt)}
+.fin-head{color:var(--amber);background:#fef3c7}
+.cdt-data-cell{font-size:12px;color:var(--text2);padding:10px 12px;text-align:center;border-right:1px solid var(--border);line-height:1.4;display:flex;align-items:center;justify-content:center}
+.cdt-data-cell:last-child{border-right:none}
+@media(max-width:600px){
+  .cdt-header-row,.cdt-data-row{grid-template-columns:72px repeat(3,1fr)}
+  .cdt-label-cell{font-size:10px;padding:8px 6px}
+  .cdt-col-head{font-size:9px;padding:7px 5px}
+  .cdt-data-cell{font-size:11px;padding:8px 5px}
+}
+  
 </style>
 </head>
 <body>
@@ -532,45 +554,65 @@ footer{background:var(--dark);padding:2rem 1.5rem}
 <div class="pharma-section">
   <div class="section-label">Pharma Analytics · Transferable Expertise</div>
   <h2>Analytics built for complexity.</h2>
-  <p class="section-sub" style="margin-bottom:1.5rem">In pharma, I operate across two distinct customer types simultaneously — and the analytical infrastructure I build is directly transferable to any data-rich commercial environment.</p>
+  <p class="section-sub" style="margin-bottom:1.5rem">I operate across two distinct customer types simultaneously — building analytical infrastructure that's directly transferable to any data-rich commercial environment.</p>
   <div style="background:var(--accent-lt);border:1px solid #c4b8ff;border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.8rem;font-size:13px;color:var(--text2);line-height:1.6">
     <strong style="color:var(--accent);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:6px">The same framework, different domains</strong>
     The dual-customer model that maps HCP-Patient in pharma maps <strong>Host-Guest at Airbnb</strong>, <strong>Driver-Rider at Uber</strong>, <strong>Seller-Buyer at Amazon</strong>, and <strong>Coach-Member at WHOOP</strong>. In digital health, members replace patients, engagement data replaces claims, and the longitudinal journey from signal to outcome is the same analytical challenge at a different layer of the health stack.
   </div>
   <div class="infographic">
-    <div class="infographic-title">Dual-Customer Commercial Analytics Framework</div>
-    <div class="dual-customer">
-      <div class="cust-block hcp">
-        <div class="cust-block-label">Customer 01</div>
-        <div class="cust-block-title">Healthcare Provider (HCP)</div>
-        <div class="cust-method hcp-m"><strong>Affiliation Mapping</strong>400K+ entity network — where HCPs work, who they influence, referral patterns, practice affiliations.</div>
-        <div class="cust-method hcp-m"><strong>Prescribing Behavior</strong>Rx patterns, market share by molecule, competitive dynamics, over/under-served territory detection.</div>
-        <div class="cust-method hcp-m"><strong>Network Intelligence</strong>Influence mapping across HCP clusters to identify key opinion leaders and cascade targeting.</div>
-      </div>
-      <div class="dual-mid">
-        <div class="mid-connector"></div>
-        <div class="mid-label">Integrated signal</div>
-        <div class="mid-connector"></div>
-      </div>
-      <div class="cust-block patient">
-        <div class="cust-block-label">Customer 02</div>
-        <div class="cust-block-title">Patient</div>
-        <div class="cust-method pat-m"><strong>Claims-Based Segmentation</strong>60M patient universe — 10 ML clusters defining the addressable market map and priority populations.</div>
-        <div class="cust-method pat-m"><strong>Longitudinal Journey Mapping</strong>Tracking diagnosis → treatment → switching → persistence over time using multi-million claim records.</div>
-        <div class="cust-method pat-m"><strong>Population Targeting</strong>Identifying which patient segments to target, through which HCP channel, and at what point in the journey.</div>
-      </div>
+  <div class="infographic-title">One Framework. Every Domain.</div>
+
+  <!-- Cross-domain table -->
+  <div class="cdt-wrap">
+    <div class="cdt-header-row">
+      <div class="cdt-label-cell"></div>
+      <div class="cdt-col-head pharma-head">Pharma</div>
+      <div class="cdt-col-head mkt-head">Marketplace</div>
+      <div class="cdt-col-head fin-head">Fintech</div>
     </div>
-    <div>
-      <div style="font-size:11px;color:var(--text3);text-align:center;margin-bottom:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase">From data to commercial action</div>
-      <div class="flow-strip">
-        <div class="flow-node"><div class="flow-node-num">01</div><div class="flow-node-title">Raw Claims</div><div class="flow-node-desc">Multi-million Rx &amp; medical records ingested</div><div class="flow-arrow">›</div></div>
-        <div class="flow-node"><div class="flow-node-num">02</div><div class="flow-node-title">Segment</div><div class="flow-node-desc">ML clusters define addressable patient populations</div><div class="flow-arrow">›</div></div>
-        <div class="flow-node"><div class="flow-node-num">03</div><div class="flow-node-title">Map Journeys</div><div class="flow-node-desc">Longitudinal paths reveal when &amp; where to intervene</div><div class="flow-arrow">›</div></div>
-        <div class="flow-node"><div class="flow-node-num">04</div><div class="flow-node-title">Link HCPs</div><div class="flow-node-desc">Affiliation network identifies the right prescriber</div><div class="flow-arrow">›</div></div>
-        <div class="flow-node"><div class="flow-node-num">05</div><div class="flow-node-title">GTM Action</div><div class="flow-node-desc">Field targeting, call plans, resource allocation</div></div>
-      </div>
+    <div class="cdt-data-row">
+      <div class="cdt-label-cell">Supply-side</div>
+      <div class="cdt-data-cell">HCP</div>
+      <div class="cdt-data-cell">Seller / Host</div>
+      <div class="cdt-data-cell">Merchant</div>
+    </div>
+    <div class="cdt-data-row">
+      <div class="cdt-label-cell">Demand-side</div>
+      <div class="cdt-data-cell">Patient</div>
+      <div class="cdt-data-cell">Buyer / Rider</div>
+      <div class="cdt-data-cell">Cardholder</div>
+    </div>
+    <div class="cdt-data-row">
+      <div class="cdt-label-cell">Signal Source</div>
+      <div class="cdt-data-cell">Claims data</div>
+      <div class="cdt-data-cell">Transactions</div>
+      <div class="cdt-data-cell">Payment data</div>
+    </div>
+    <div class="cdt-data-row">
+      <div class="cdt-label-cell">Journey Map</div>
+      <div class="cdt-data-cell">Rx → Persistence</div>
+      <div class="cdt-data-cell">Browse → Purchase</div>
+      <div class="cdt-data-cell">Onboard → Spend</div>
+    </div>
+    <div class="cdt-data-row">
+      <div class="cdt-label-cell">GTM Action</div>
+      <div class="cdt-data-cell">Call planning</div>
+      <div class="cdt-data-cell">Inventory / promo</div>
+      <div class="cdt-data-cell">Credit line offer</div>
     </div>
   </div>
+
+  <div>
+    <div style="font-size:11px;color:var(--text3);text-align:center;margin-bottom:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase">From signal to commercial action</div>
+    <div class="flow-strip">
+      <div class="flow-node"><div class="flow-node-num">01</div><div class="flow-node-title">Raw Signals</div><div class="flow-node-desc">High-volume behavioral, transactional, or clinical records ingested</div><div class="flow-arrow">›</div></div>
+      <div class="flow-node"><div class="flow-node-num">02</div><div class="flow-node-title">Segment</div><div class="flow-node-desc">ML clusters define addressable populations</div><div class="flow-arrow">›</div></div>
+      <div class="flow-node"><div class="flow-node-num">03</div><div class="flow-node-title">Map Journeys</div><div class="flow-node-desc">Longitudinal paths reveal when &amp; where to intervene</div><div class="flow-arrow">›</div></div>
+      <div class="flow-node"><div class="flow-node-num">04</div><div class="flow-node-title">Link Supply-side</div><div class="flow-node-desc">Network mapping identifies the right supply-side actor</div><div class="flow-arrow">›</div></div>
+      <div class="flow-node"><div class="flow-node-num">05</div><div class="flow-node-title">GTM Action</div><div class="flow-node-desc">Coverage optimization, channel allocation, resource deployment</div></div>
+    </div>
+  </div>
+</div>
   <div class="pharma-text" style="margin-top:1.8rem">
     <p>Longitudinal journey mapping is not easy — it requires linking millions of fragmented records across time, normalizing patient identities, and making sense of non-linear treatment paths. In pharma this means knowing which patient, through which physician, at which point in their disease journey to target.</p>
     <p>The infrastructure I build — claims pipelines, affiliation databases, ML segmentation models — is the same architecture that drives customer intelligence in retail, fintech, and B2B commercial strategy.</p>
